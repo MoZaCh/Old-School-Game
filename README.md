@@ -1,14 +1,5 @@
 # D5-Something - RPG Game
 
-
-
-
-
-
-
-
-
-
 Classes
 
 Include all classes have different attack, defend, health points and more.
@@ -24,3 +15,12 @@ Classes:
 *Necromancer - Feeble Staff
 
 *Hunter - Weak Bow
+
+
+
+
+Games Starts.
+
+Choose Name.
+
+Choose Class.
