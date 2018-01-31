@@ -17,10 +17,12 @@ Classes:
 *Hunter - Weak Bow
 
 
-
+-----------------------------------------------------------------------------------------
 
 Games Starts.
 
 Choose Name.
 
 Choose Class.
+
+Throw Player in to the Game, Literally...
