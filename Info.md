@@ -11,12 +11,12 @@
 
 Random Classes, Need to be filtered to 10 only.
 Classes:
-Warlock - Feeble Staff
-Mage - Feeble Staff
-Priest - Talisman
-Cleric - Enchanted Book
-Warrior - Rusted Axe
-Necromancer - Feeble Staff
+*Warlock - Feeble Staff
+*Mage - Feeble Staff
+*Priest - Talisman
+*Cleric - Enchanted Book
+*Warrior - Rusted Axe
+*Necromancer - Feeble Staff
 Hunter - Weak Bow
 Archer - Weak Bow
 Barbarian - Rusted Axe
