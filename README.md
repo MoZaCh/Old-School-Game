@@ -6,15 +6,15 @@ Include all classes have different attack, defend, health points and more.
 
 Classes:
 
-*Mage - Feeble Staff
+*Mage -  Staff/SpellBook
 
 *Priest - Talisman
 
-*Warrior - Rusted Axe
+*Warrior - Axe/GreatSword
 
-*Necromancer - Feeble Staff
+*Necromancer - Staff
 
-*Hunter - Weak Bow
+*Hunter -  Bow
 
 
 -----------------------------------------------------------------------------------------
