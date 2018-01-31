@@ -10,6 +10,8 @@
 
 
 Random Classes, Need to be filtered to 10 only.
+
+Include all classes have different attack, defend, health points and more.
 Classes:
 *Warlock - Feeble Staff
 *Mage - Feeble Staff
