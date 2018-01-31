@@ -17,15 +17,15 @@ Classes:
 *Cleric - Enchanted Book
 *Warrior - Rusted Axe
 *Necromancer - Feeble Staff
-Hunter - Weak Bow
-Archer - Weak Bow
-Barbarian - Rusted Axe
-Elementalist - Enchanged Book
-Druid - Sling
-Paladin - Flimsy Mace
-Death Knight - Longsword
-Fighter - Rusted Axe
-Monk - Quarterstaffs
-Theif - Small Dagger
-Assassin - Small Dagger
-Rouge - Small Dagger
+*Hunter - Weak Bow
+*Archer - Weak Bow
+*Barbarian - Rusted Axe
+*Elementalist - Enchanged Book
+*Druid - Sling
+*Paladin - Flimsy Mace
+*Death Knight - Longsword
+*Fighter - Rusted Axe
+*Monk - Quarterstaffs
+*Theif - Small Dagger
+*Assassin - Small Dagger
+*Rouge - Small Dagger
