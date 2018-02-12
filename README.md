@@ -8,15 +8,24 @@ Include all classes have different attack, defend, health points and more.
 Classes:
 
 *Mage -  Staff/SpellBook
+-Levitate
+-Cast Spell
 
 *Priest - Talisman
+-Heal
+-Spell
 
 *Warrior - Axe/GreatSword
+-Swing
+-Block
 
 *Necromancer - Staff
+-Summon
+-Cast Spell
 
 *Hunter -  Bow
-
+-Shoot
+-Climb
 
 -----------------------------------------------------------------------------------------
 Story
