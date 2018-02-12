@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+void mainMenu()
+{ 
+  cout <<"\n===========================================\n"<<
+          "T i t l e\n"<<
+          "===========================================\n"<<endl;
+  
+  cout<< "1) Start New Game\n"<<
+         "2) Resume Game\n"<<
+         "3) Credits\n"<<
+         "4) Exit"<<endl;
+  cout<< "\nSelect an option: ";
+}
+
+int credits()
+{
+ string choice; 
+ system("clear");
+  cout<<"Credits:\n"<<
+        "------------------------------------ \n"<<
+        "*KHAN Qais* \n"<<
+        "*LAWAL Paul* \n"<<
+        "*ASAVKINAS Aleksandras* \n"<<
+        "*MAREK Peter* \n"<<
+        "*CHOUDHURY Mohammed Zahed* \n"<<
+        "*PATEL Harshkumar Chandrakant* \n"<<
+        "------------------------------------"<<endl;
+  cout<< "Would you like to go back? (Y/N): ";
+  cin>>choice;
+  
+  if (choice=="Y" || choice=="y")
+  {
+    system("clear");
+    mainMenu();
+  }
+  else
+  {
+    return 0;
+  }
+  
+}
+
+int main()
+{
+  mainMenu();
+  int choice;
+  cin>> choice;
+    
+  switch (choice){
+  case 1: //Start NEw Game
+  break;
+  
+  case 2: // Resume Game
+  break;
+  
+  case 3:
+  credits();
+  break;
+  
+  case 4:
+  return 0;
+  
+  default:
+  cout<< "Wrong choice, try again: ";
+      
+  }
+  return 0;
+  
+}
+
