@@ -6,8 +6,8 @@ class Character
     void message()
     {
     string choice;
-    cout << "Please choose a character"<<endl;
-    cin >> choice ;  
+    cout << "Please choose a character"<<endl<<"Mage"<<endl<<"Priest"<<endl<<"Warrior"<<endl<<"Necromancer"<<endl<<"Hunter"<<endl;
+    cin >> choice;  
     }
   protected :
     int attack;
@@ -16,49 +16,36 @@ class Character
 };
 class Mage : public Character
 {
+ 
 public :
-    void weapon()
     
-    {
-    cout<<"Staff/SpellBook"<<endl; 
-    }
+    void SpellBook(){}
+    void Staff(){}
+};    
 
-};
 class Priest : public Character
 {
 public :
-    void weapon1() 
-     
-    {
-      cout<<"Talisman"<<endl;
-    } 
+    void Talisman(){} 
 };
 class Warrior : public Character
 {
 public :
-    void weapon2()
-     
-    {
-      cout<<"Axe/GreatSword"<<endl;
-    }  
+    void GreatSword(){}
+    void Axe(){}
+    
+      
 };
 class  Necromancer : public Character
 {
 public :
-    void weapon3 ()
+    void Staff (){}
      
-    {
-     cout<<"Staff"<<endl; 
-    }  
 };
 class  Hunter : public Character
 {
 public :
-    void weapon4 ()
-     
-    {
-     cout<<"Bow"<<endl;
-    }  
+    void Bow (){}
 };
 
 
@@ -67,7 +54,5 @@ int main()
     
   Character C1;
   C1.message();
-  Necromancer N1;
-  N1.weapon3();
   return 0;
 }
