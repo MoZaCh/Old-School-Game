@@ -17,30 +17,48 @@ class Character
 class Mage : public Character
 {
 public :
-    void SpellBook();
-};    
+    void weapon()
+    
+    {
+    cout<<"Staff/SpellBook"<<endl; 
+    }
 
+};
 class Priest : public Character
 {
 public :
-    void Talisman(); 
+    void weapon1() 
+     
+    {
+      cout<<"Talisman"<<endl;
+    } 
 };
 class Warrior : public Character
 {
 public :
-    void GreatSword();
-      
+    void weapon2()
+     
+    {
+      cout<<"Axe/GreatSword"<<endl;
+    }  
 };
 class  Necromancer : public Character
 {
 public :
-    void Staff ();
+    void weapon3 ()
      
+    {
+     cout<<"Staff"<<endl; 
+    }  
 };
 class  Hunter : public Character
 {
 public :
-    void Bow ();  
+    void weapon4 ()
+     
+    {
+     cout<<"Bow"<<endl;
+    }  
 };
 
 
@@ -50,6 +68,6 @@ int main()
   Character C1;
   C1.message();
   Necromancer N1;
-  N1.Staff();
+  N1.weapon3();
   return 0;
 }
