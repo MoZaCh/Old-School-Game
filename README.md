@@ -170,3 +170,19 @@ Start New  Game
 Load
 
 Quit
+
+Combat
+-----
+Percentage Chance for most things
+
+*Chance of success*
+
+attack
+
+defence
+
+ability
+
+
+*Status Effects?*
+
