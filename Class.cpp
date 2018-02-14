@@ -28,10 +28,10 @@ public :
     void Staff(){}
     void Blink(){}
     void CastSpell(){}
-    void FIREBALL(){}
-    void LIGHTNING(){}
-    void FREEZE(){}
-    void TORNADO(){}
+    void Fireball(){}
+    void Lighting(){}
+    void Freeze(){}
+    void Torando(){}
     
     
 };    
