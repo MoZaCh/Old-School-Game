@@ -20,9 +20,9 @@ class Mage : public Character
 public :
     void abilities()
     {
-    attack = 80;
-    defend = 35;
-    healthpoints = 50;
+    attack = 800;
+    defend = 150;
+    healthpoints = 250;
     }
     void SpellBook(){}
     void Staff(){}
@@ -41,9 +41,9 @@ class Priest : public Character
 public :
     void abilities()
     {
-    attack = 35;
-    defend = 75;
-    healthpoints = 75;
+    attack = 350;
+    defend = 750;
+    healthpoints = 750;
     }
     void Talisman(){}
     void Levitate(){}
@@ -56,9 +56,9 @@ class Warrior : public Character
 public :
     void abilities()
     {
-    attack = 75;
-    defend = 100;
-    healthpoints = 100;
+    attack = 750;
+    defend = 750;
+    healthpoints = 1000;
     }
     void GreatSword(){}
     void Axe(){}
@@ -75,9 +75,9 @@ class  Necromancer : public Character
 public :
     void abilities()
     {
-    attack = 50;
-    defend = 75;
-    healthpoints = 100;
+    attack = 500;
+    defend = 750;
+    healthpoints = 1000;
     }
     void Staff (){}
     void Summon (){}
@@ -95,9 +95,9 @@ class  Hunter : public Character
 public :
 void abilities()
     {
-    attack = 75;
-    defend = 20
-    healthpoints = 50;
+    attack = 250;
+    defend = 200
+    healthpoints = 500;
     }
     void Bow (){}
     void Dagger (){}
