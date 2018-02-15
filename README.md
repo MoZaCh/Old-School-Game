@@ -7,6 +7,8 @@ Include all classes have different attack, defend, health points and more.
 
 Classes:
 
+-------------------------
+
 *Mage 
 -
 Attack - (HIGH)
@@ -32,6 +34,7 @@ MANA
 
 -TORNADO
 
+------------------------
 
 *Priest 
 -
@@ -51,6 +54,7 @@ MANA
 
 -Spell
 
+----------------------------
 
 *Warrior 
 -
@@ -76,6 +80,7 @@ HealthPoints(HP) - (HIGH)
 
 -Blade Storm
 
+--------------------------
 
 *Necromancer 
 -
@@ -108,7 +113,7 @@ USES HEALTH
 
 -Buffed from self damage-
 
-
+-------------
 
 *Hunter
 -
@@ -170,6 +175,8 @@ Start New  Game
 Load
 
 Quit
+
+------------------------------------------------------------------------------------------
 
 Combat
 -----
