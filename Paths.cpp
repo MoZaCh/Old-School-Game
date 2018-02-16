@@ -11,61 +11,94 @@ int main()
     
 cout << "You awake in a Forest, covered in snow." << endl;
     
-sleep(2);
+// sleep
     
 cout << "You seem to not be able to remember much but you do gather your name." << endl;
  
-    sleep(3);
+    // sleep
     
 
-    string name;
+    string name; //Variable
     
-    string confirm;
+    string confirm; //Variable
     
-    userName:
+    userName: //Loop thingy
     
      cout << "Please enter your name: " << endl; //Asks user for what their name would be
-        cin >> name;
+        cin >> name; //Input
     
-    confirmCheck:
+    confirmCheck: //Loop Thingy
     
     cout << "Are you sure? Please enter y/n: " << endl; //Confirms if the user is sure
-    cin >> confirm;
+    cin >> confirm; //Input
     
     
     if (confirm == "Y" || confirm == "y") //Game Continues
     {
-        cout << endl;
+        cout << endl; //Input
         
         cout << "Your head is in a daze" << endl;
-        sleep(1);
+        // sleep
     }
     
     else if (confirm == "N" || confirm == "n") //Loops back to the name
     {
-        name.clear();
-        goto userName;
+        name.clear(); //Clears Variable
+        goto userName; //Loops Back
     }
     
     else 
     {
         cout << "Must be a Y/N answer!" << endl; //Error Check
-        sleep(1);
-        cout << endl;
-        goto confirmCheck;
+        // sleep
+        cout << endl; //New Line
+        goto confirmCheck; // Loops Back
     }
     
-    sleep(1);
+    // sleep
     
     cout << "You try to concentrate your thoughts, \nJust trying to gather your thoughts is causing your head to pound." << endl;
-    sleep(3);
+    // sleep
     
     cout << "Your able to just about remember small things of your past, your remember that you are a..." << endl;
-    sleep(2);
+    // sleep
     //Link To Classes 
+    cout << "You seem to see to be near the enterance of the cave" << endl;
     
+    cout << "Do you explore the rest of the cave or leave the cave to try and find your way back home." << endl;
     
-    //Unfinished
+    string Cave;
+    
+    cave: //Loop Thing
+    
+    cout << "1. Stay in the Cave. \n2. Leave the Cave." << endl;
+    cout << endl;
+    
+    cout << "Stay. \nLeave." << endl;
+    cin >> Cave;
+        
+   if (Cave == "stay" || Cave == "Stay")
+   {
+       cout << endl;
+       cout << "cave" << endl; //Stuff about cave
+       
+       return 0; //End Code
+   }
+    else if (Cave == "leave" || Cave == "Leave")
+    {
+         cout << endl;   //New Line and continues code
+    }
+    
+    else 
+    {
+        cout << endl;
+        cout << "not a valid option" << endl; //Error
+        cout << endl;
+        Cave.clear(); //Clearing Variable
+        goto cave; //Loop
+    }
+    
+    //UNFINISHED
     
     cout << "Test" << endl; // TEST!
     
