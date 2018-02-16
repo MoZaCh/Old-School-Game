@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
     
-cout << "You awake in a Forest, covered in snow." << endl;
+cout << "You awake in a Cave, covered in gravel and dirt." << endl;
     
 // sleep
     
@@ -28,7 +28,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
         cin >> name; //Input
     
     confirmCheck: //Loop Thingy
-    
+    cout << endl;
     cout << "Are you sure? Please enter y/n: " << endl; //Confirms if the user is sure
     cin >> confirm; //Input
     
@@ -60,7 +60,8 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     cout << "You try to concentrate your thoughts, \nJust trying to gather your thoughts is causing your head to pound." << endl;
     // sleep
     
-    cout << "Your able to just about remember small things of your past, your remember that you are a..." << endl;
+    cout << "You're able to just about remember small things of your past, your remember that you are a... *CLASS PICKED*" << endl;
+    cout << endl;
     // sleep
     //Link To Classes 
     cout << "You seem to see to be near the enterance of the cave" << endl;
@@ -74,15 +75,41 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     cout << "1. Stay in the Cave. \n2. Leave the Cave." << endl;
     cout << endl;
     
-    cout << "Stay. \nLeave." << endl;
+    cout << "- Stay. \n- Leave." << endl;
     cin >> Cave;
         
    if (Cave == "stay" || Cave == "Stay")
    {
        cout << endl;
-       cout << "cave" << endl; //Stuff about cave
+       cout << "You decide to stay in the cave to explore, maybe you'll be able to find some answer for why\nyou are in this cave and how you got here." << endl; //Stuff about cave
+       cout << "As you venture through the cave you are finding it more difficult to see with each step" << endl;
+       string caveStay;
        
-       return 0; //End Code
+       CaveStay: //Loop thingy
+       
+       cout << "Do you press on?\n\nYes.\nNo." << endl; 
+       cin >> caveStay;
+       
+       if(caveStay == "Yes" || caveStay == "yes") //confirming answer
+       {
+           cout << endl;
+           cout << "You keep going, you keep taking a step further into the darkness.\nAt this point you are completely shrouded in darkness, you aren't able to see a single thing.\nYou aren't able to see anything, But you continue to venture onward, you end up hitting a wall.\nYou're able to feel a breeze on the other side and are even able to see a crack of light behind the rocks." << endl;
+           cout << "You try to chip away at the rocks, finding it with ease like these rocks have been moved a lot.\nyou discover something hidden behind them, it seems to be some type of small room, lit up by just one torch.\nthere is a pedestal, there seems to be a weapon ontop, \nits a *DEPENDS ON CLASS*" << endl;
+           return 0; //End Code
+       }
+       else if (caveStay == "No" || caveStay == "no")
+       {
+           // continues the rest of the code and exists the if statement
+       }
+       else 
+       {
+           cout << endl;
+           cout << "not a valid option" << endl;
+           caveStay.clear(); //clears variable
+           cout << endl;
+           goto CaveStay; //loops bacl
+       }
+       
    }
     else if (Cave == "leave" || Cave == "Leave")
     {
@@ -97,8 +124,6 @@ cout << "You seem to not be able to remember much but you do gather your name." 
         Cave.clear(); //Clearing Variable
         goto cave; //Loop
     }
-    
-    //UNFINISHED
     
     cout << "Test" << endl; // TEST!
     
