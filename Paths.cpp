@@ -151,7 +151,8 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            }
            else if (takeWeapon == "Leave" || takeWeapon == "leave")
            {
-               cout << "Nothing yet, sorry babes ;)" << endl;
+               cout << "You successfully manage to find the exit of the cave and get out.\nBut you cant help but wonder what that weapon was and the power that it would have held." << endl;
+           cout << endl;
            }
            else
            {
@@ -163,7 +164,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            
        }
        else if (caveStay == "No" || caveStay == "no")
-       {
+           {
            // continues the rest of the code and exists the if statement
        }
        else 
