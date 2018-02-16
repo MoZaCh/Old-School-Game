@@ -94,7 +94,40 @@ cout << "You seem to not be able to remember much but you do gather your name." 
        {
            cout << endl;
            cout << "You keep going, you keep taking a step further into the darkness.\nAt this point you are completely shrouded in darkness, you aren't able to see a single thing.\nYou aren't able to see anything, But you continue to venture onward, you end up hitting a wall.\nYou're able to feel a breeze on the other side and are even able to see a crack of light behind the rocks." << endl;
+           cout << endl;
            cout << "You try to chip away at the rocks, finding it with ease like these rocks have been moved a lot.\nyou discover something hidden behind them, it seems to be some type of small room, lit up by just one torch.\nthere is a pedestal, there seems to be a weapon ontop, \nits a *DEPENDS ON CLASS*" << endl;
+           cout << endl;
+           cout << "You inspect the pedestal, you don't see anything strange about the pedestal other than it has some ancient hieroglyphics \non it which you arent able to read." << endl;
+           cout << endl;
+           cout << "Do you wish to take the weapon?" << endl;
+           
+           TakeWeapon:
+           
+           cout << endl;
+           
+           string takeWeapon;
+           cout << "Take the weapon and dive into possible dangers.\nLeave it alone and find the exit." << endl;
+           cin >> takeWeapon;
+           cout << endl;
+           if (takeWeapon == "Take" || takeWeapon == "take")
+           {
+            cout << "You take the weapon carefully still being cautious about your surroundings expecting a trap of some sort.\nYou now have the weapon in your hands and take a step back from the pedestal,\nnothing seems to happen" << endl;
+            cout << endl;
+            cout << "It was too soon for you to relax for the enterace to the room shuts closed. you seem to now be trapped in the room. \nYou start to panic. You start to use the weapon that you have just picked up without knowing what it would do and \nstart swinging at the walls with it, its creates a huge dent in the wall with ease but not enough to get out.\nThe impact was strong enough to blow the torch out." << endl;
+            cout << endl;
+            cout << "The torch goes out, Its now complete darkness in this small room." << endl;
+           }
+           else if (takeWeapon == "Leave" || takeWeapon == "leave")
+           {
+               cout << "Nothing yet, sorry babes ;)" << endl;
+           }
+           else
+           {
+               cout << "*Invalid input! Must answer with Take or Leave*" << endl;
+               takeWeapon.clear();
+               goto TakeWeapon;
+               cout << endl;
+           }
            return 0; //End Code
        }
        else if (caveStay == "No" || caveStay == "no")
