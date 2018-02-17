@@ -118,7 +118,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
             cout << endl;
             cout << "The torch goes out, Its now complete darkness in this small room." << endl;
                cout << endl;
-               cout << "You start to feel something drippling onto your shoulder, you can tell from the texture that it is not water.\n\nIts Oil!\n\nYou try to feel around the room again to see if you can find some type of escape\nbefore the room fills with oil.\nThe oil is rushing in quicker by the second,\nits still completely dark in the room you're able to find the gap that the oil is coming from. \nYou try to squeeze through the gap of the oil before the oil \ncompletely fills the room, suffocating you but your just not able to fit.\n\nYou have no other choice but to use the weapon that you have to try and make the hole wider, you've already seen the force of the weapon when you tried to escape before." << endl;
+               cout << "You start to feel something dripping onto your shoulder, you can tell from the texture that it is not water.\n\nIts Oil!\n\nYou try to feel around the room again to see if you can find some type of escape\nbefore the room fills with oil.\nThe oil is rushing in quicker by the second,\nits still completely dark in the room you're able to find the gap that the oil is coming from. \nYou try to squeeze through the gap of the oil before the oil \ncompletely fills the room, suffocating you but your just not able to fit.\n\nYou have no other choice but to use the weapon that you have to try and make the hole wider, you've already seen the force of the weapon when you tried to escape before." << endl;
                
                Death://Loop Thingy
                cout << endl;
