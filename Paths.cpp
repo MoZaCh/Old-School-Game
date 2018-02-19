@@ -73,7 +73,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     
     cave: //Loop Thing
     
-    cout << "1. Stay in the Cave. \n2. Leave the Cave." << endl;
+    cout << "Stay in the Cave. \nLeave the Cave." << endl;
     cout << endl;
     
     cout << "- Stay. \n- Leave." << endl;
