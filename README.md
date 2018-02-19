@@ -163,6 +163,8 @@ Choose Class.
 
 Throw Player in to the Game, Literally...
 
+Percentage chance for success?
+
 -----------------------------------------------------------------------------------------
 
 Main Menu
