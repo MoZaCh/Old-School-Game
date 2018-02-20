@@ -160,7 +160,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
                cout << endl;
                string death;
                
-               cout << "Do you ready or Swing or Accept your impending doom." << endl;
+               cout << "Do you ready your Swing or Accept your impending doom." << endl;
                cin >> death;//Input
                
                if (death == "Swing" || death == "swing")
