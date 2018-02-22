@@ -2,6 +2,7 @@
 #include <string>
 #include <cctype>
 #include <cstdlib>
+#include "Paths.cpp"
 using namespace std;
 
 
@@ -9,6 +10,7 @@ int credits()
 {
  string choice; 
  system("clear");
+    Choice:
   cout<<"Credits:\n"<<
         "------------------------------------ \n"<<
         "*KHAN Qais* \n"<<
@@ -25,10 +27,16 @@ int credits()
   {
     system("clear"); 
   }
-  else
+  else if (choice == "N" || choice == "n")
   {
+      system("clear");
     exit(0);
   }
+    else
+    {
+        cout << "Invalid Input! Must Answer with Y or N" << endl;
+       goto Choice; 
+    }
   
 }
 
@@ -49,7 +57,9 @@ int main()
   cin>> choice;
     
   switch (choice){
-  case 1: //Start NEw Game
+  case 1: //Start New Game
+          system("clear");
+          path();
   break;
   
   case 2: // Resume Game
@@ -60,6 +70,7 @@ int main()
   break;
   
   case 4:
+          system("clear");
   return 0;
   
   default:
