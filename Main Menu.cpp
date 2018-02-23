@@ -75,7 +75,9 @@ int main()
   return 0;
   
   default:
+                
   cout<< "Wrong choice, try again: ";
+                system("clear");
   }
     
   }
