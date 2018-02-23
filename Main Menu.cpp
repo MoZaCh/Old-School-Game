@@ -53,23 +53,24 @@ int main()
          "3) Credits\n"<<
          "4) Exit"<<endl;
   cout<< "\nSelect an option: ";
-  int choice;
+  char choice;
   cin>> choice;
     
-  switch (choice){
-  case 1: //Start New Game
+  switch (choice)
+  {
+  case '1': //Start New Game
           system("clear");
           path();
   break;
   
-  case 2: // Resume Game
+  case '2': // Resume Game
   break;
   
-  case 3:
+  case '3':
   credits();
   break;
   
-  case 4:
+  case '4':
           system("clear");
   return 0;
   
