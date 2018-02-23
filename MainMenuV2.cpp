@@ -30,7 +30,9 @@ int main()
   
   else if (choice == "2") // Resume Game
   {
-      
+      cout << endl;
+      cout << "Unfinished\n" << endl;
+      goto title;
   }
   
   else if (choice == "3")
