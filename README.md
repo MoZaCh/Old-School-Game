@@ -195,3 +195,21 @@ ability
 
 *Status Effects?*
 
+-----------------------------------------------------------------------------------------------
+
+Inventory
+---------
+Menu to open inventory
+
+Options to close inventory
+
+Displays Items that use would have picked up (links to Paths.cpp Code)
+
+Navigation? (Next Page and such)
+
+List items inventory
+------
+
+Item counter
+
+-------------------------------------------------------------------------------------------------
