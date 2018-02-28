@@ -207,8 +207,7 @@ Displays Items that use would have picked up (links to Paths.cpp Code)
 
 Navigation? (Next Page and such)
 
-List items inventory
-------
+*List items inventory
 
 Item counter
 
