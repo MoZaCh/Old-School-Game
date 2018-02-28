@@ -1,0 +1,4 @@
+Sqlite Studio database - 
+Database Name: testdb.db
+Table name: users
+ - Fields: Id, username, class and score
