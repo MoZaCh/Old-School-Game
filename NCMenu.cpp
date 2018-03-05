@@ -7,13 +7,15 @@
 #include <panel.h>
 #include <functional>
 #include <string>
-#include "credits.cpp"
+#include "Credits.cpp"
 #include "Paths.cpp"
+
+
 using namespace std;
 
 int main(int argc, char ** argv)
 { 
-    string choice[] = {"1) Start New Game", "2) Resume Game", "3) Credits", "4) Exit"};
+    string choice[] = {"   Start New Game", "   Resume Game", "   Credits", "   Exit", };
     int pick;
     int highlight;
     
@@ -85,22 +87,23 @@ int main(int argc, char ** argv)
     }
     
     /*FUNCTIONALITY OF THE CHOICES*/
-    if(choice[highlight] == "1) Start New Game")
+    if(choice[highlight] == "   Start New Game")
     {
+            endwin();
             system("clear");
-            choice[highlight] = '\0';
+            choice[highlight] = '\0'; 
             path();
     }
-    else if(choice[highlight] == "2) Resume Game")
+    else if(choice[highlight] == "   Resume Game")
     {
         goto title;
     }
-    else if(choice[highlight] == "3) Credits")
+    else if(choice[highlight] == "   Credits")
     {
 
         credits();
     }
-    else if(choice[highlight] == "4) Exit")
+    else if(choice[highlight] == "   Exit")
     {
         clear();
         system("clear");
