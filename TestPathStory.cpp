@@ -2,6 +2,8 @@
 #include <unistd.h>
 #include <vector>
 #include <string>
+#include "MergeAttempt.cpp""
+#include <ncurses.h>
 
 using namespace std;
 
@@ -61,7 +63,9 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     cout << "You try to concentrate your thoughts, \nJust trying to gather your thoughts is causing your head to pound." << endl;
     // sleep
     
-    cout << "You're able to just about remember small things of your past, your remember that you are a... *CLASS PICKED*" << endl;
+    cout << "You're able to just about remember small things of your past, your remember that you are a... " << endl;
+    classes();
+    
     cout << endl;
     // sleep
     //Link To Classes 
@@ -124,7 +128,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
                cout << endl;
                string death;
                
-               cout << "Do you ready or Swing or Accept your impending doom." << endl;
+               cout << "Do you ready your Swing or Accept your impending doom." << endl;
                cin >> death;//Input
                
                if (death == "Swing" || death == "swing")
