@@ -105,6 +105,7 @@ int main(int argc, char ** argv)
     }
     else if(choice[highlight] == "   Exit")
     {
+        endwin();
         clear();
         system("clear");
         return 0;
