@@ -68,7 +68,7 @@ SpellClasses::SpellClasses(int health, int attack, int defence,
 class Mage : public SpellClasses{
  
 	private:
-		string greeting = "Mage is ready to fight!";
+		string greeting = "Class Mage Picked!\n";
 	public:
 		void getGreeting() { cout << greeting << endl; }
  
@@ -89,7 +89,7 @@ SpellClasses(health, attack, defence, mana, equip){
 
 class Priest : public SpellClasses{
   private:
-     string greeting = "Priest is ready to fight!";
+     string greeting = "Class Priest Picked!\n";
   
   public:
      void getGreeting(){cout << greeting << endl;}
@@ -110,7 +110,7 @@ SpellClasses(health, attack, defence, mana, equip){
 
 class Necromancer : public SpellClasses{
   private:
-     string greeting = "Necromancer is ready to fight!";
+     string greeting = "Class Necromancer Picked!\n";
      //DO NOT FORGET TO SWITCH MANA WITH HEALTH-USING LATER
   
   public:
@@ -131,7 +131,7 @@ SpellClasses(health, attack, defence, mana, equip){
 class Warrior : public SpellClasses{
  
   private:
-    string greeting = "Warrior is ready to fight!";
+    string greeting = "Class Warrior Picked!\n";
   public:
     void getGreeting(){cout<< greeting<<endl;}
   
@@ -152,7 +152,7 @@ Warrior::Warrior(int health, int attack, int defence, int mana,
 class Hunter : public SpellClasses{
   
   private:
-    string greeting= "Hunter is ready to fight!";
+    string greeting= "Class Hunter Picked!\n";
   public:
     void getGreeting(){cout<<greeting<<endl;}
   
@@ -169,6 +169,12 @@ Hunter::Hunter(int health, int attack, int defence, int mana,
  
 int main()
 {
+    Mage MageObject(200, 800, 150, 500, "Staff");
+    Priest PriestObject(100, 700, 250, 600, "Talisman");
+    Necromancer NecrObject(300, 600, 350, 400, "Staff");
+    Warrior warriorObject(800, 900, 600, 0, "Axe");
+    Hunter hunterObject(700, 1000, 400, 0, "Bow");
+    
     string class1;
     
     class1:
@@ -182,7 +188,13 @@ int main()
     cout << endl;
      if (class1 == "1")
      {
-	cout << "Are You Sure?" << endl;
+	cout << "Stats For Mage." << endl;
+         cout << endl;
+         
+         MageObject.toString();
+         
+         cout << endl;
+    cout << "Are You Sure?" << endl;
          
          Confirm:
          
@@ -208,14 +220,20 @@ int main()
              goto Confirm;
          }
          
-    Mage MageObject(200, 800, 150, 500, "Staff");
+    
 	MageObject.getGreeting();
-	MageObject.toString();
+	
          return 0;
          
      }
         else if (class1 == "2")
         {
+            cout << "Stats For Priest." << endl;
+         cout << endl;
+         
+         PriestObject.toString();
+         
+         cout << endl;
             cout << "Are You Sure?" << endl;
          
          Confirm1:
@@ -241,14 +259,20 @@ int main()
              confirm.clear();
              goto Confirm1;
          }
-         	Priest PriestObject(100, 700, 250, 600, "Talisman");
+         	
   	PriestObject.getGreeting();
-  	PriestObject.toString();
+  	
             return 0;
   
         }
     else if (class1 == "3")
     {
+        cout << "Stats For Necromancer." << endl;
+         cout << endl;
+         
+         NecrObject.toString();
+         
+         cout << endl;
         cout << "Are You Sure?" << endl;
          
          Confirm2:
@@ -274,13 +298,19 @@ int main()
              confirm.clear();
              goto Confirm2;
          }
-    Necromancer NecrObject(300, 600, 350, 400, "Staff");
+    
   	NecrObject.getGreeting();
-  	NecrObject.toString();
+  	
         return 0;
     }
     else if (class1 == "4")
     {
+        cout << "Stats For Warrior." << endl;
+         cout << endl;
+         
+         warriorObject.toString();
+         
+         cout << endl;
         cout << "Are You Sure?" << endl;
          
          Confirm3:
@@ -306,13 +336,19 @@ int main()
              confirm.clear();
              goto Confirm3;
          }
-    Warrior warriorObject(800, 900, 600, 0, "Axe");
+
     warriorObject.getGreeting();
-    warriorObject.toString();
+    
          return 0;
      }
         else if (class1 == "5")
         {
+            cout << "Stats For Hunter." << endl;
+         cout << endl;
+         
+         hunterObject.toString();
+         
+         cout << endl;
             cout << "Are You Sure?" << endl;
          
          Confirm4:
@@ -338,9 +374,9 @@ int main()
              confirm.clear();
              goto Confirm4;
          }
-          Hunter hunterObject(700, 1000, 400, 0, "Bow");
+          
           hunterObject.getGreeting();
-          hunterObject.toString();
+          
             return 0;
   
         }
