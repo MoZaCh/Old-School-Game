@@ -1,5 +1,12 @@
 # D5-Something - RPG Game
 
+
+To Install ncurses:
+------
+sudo apt-get install libncurses-dev
+
+-------------------
+
 Classes
 --------
 
