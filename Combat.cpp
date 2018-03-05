@@ -16,8 +16,9 @@ int randomNumber(){
   srand((unsigned)time(0)); 
   int random_integer = rand(); 
   return random_integer;
-  /* The following code will seed the generator with the system time and then output a single random number, which will be different each time we run the program.
-    In another words, the first line is neccesary for generating a different number, or rather different sequence of numbers */
+  /* The following code will seed the generator with the system time and then output a single random number, which will be differen
+    t each time we run the program.In another words, the first line is neccesary for generating a different number, or rather different
+    sequence of numbers */
 }
 int main(){
  Mage mageObj(1200,1300,150,1500,"Staff");
