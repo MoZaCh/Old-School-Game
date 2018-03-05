@@ -37,7 +37,7 @@ int main(){
  //getting values from Mage object
  int mageHealth = mageObj.getHealth();
  int mageMana = mageObj.getMana();
- int mageAttack = mageObj.getAttack();
+ int mageAttack = mageObj.getAttack(); 
  int mageDeffence = mageObj.getDefence();
  //getting values from Enemy object
  int enemyHealth = enemyObj.getEnemyHealth();
