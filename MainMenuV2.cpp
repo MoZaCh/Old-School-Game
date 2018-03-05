@@ -2,92 +2,111 @@
 #include <string>
 #include <cctype>
 #include <cstdlib>
+#include <ncurses.h>
+#include <curses.h>
+#include <panel.h>
+#include <functional>
+#include <string>
+#include "credits.cpp"
 #include "Paths.cpp"
 using namespace std;
 
-int main()
+int main(int argc, char ** argv)
 { 
-
-  title:
-  cout <<"\n===========================================\n"<<
-          "T i t l e\n"<<
-          "===========================================\n"<<endl;
-  
-  cout<< "1) Start New Game\n"<<
-         "2) Resume Game\n"<<
-         "3) Credits\n"<<
-         "4) Exit"<<endl;
-  cout<< "\nSelect an option: ";
-  string choice;
-      option:
-  cin>> choice;
+    string choice[] = {"1) Start New Game", "2) Resume Game", "3) Credits", "4) Exit"};
+    int pick;
+    int highlight;
     
-  if (choice == "1") //Start New Game
-  {
-          system("clear");
-          path();
-  }
-  
-  else if (choice == "2") // Resume Game
-  {
-      cout << endl;
-      cout << "Unfinished\n" << endl;
-      goto title;
-  }
-  
-  else if (choice == "3")
-  {
-      choice.clear();
-      
-  string choice; 
-      
- system("clear");
-      
-    Choice:
-      
-  cout<<"Credits:\n"<<
-        "------------------------------------ \n"<<
-        "*KHAN Qais* \n"<<
-        "*LAWAL Paul* \n"<<
-        "*ASAVKINAS Aleksandras* \n"<<
-        "*MAREK Peter* \n"<<
-        "*CHOUDHURY Mohammed Zahed* \n"<<
-        "*PATEL Harshkumar Chandrakant* \n"<<
-        "------------------------------------"<<endl;
-  cout<< "Would you like to go back? (Y/N): ";
-  cin>>choice;
-  
-  if (choice=="Y" || choice=="y")
-  {
-    system("clear");
-      goto title;
-  }
-      
-  else if (choice == "N" || choice == "n")
-  {
-      system("clear");
-    exit(0);
-  }
-      
-    else
+    cbreak();//command to stop the program proccess with CTRL+C
+    clear();//clears the window
+
+    /*COORDINATES OF THE FIRST MENU WINDOW*/
+    int height, width, start_y, start_x;
+    height = 10;
+    width = 30;
+    start_y = start_x = 1;
+    
+    
+    initscr();//ncurses starts
+    option:
+    WINDOW * menu_win = newwin(height, width, start_y, start_x);//creating a new window
+    refresh();//refreshes the window in a console so that changes would be seen
+
+    
+    
+    box(menu_win, 0, 0);//creates a border around the window that was created
+    refresh();
+    wrefresh(menu_win);//refreshes only the menu window
+    keypad(menu_win, true);//function lets us to use the arrow keys
+    
+    
+    int y, x, yBeg, xBeg, yMax, xMax;
+    getyx(menu_win, y, x);
+    getbegyx(menu_win, yBeg, xBeg);//getting the beginning of a window
+    getmaxyx(menu_win, yMax, xMax);//getting the size of a window
+    
+    
+    mvwprintw(menu_win, 1, xMax/2, "Title");
+    mvwprintw(menu_win, 2, 1, "----------------------------");
+    
+    
+    
+    title:
+    
+   
+    /*CREATING A LOOP WHICH HIGLITS OUR CHOSEN CHOICE*/
+    while(true)
     {
-        cout << "Invalid Input! Must Answer with Y or N" << endl;
-       goto Choice; 
+        for(int i = 0; i < 4; i++)
+        {
+            if(i == highlight)
+                wattron(menu_win, A_REVERSE);
+            mvwprintw(menu_win, i+3, 1, choice[i].c_str());
+            wattroff(menu_win, A_REVERSE);
+        }
+       pick = wgetch(menu_win);
+        
+        switch(pick)
+        {
+            case KEY_UP:
+                highlight--;
+                if(highlight == -1)
+                    highlight = 0;
+                break;
+            case KEY_DOWN:
+                highlight++;
+                if(highlight == 4)
+                    highlight = 3;
+                break;
+        }
+        if(pick == 10)
+            break;
+        
+    }
+    
+    /*FUNCTIONALITY OF THE CHOICES*/
+    if(choice[highlight] == "1) Start New Game")
+    {
+            system("clear");
+            choice[highlight] = '\0';
+            path();
+    }
+    else if(choice[highlight] == "2) Resume Game")
+    {
+        goto title;
+    }
+    else if(choice[highlight] == "3) Credits")
+    {
+
+        credits();
+    }
+    else if(choice[highlight] == "4) Exit")
+    {
+        clear();
+        system("clear");
+        return 0;
     }
       
-  }
-  
-  else if (choice == "4")
-  {
-          system("clear");
-  return 0;
-  }
-  
-  else 
-  {
-  cout<< "Wrong choice, try again: ";
-     choice.clear();
-    goto option;
-  }
+    endwin();
   return 0;
 }
