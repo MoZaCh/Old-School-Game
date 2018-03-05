@@ -167,7 +167,7 @@ Hunter::Hunter(int health, int attack, int defence, int mana,
     this->greeting=greeting;
   }
  
-int main()
+int classes()
 {
     Mage MageObject(200, 800, 150, 500, "Staff");
     Priest PriestObject(100, 700, 250, 600, "Talisman");
