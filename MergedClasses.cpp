@@ -171,21 +171,76 @@ int main()
 {
     string class1;
     
+    class1:
     class2:
     cout << endl;
     cout << "1. Mage\n2. Priest\n3. Necromancer\n4. Warrior\n5. Hunter" << endl;
+    
     cout << endl;
     
     cin >> class1;
+    cout << endl;
      if (class1 == "1")
      {
-	Mage MageObject(200, 800, 150, 500, "Staff");
+	cout << "Are You Sure?" << endl;
+         
+         Confirm:
+         
+         string confirm;
+         
+         cout << "Y/N" << endl;
+         cout << endl;
+         cin >>confirm;
+         cout << endl;
+         if (confirm == "Y" || confirm == "y")
+         {
+             
+         }
+         else if (confirm == "N" || confirm == "n")
+         {
+             confirm.clear();
+             goto class2;
+         }
+         else
+         {
+             cout << "Invaid Input, Must be Y or N!" << endl;
+             confirm.clear();
+             goto Confirm;
+         }
+         
+    Mage MageObject(200, 800, 150, 500, "Staff");
 	MageObject.getGreeting();
 	MageObject.toString();
          return 0;
+         
      }
         else if (class1 == "2")
         {
+            cout << "Are You Sure?" << endl;
+         
+         Confirm1:
+         
+         string confirm;
+         
+         cout << "Y/N" << endl;
+         cout << endl;
+         cin >>confirm;
+         cout << endl;
+         if (confirm == "Y" || confirm == "y")
+         {
+             
+         }
+         else if (confirm == "N" || confirm == "n")
+         {
+             confirm.clear();
+             goto class2;
+         }
+         else
+         {
+             cout << "Invaid Input, Must be Y or N!" << endl;
+             confirm.clear();
+             goto Confirm1;
+         }
          	Priest PriestObject(100, 700, 250, 600, "Talisman");
   	PriestObject.getGreeting();
   	PriestObject.toString();
@@ -194,6 +249,31 @@ int main()
         }
     else if (class1 == "3")
     {
+        cout << "Are You Sure?" << endl;
+         
+         Confirm2:
+         
+         string confirm;
+         
+         cout << "Y/N" << endl;
+         cout << endl;
+         cin >>confirm;
+         cout << endl;
+         if (confirm == "Y" || confirm == "y")
+         {
+             
+         }
+         else if (confirm == "N" || confirm == "n")
+         {
+             confirm.clear();
+             goto class2;
+         }
+         else
+         {
+             cout << "Invaid Input, Must be Y or N!" << endl;
+             confirm.clear();
+             goto Confirm2;
+         }
     Necromancer NecrObject(300, 600, 350, 400, "Staff");
   	NecrObject.getGreeting();
   	NecrObject.toString();
@@ -201,6 +281,31 @@ int main()
     }
     else if (class1 == "4")
     {
+        cout << "Are You Sure?" << endl;
+         
+         Confirm3:
+         
+         string confirm;
+         
+         cout << "Y/N" << endl;
+         cout << endl;
+         cin >>confirm;
+         cout << endl;
+         if (confirm == "Y" || confirm == "y")
+         {
+             
+         }
+         else if (confirm == "N" || confirm == "n")
+         {
+             confirm.clear();
+             goto class2;
+         }
+         else
+         {
+             cout << "Invaid Input, Must be Y or N!" << endl;
+             confirm.clear();
+             goto Confirm3;
+         }
     Warrior warriorObject(800, 900, 600, 0, "Axe");
     warriorObject.getGreeting();
     warriorObject.toString();
@@ -208,6 +313,31 @@ int main()
      }
         else if (class1 == "5")
         {
+            cout << "Are You Sure?" << endl;
+         
+         Confirm4:
+         
+         string confirm;
+         
+         cout << "Y/N" << endl;
+         cout << endl;
+         cin >>confirm;
+         cout << endl;
+         if (confirm == "Y" || confirm == "y")
+         {
+             
+         }
+         else if (confirm == "N" || confirm == "n")
+         {
+             confirm.clear();
+             goto class2;
+         }
+         else
+         {
+             cout << "Invaid Input, Must be Y or N!" << endl;
+             confirm.clear();
+             goto Confirm4;
+         }
           Hunter hunterObject(700, 1000, 400, 0, "Bow");
           hunterObject.getGreeting();
           hunterObject.toString();
@@ -218,7 +348,7 @@ int main()
       {
           cout << "Invalid input! Must answer with 1, 2, 3, 4 or 5" << endl;
           class1.clear();
-          goto class2;
+          goto class1;
       }
   
   
