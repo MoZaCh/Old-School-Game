@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+
+
 using namespace std;
 
 class SpellClasses
@@ -222,8 +224,9 @@ int classes()
          
     
 	MageObject.getGreeting();
+         
 	
-         return 0;
+         
          
      }
         else if (class1 == "2")
@@ -262,7 +265,7 @@ int classes()
          	
   	PriestObject.getGreeting();
   	
-            return 0;
+            
   
         }
     else if (class1 == "3")
@@ -301,7 +304,7 @@ int classes()
     
   	NecrObject.getGreeting();
   	
-        return 0;
+        
     }
     else if (class1 == "4")
     {
@@ -339,7 +342,7 @@ int classes()
 
     warriorObject.getGreeting();
     
-         return 0;
+         
      }
         else if (class1 == "5")
         {
@@ -377,7 +380,7 @@ int classes()
           
           hunterObject.getGreeting();
           
-            return 0;
+            
   
         }
       else
@@ -386,7 +389,6 @@ int classes()
           class1.clear();
           goto class1;
       }
-  
   
   return 0;
 }
