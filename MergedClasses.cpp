@@ -225,6 +225,7 @@ int classes()
          
     
 	MageObject.getGreeting();
+         
          ofstream myfile;
   myfile.open ("classChoice.txt");
   myfile << "Mage\n";
