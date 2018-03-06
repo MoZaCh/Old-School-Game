@@ -93,17 +93,16 @@ int main(int argc, char ** argv)
             system("clear");
             choice[highlight] = '\0'; 
             path();
-    }
     else if(choice[highlight] == "         Resume Game        ")
     {
         goto title;
     }
-    else if(choice[highlight] == "          Credits          ")
+    else if(choice[highlight] == "           Credits          ")
     {
 
         credits();
     }
-    else if(choice[highlight] == "           Exit           ")
+    else if(choice[highlight] == "            Exit           ")
     {
         endwin();
         clear();
