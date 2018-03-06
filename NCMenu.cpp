@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, char ** argv)
 { 
-    string choice[] = {"   Start New Game", "   Resume Game", "   Credits", "   Exit", };
+    string choice[] = {"       Start New Game       ", "         Resume Game        ", "           Credits          ", "            Exit           ", };
     int pick;
     int highlight;
     
@@ -87,23 +87,23 @@ int main(int argc, char ** argv)
     }
     
     /*FUNCTIONALITY OF THE CHOICES*/
-    if(choice[highlight] == "   Start New Game")
+    if(choice[highlight] == "       Start New Game       ")
     {
-            endwin();
+            endwin(); //Leaves ncurse, goes back to normal format
             system("clear");
             choice[highlight] = '\0'; 
             path();
     }
-    else if(choice[highlight] == "   Resume Game")
+    else if(choice[highlight] == "         Resume Game        ")
     {
         goto title;
     }
-    else if(choice[highlight] == "   Credits")
+    else if(choice[highlight] == "          Credits          ")
     {
 
         credits();
     }
-    else if(choice[highlight] == "   Exit")
+    else if(choice[highlight] == "           Exit           ")
     {
         endwin();
         clear();
