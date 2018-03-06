@@ -172,18 +172,18 @@ Hunter::Hunter(int health, int attack, int defence, int mana,
  
 int classes()
 {
-    Mage MageObject(200, 800, 150, 500, "Staff");
-    Priest PriestObject(100, 700, 250, 600, "Talisman");
-    Necromancer NecrObject(300, 600, 350, 400, "Staff");
-    Warrior warriorObject(800, 900, 600, 0, "Axe");
-    Hunter hunterObject(700, 1000, 400, 0, "Bow");
+    Mage MageObject(200, 800, 150, 500, "Staff"); //Stating Variables
+    Priest PriestObject(100, 700, 250, 600, "Talisman");//Stating Variables
+    Necromancer NecrObject(300, 600, 350, 400, "Staff");//Stating Variables
+    Warrior warriorObject(800, 900, 600, 0, "Axe");//Stating Variables
+    Hunter hunterObject(700, 1000, 400, 0, "Bow");//Stating Variables
     
     string class1;
     
     class1:
     class2:
     cout << endl;
-    cout << "1. Mage\n2. Priest\n3. Necromancer\n4. Warrior\n5. Hunter" << endl;
+    cout << "1. Mage\n2. Priest\n3. Necromancer\n4. Warrior\n5. Hunter" << endl; //Gives User Option To Choose
     
     cout << endl;
     
@@ -194,7 +194,7 @@ int classes()
 	cout << "Stats For Mage." << endl;
          cout << endl;
          
-         MageObject.toString();
+         MageObject.toString(); //Prints stats for mage
          
          cout << endl;
     cout << "Are You Sure?" << endl;
@@ -203,7 +203,7 @@ int classes()
          
          string confirm;
          
-         cout << "Y/N" << endl;
+         cout << "Y/N" << endl; //Confirms Choice
          cout << endl;
          cin >>confirm;
          cout << endl;
@@ -213,8 +213,8 @@ int classes()
          }
          else if (confirm == "N" || confirm == "n")
          {
-             confirm.clear();
-             goto class2;
+             confirm.clear(); //Clears Variable
+             goto class2; // Loops Back
          }
          else
          {
@@ -224,9 +224,9 @@ int classes()
          }
          
     
-	MageObject.getGreeting();
+	MageObject.getGreeting(); //Prints Greeting Message
          
-         ofstream myfile;
+         ofstream myfile; //Creates txt doc of class chosen
   myfile.open ("classChoice.txt");
   myfile << "Mage\n";
   myfile.close();
@@ -240,7 +240,7 @@ int classes()
             cout << "Stats For Priest." << endl;
          cout << endl;
          
-         PriestObject.toString();
+         PriestObject.toString(); //Prints stats
          
          cout << endl;
             cout << "Are You Sure?" << endl;
@@ -270,7 +270,7 @@ int classes()
          }
          	
   	PriestObject.getGreeting();
-  	         ofstream myfile;
+  	         ofstream myfile; //Creates txt doc of class chosen
   myfile.open ("classChoice.txt");
   myfile << "Priest\n";
   myfile.close();
@@ -284,7 +284,7 @@ int classes()
         cout << "Stats For Necromancer." << endl;
          cout << endl;
          
-         NecrObject.toString();
+         NecrObject.toString(); //Prints stats
          
          cout << endl;
         cout << "Are You Sure?" << endl;
@@ -314,7 +314,7 @@ int classes()
          }
     
   	NecrObject.getGreeting();
-  	         ofstream myfile;
+  	         ofstream myfile; //Creates txt doc of class chosen
   myfile.open ("classChoice.txt");
   myfile << "Necromancer\n";
   myfile.close();
@@ -327,7 +327,7 @@ int classes()
         cout << "Stats For Warrior." << endl;
          cout << endl;
          
-         warriorObject.toString();
+         warriorObject.toString(); //Prints stats
          
          cout << endl;
         cout << "Are You Sure?" << endl;
@@ -357,7 +357,7 @@ int classes()
          }
 
     warriorObject.getGreeting();
-             ofstream myfile;
+             ofstream myfile; //Creates txt doc of class chosen
   myfile.open ("classChoice.txt");
   myfile << "Warrior\n";
   myfile.close();
@@ -370,7 +370,7 @@ int classes()
             cout << "Stats For Hunter." << endl;
          cout << endl;
          
-         hunterObject.toString();
+         hunterObject.toString(); //Prints stats
          
          cout << endl;
             cout << "Are You Sure?" << endl;
@@ -400,7 +400,7 @@ int classes()
          }
           
           hunterObject.getGreeting();
-                   ofstream myfile;
+                   ofstream myfile; //Creates txt doc of class chosen
   myfile.open ("classChoice.txt");
   myfile << "Hunter\n";
   myfile.close();
@@ -409,7 +409,7 @@ int classes()
             
   
         }
-      else
+      else //Error Test
       {
           cout << "Invalid input! Must answer with 1, 2, 3, 4 or 5" << endl;
           class1.clear();
