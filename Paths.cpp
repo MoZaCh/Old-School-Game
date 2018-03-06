@@ -2,6 +2,8 @@
 #include <unistd.h>
 #include <vector>
 #include <string>
+#include "MergedClasses.cpp""
+#include <ncurses.h>
 
 using namespace std;
 
@@ -61,8 +63,12 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     cout << "You try to concentrate your thoughts, \nJust trying to gather your thoughts is causing your head to pound." << endl;
     sleep(3);
     
-    cout << "You're able to just about remember small things of your past, your remember that you are a... *CLASS PICKED*" << endl;
-    sleep(3);
+    cout << "You're able to just about remember small things of your past, your remember that you are a... " << endl;
+    
+    sleep(1);
+    
+    classes();
+    
     
     cout << endl;
     
