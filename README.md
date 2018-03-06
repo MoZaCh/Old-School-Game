@@ -15,6 +15,12 @@ g++ stuff -o stuff -lncurses
 
 -------------------
 
+To Install SQL Package
+---
+sudo apt-get install libsqlite3-dev
+
+----
+
 Classes
 --------
 
