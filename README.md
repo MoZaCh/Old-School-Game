@@ -5,7 +5,9 @@ To Install ncurses: (Needed For Main Menu)
 ------
 sudo apt-get install libncurses-dev
 
-And to run ncurse code write -lncurses in compile code.
+And to run ncurse code write -lncurses in compile code, E.g:
+
+g++ stuff -o stuff -lncurses
 
 -------------------
 
