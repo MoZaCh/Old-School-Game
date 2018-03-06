@@ -48,7 +48,7 @@ int main(int argc, char ** argv)
     getmaxyx(menu_win, yMax, xMax);//getting the size of a window
     
     
-    mvwprintw(menu_win, 1, xMax/2, "Title");
+    mvwprintw(menu_win, 1, xMax/3, "D5 RPG Game");
     mvwprintw(menu_win, 2, 1, "----------------------------");
     
     
