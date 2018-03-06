@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 
 
 using namespace std;
@@ -224,7 +225,11 @@ int classes()
          
     
 	MageObject.getGreeting();
-         
+         ofstream myfile;
+  myfile.open ("classChoice.txt");
+  myfile << "Mage\n";
+  myfile.close();
+  return 0;
 	
          
          
@@ -264,7 +269,12 @@ int classes()
          }
          	
   	PriestObject.getGreeting();
-  	
+  	         ofstream myfile;
+  myfile.open ("classChoice.txt");
+  myfile << "Priest\n";
+  myfile.close();
+  return 0;
+	
             
   
         }
@@ -303,7 +313,12 @@ int classes()
          }
     
   	NecrObject.getGreeting();
-  	
+  	         ofstream myfile;
+  myfile.open ("classChoice.txt");
+  myfile << "Necromancer\n";
+  myfile.close();
+  return 0;
+	
         
     }
     else if (class1 == "4")
@@ -341,7 +356,12 @@ int classes()
          }
 
     warriorObject.getGreeting();
-    
+             ofstream myfile;
+  myfile.open ("classChoice.txt");
+  myfile << "Warrior\n";
+  myfile.close();
+  return 0;
+	
          
      }
         else if (class1 == "5")
@@ -379,7 +399,12 @@ int classes()
          }
           
           hunterObject.getGreeting();
-          
+                   ofstream myfile;
+  myfile.open ("classChoice.txt");
+  myfile << "Hunter\n";
+  myfile.close();
+  return 0;
+	
             
   
         }
