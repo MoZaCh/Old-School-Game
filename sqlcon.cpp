@@ -4,7 +4,8 @@ using namespace std;
 
 #include "libsqlite.hpp"
 
-//Insert into Function -- Name and Class
+
+//Insert into Function -- Name
 void insertNameSQL(string name)
 {
   sqlite::sqlite db("testdb.db");
@@ -17,7 +18,23 @@ void insertNameSQL(string name)
   cur->step();
 }
 
-//print results in database
+// SQL delete a username from the databate
+void deleteSQLdata(string name)
+{
+  cout << name << endl;
+  sqlite::sqlite db("testdb.db");
+  auto cur = db.get_statement();
+  
+  cur->set_sql("DELETE "
+               "FROM users "
+               "WHERE username = ?;"); //sql command
+  cur->prepare();
+  cur->bind(1, name);
+  cur->step();
+}
+
+
+//Print results in database
 void printResults()
 {
   sqlite::sqlite db( "testdb.db" ); //Opens the connection
@@ -30,15 +47,40 @@ void printResults()
   
   while(cur->step())
   {
-    cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << endl;//" |Class: " << cur->get_text(2) << endl;
+    cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << endl;
   }
+}
 
+
+//Overwrite function 
+bool overWrite(string name)
+{
+  string writeAns;
+  cout << "Would you like to overwrite? (Y/N)" << endl;
+  cin >> writeAns;
+  
+  if (writeAns == "Y" || writeAns == "y")
+  {
+    cout << "Overwrite Complete" << endl;
+    return false;
+  }
+  
+  else
+  {
+    cout << "Please enter a different username!" << endl;
+    return true;
+  }
+  
 }
 
 
 
+
+//Looping through the database
 bool nameCheck( string name, bool nameUsed)
 {
+  int userId;
+  bool ans1;
   sqlite::sqlite db( "testdb.db" ); //Opens the connection
   auto cur = db.get_statement(); //Creates a cursor on this connection
   
@@ -49,14 +91,11 @@ bool nameCheck( string name, bool nameUsed)
   
   while(cur->step())
   {
-    //cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << " |Class: " << cur->get_text(2) << endl;
+    //cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << endl;
   
-    //int count = cur->get_int(0);
-    //cout << count << endl;
-    
-    
     if (cur->get_text(1) == name)
     {
+      userId =  cur->get_int(0);
       nameUsed = true;
       break;
     }
@@ -70,15 +109,14 @@ bool nameCheck( string name, bool nameUsed)
   
   if (nameUsed == true)
   {
-    cout << "Username has already inuse" << endl;
-    nameUsed = true;
-    return nameUsed;
+    cout << "Username already inuse!" << endl;
+    ans1 = overWrite(name);
+    return ans1;
   }
   else
   {
     cout << "Welcome New User!!!!" << endl;
-    nameUsed = false;
-    return nameUsed;
+    return false;
   }
   return 0;
 }
@@ -111,36 +149,34 @@ char chooseClass()
 }
 
 
-void selectSQL()
+//Select into Function -- Name
+void selectaNameSQL(string name)
 {
   sqlite::sqlite db("testdb.db");
   auto cur = db.get_statement();
   
-  cur->set_sql("SELECT username)"
-               "FROM users"
-               "WHERE class = 'Mage';"); //sql command
+  cur->set_sql("INSERT INTO users (class) "
+               "VALUES (?) "
+               "WHERE username = ?;"); //sql command
   cur->prepare();
-  //cur->bind(1, gen);
+  cur->bind(1, name);
   cur->step();
-  string count = cur->get_text(1);
-  cout << count << endl;
 }
 
 
 
-int sqlcon()
+int main()
 {
-  
   bool nameUsed = true;
   while (nameUsed == true)
   {
     string name;
-    cout << endl;
-    cout << "Enter a username: ";
+    cout <<"Enter Username: " << endl;
     cin >> name;
     bool ans = nameCheck(name, nameUsed);
     if (ans == false)
     {
+      deleteSQLdata(name);
       insertNameSQL(name);
       break;
     }
