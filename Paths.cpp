@@ -65,7 +65,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     
     cout << "You're able to just about remember small things of your past, your remember that you are a... " << endl;
     
-    sleep(1);
+    sleep(2);
     
     classes();
     
@@ -79,7 +79,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
         sleep(2);
     
     cout << "Do you explore the rest of the cave or leave the cave to try and find your way back home." << endl;
-    sleep(2);
+    sleep(3);
     
     string Cave;
     
@@ -113,18 +113,54 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            cout << "You keep going, you keep taking a step further into the darkness.\nAt this point you are completely shrouded in darkness, you aren't able to see a single thing,\nBut you continue to venture onward, you end up hitting a wall.\nYou're able to feel a breeze on the other side and are even able to see a crack of light behind the rocks." << endl;
            sleep(8);
            cout << endl;
-           cout << "You try to chip away at the rocks, finding it with ease like these rocks have been moved a lot.\nyou discover something hidden behind them, it seems to be some type of small room, lit up by just one torch.\nthere is a pedestal, there seems to be a weapon ontop, \nits a *DEPENDS ON CLASS*" << endl;
-           sleep(7);
+            cout << "You try to chip away at the rocks, finding it with ease like these rocks have been moved a lot.\nyou discover something hidden behind them, it seems to be some type of small room, lit up by just one torch.\nthere is a pedestal, there seems to be a weapon ontop, \nits a Ancient Artifact!" << endl;
            cout << endl;
+           sleep(7);
            cout << "You inspect the pedestal, you don't see anything strange about the pedestal other than it has some ancient hieroglyphics \non it which you arent able to read." << endl;
-           sleep(6);
+           cout << endl;
+           sleep(3);
+           cout << "But you can tell from the ingravings on the Artifact its self that it is," << endl;
+           cout << endl;
+           sleep(2);
+           ifstream  stream1("classChoice.txt"); //Locates File
+    string line ;
+
+    while( std::getline( stream1, line ) )
+    {
+        if(line.find("Mage") != string::npos) // Will search for Mage in file
+        { 
+            cout << "Felo'melorn +  Heart of the Phoenix!" << endl; //Print Line that is read in file.
+        }
+        else if (line.find("Priest") != string::npos)// Will search for Priest in file
+        {
+            cout << "T'uure, Beacon of the Naaru!" << endl;
+        }
+        else if (line.find("Necromancer") != string::npos)// Will search for Necromancer in file
+        {
+            cout << "The Scepter of Sargeras!" << endl;
+        }
+        else if (line.find("Warrior") != string::npos)// Will search for Warrior in file
+        {
+            cout << "Strom'kar, the Warbreaker!" << endl;
+        }
+        else if (line.find("Hunter") != string::npos)// Will search for Hunter in file
+        {
+            cout << "Thas'dorah, Legacy of the Windrunners!" << endl;
+        }
+        sleep(2);
+    }
+        cout << endl;
+        cout << "The ancient relic thought to be destroyed in the rune wars!" << endl;
+        cout << endl;
+        
+           sleep(3);
            cout << endl;
            cout << "Do you wish to take the weapon?" << endl;
-           
+           sleep(1);
            
            TakeWeapon://Loop Thingy
            
-           cout << endl;
+           cout << endl;;
            
            string takeWeapon;
            cout << "Take the weapon and dive into possible dangers.\nLeave it alone and find the exit." << endl;
@@ -135,7 +171,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
             cout << "You take the weapon carefully still being cautious about your surroundings expecting a trap of some sort.\nYou now have the weapon in your hands and take a step back from the pedestal,\nnothing seems to happen" << endl;
             sleep(6);
             cout << endl;
-            cout << "It was too soon for you to relax for the entrance to the room shuts closed. you seem to now be trapped in the room." << endl;
+            cout << "It was too soon for you to relax! The entrance to the room shuts closed in an instant! \nYou seem to now be trapped in the room." << endl;
             sleep(3);
                cout << "You start to panic." << endl;
             sleep(2);
