@@ -93,6 +93,7 @@ int main(int argc, char ** argv)
             system("clear");
             choice[highlight] = '\0'; 
             path();
+    }
     else if(choice[highlight] == "         Resume Game        ")
     {
         goto title;
