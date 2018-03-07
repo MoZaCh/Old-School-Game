@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <unistd.h>
 using namespace std;
 
 #include "libsqlite.hpp"
@@ -21,7 +22,6 @@ void insertNameSQL(string name)
 // SQL delete a username from the databate
 void deleteSQLdata(string name)
 {
-  cout << name << endl;
   sqlite::sqlite db("testdb.db");
   auto cur = db.get_statement();
   
@@ -62,6 +62,8 @@ bool overWrite(string name)
   if (writeAns == "Y" || writeAns == "y")
   {
     cout << "Overwrite Complete" << endl;
+    sleep(1);
+    cout << "Welcome " << name <<  "!!!!" << endl;
     return false;
   }
   
@@ -116,6 +118,8 @@ bool nameCheck( string name, bool nameUsed)
   else
   {
     cout << "Welcome New User!!!!" << endl;
+    sleep(1);
+    cout << "Hi " << name << "!" << endl;
     return false;
   }
   return 0;
@@ -182,7 +186,7 @@ int main()
     }
           
   }
-  
+	printResults();
     sleep(2);
     system("clear");
   
