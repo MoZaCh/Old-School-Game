@@ -33,7 +33,9 @@ int main(int argc, char ** argv)
     option:
     WINDOW * menu_win = newwin(height, width, start_y, start_x);//creating a new window
     refresh();//refreshes the window in a console so that changes would be seen
+    noecho();
 
+    
     
     
     box(menu_win, 0, 0);//creates a border around the window that was created
@@ -96,6 +98,7 @@ int main(int argc, char ** argv)
     }
     else if(choice[highlight] == "         Resume Game        ")
     {
+        endwin();
         goto title;
     }
     else if(choice[highlight] == "           Credits          ")
