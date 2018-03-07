@@ -218,7 +218,18 @@ cout << "You seem to not be able to remember much but you do gather your name." 
    }
     else if (Cave == "leave" || Cave == "Leave")
     {
-        cout << endl;   //New Line and continues code
+         
+    }
+    else 
+    {
+        cout << endl;
+        cout << "*Invalid Input! Must answer with Stay or Leave*" << endl; //Error
+        cout << endl;
+        Cave.clear(); //Clearing Variable
+        goto cave; //Loop
+    }
+    
+    cout << endl;   //New Line and continues code
         cout << "You stumble out of the cave to see if you can find some clue on where exactly you would be, each step is a struggle. \nIt feels like gravity is sucking you in." << endl;
         cout << "You take a look around at the enterance of the cave and are unable to recognise anything of your surroundings but you do seem to find a bag of some sorts." << endl;
         cout << "You check the contents of the bag." << endl;
@@ -255,20 +266,9 @@ cout << "You seem to not be able to remember much but you do gather your name." 
         }
         
     }
-    }
-    else 
-    {
-        cout << endl;
-        cout << "*Invalid Input! Must answer with Stay or Leave*" << endl; //Error
-        cout << endl;
-        Cave.clear(); //Clearing Variable
-        goto cave; //Loop
-    }
     
     
     
-    
-    cout << endl;
     cout << "Test" << endl; // TEST!
     
         return 0;
