@@ -119,7 +119,8 @@ bool nameCheck( string name, bool nameUsed)
   {
     cout << "Welcome New User!!!!" << endl;
     sleep(1);
-    cout << "Hi " << name << "!" << endl;
+    cout << "Hi " << name << endl;
+    sleep(1);
     return false;
   }
   return 0;
@@ -186,8 +187,13 @@ int main()
     }
           
   }
-	printResults();
-    sleep(2);
+  //printResults();
+  cout << "Loading game..." << endl;
+  for (int i = 0; i <= 100; i+=10)
+  {
+    cout << i << "%" << endl;
+    sleep(1);
+  }
     system("clear");
-  
+	return 0;
 }
