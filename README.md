@@ -33,6 +33,10 @@ sudo apt-get update
 
 sudo apt-get install g++-4.9
 
+also make your g++ 4.9 as a default compiler with this command:
+
+sudo ln -f -s /usr/bin/g++-4.9 /usr/bin/g++ 
+
 ----
 
 Classes
