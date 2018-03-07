@@ -1,23 +1,40 @@
 #include <iostream>
 #include <limits>
-#include "Paths.cpp"
 using namespace std;
 
 #include "libsqlite.hpp"
 
 //Insert into Function -- Name and Class
-void insertSQL(string username, string gameClass)
+void insertNameSQL(string name)
 {
   sqlite::sqlite db("testdb.db");
   auto cur = db.get_statement();
   
-  cur->set_sql("INSERT INTO users (username, class)"
-               "VALUES (?, ?);"); //sql command
+  cur->set_sql("INSERT INTO users (username) "
+               "VALUES (?);"); //sql command
   cur->prepare();
-  cur->bind(1, username);
-  cur->bind(2, gameClass);
+  cur->bind(1, name);
   cur->step();
 }
+
+//print results in database
+void printResults()
+{
+  sqlite::sqlite db( "testdb.db" ); //Opens the connection
+  auto cur = db.get_statement(); //Creates a cursor on this connection
+  
+  cur->set_sql("select *"
+               "from users"); //sql command
+  cur->prepare(); //sends to database
+
+  
+  while(cur->step())
+  {
+    cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << endl;//" |Class: " << cur->get_text(2) << endl;
+  }
+
+}
+
 
 
 bool nameCheck( string name, bool nameUsed)
@@ -111,25 +128,24 @@ void selectSQL()
 
 
 
-int sqlcon()
+int main()
 {
   
   bool nameUsed = true;
   while (nameUsed == true)
   {
-    string name, gclass;
+    string name;
     cout << "Enter a username: ";
     cin >> name;
     bool ans = nameCheck(name, nameUsed);
     if (ans == false)
     {
-      //cout << "Choose a class type! \nMage (1) \nOption (2)"<< endl;
-      //cin >> gclass;
-      //gclass = chooseClass();
-      //cout << gclass << endl;
+      insertNameSQL(name);
       break;
     }
           
   }
-  path();
+  
+  printResults();
+  //path();
 }
