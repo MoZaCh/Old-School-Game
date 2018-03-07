@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <vector>
 #include <string>
-#include "MergeAttempt.cpp""
+#include "MergedClasses.cpp"
 #include <ncurses.h>
 
 using namespace std;
@@ -65,6 +65,8 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     
     cout << "You're able to just about remember small things of your past, your remember that you are a... " << endl;
     classes();
+            
+    
     
     cout << endl;
     // sleep
@@ -100,10 +102,42 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            cout << endl;
            cout << "You keep going, you keep taking a step further into the darkness.\nAt this point you are completely shrouded in darkness, you aren't able to see a single thing,\nBut you continue to venture onward, you end up hitting a wall.\nYou're able to feel a breeze on the other side and are even able to see a crack of light behind the rocks." << endl;
            cout << endl;
-           cout << "You try to chip away at the rocks, finding it with ease like these rocks have been moved a lot.\nyou discover something hidden behind them, it seems to be some type of small room, lit up by just one torch.\nthere is a pedestal, there seems to be a weapon ontop, \nits a *DEPENDS ON CLASS*" << endl;
+           cout << "You try to chip away at the rocks, finding it with ease like these rocks have been moved a lot.\nyou discover something hidden behind them, it seems to be some type of small room, lit up by just one torch.\nthere is a pedestal, there seems to be a weapon ontop, \nits a Ancient Artifact" << endl;
            cout << endl;
            cout << "You inspect the pedestal, you don't see anything strange about the pedestal other than it has some ancient hieroglyphics \non it which you arent able to read." << endl;
            cout << endl;
+           cout << "But you can tell from the ingravings on the Artifact its self that it is," << endl;
+           cout << endl;
+           ifstream  stream1("classChoice.txt"); //Locates File
+    string line ;
+
+    while( std::getline( stream1, line ) )
+    {
+        if(line.find("Mage") != string::npos) // Will search for Mage in file
+        { 
+            cout << "Felo'melorn +  Heart of the Phoenix!" << endl; //Print Line that is read in file.
+        }
+        else if (line.find("Priest") != string::npos)// Will search for Priest in file
+        {
+            cout << "T'uure, Beacon of the Naaru!" << endl;
+        }
+        else if (line.find("Necromancer") != string::npos)// Will search for Necromancer in file
+        {
+            cout << "The Scepter of Sargeras!" << endl;
+        }
+        else if (line.find("Warrior") != string::npos)// Will search for Warrior in file
+        {
+            cout << "Strom'kar, the Warbreaker!" << endl;
+        }
+        else if (line.find("Hunter") != string::npos)// Will search for Hunter in file
+        {
+            cout << "Thas'dorah, Legacy of the Windrunners!" << endl;
+        }
+    }
+        cout << endl;
+        cout << "The ancient relic thought to be destroyed in the rune wars!" << endl;
+        cout << endl;
+        
            cout << "Do you wish to take the weapon?" << endl;
            
            TakeWeapon://Loop Thingy
@@ -118,7 +152,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            {
             cout << "You take the weapon carefully still being cautious about your surroundings expecting a trap of some sort.\nYou now have the weapon in your hands and take a step back from the pedestal,\nnothing seems to happen" << endl;
             cout << endl;
-            cout << "It was too soon for you to relax for the entrance to the room shuts closed. you seem to now be trapped in the room. \nYou start to panic. You start to use the weapon that you have just picked up without knowing what it would do and \nstart swinging at the walls with it, its creates a huge dent in the wall with ease but not enough to get out.\nThe impact was strong enough to blow the torch out." << endl;
+            cout << "It was too soon for you to relax! The entrance to the room shuts closed in an instant! \nYou seem to now be trapped in the room \nYou start to panic. You start to use the weapon that you have just picked up without knowing what it would do and \nstart swinging at the walls with it, its creates a huge dent in the wall with ease but not enough to get out.\nThe impact was strong enough to blow the torch out." << endl;
             cout << endl;
             cout << "The torch goes out, Its now complete darkness in this small room." << endl;
                cout << endl;
@@ -184,9 +218,44 @@ cout << "You seem to not be able to remember much but you do gather your name." 
    }
     else if (Cave == "leave" || Cave == "Leave")
     {
-         cout << endl;   //New Line and continues code
+        cout << endl;   //New Line and continues code
+        cout << "You stumble out of the cave to see if you can find some clue on where exactly you would be, each step is a struggle. \nIt feels like gravity is sucking you in." << endl;
+        cout << "You take a look around at the enterance of the cave and are unable to recognise anything of your surroundings but you do seem to find a bag of some sorts." << endl;
+        cout << "You check the contents of the bag." << endl;
+        cout << endl;
+        cout << "You find a Map" << endl;
+        cout << endl;
+        cout << "Some Potions" << endl;
+        cout << endl;
+        
+        ifstream  stream1("classChoice.txt"); //Locates File
+    string line ;
+
+    while( std::getline( stream1, line ) )
+    {
+        if(line.find("Mage") != string::npos) // Will search for Mage in file
+        { 
+            cout << "And a Wand" << endl; //Print Line that is read in file.
+        }
+        else if (line.find("Priest") != string::npos)// Will search for Priest in file
+        {
+            cout << "And a Teared Talisman" << endl;
+        }
+        else if (line.find("Necromancer") != string::npos)// Will search for Necromancer in file
+        {
+            cout << "And a Feeble Staff" << endl;
+        }
+        else if (line.find("Warrior") != string::npos)// Will search for Warrior in file
+        {
+            cout << "And a Blunt Axe" << endl;
+        }
+        else if (line.find("Hunter") != string::npos)// Will search for Hunter in file
+        {
+            cout << "And a Crusty CrossBow" << endl;
+        }
+        
     }
-    
+    }
     else 
     {
         cout << endl;
@@ -199,7 +268,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     
     
     
-    
+    cout << endl;
     cout << "Test" << endl; // TEST!
     
         return 0;
