@@ -8,6 +8,7 @@ int credits()
 {
     clear();
     system("clear");
+    noecho();
     
     string choice[] = {"{Yes}","{No}"};
     int pick;
@@ -78,11 +79,13 @@ int credits()
     
     if(choice[highlight] == "{Yes}")
     {
+        endwin();
         clear();
-        system("g++ --std=c++11 MainMenuV2.cpp -o mmenu -lncurses && ./mmenu");
+        system("g++ --std=c++11 NCMenu.cpp -o mmenu -lncurses && ./mmenu");
     }
     else
     {
+        endwin();
         system("clear");
         clear();
         exit(0);
