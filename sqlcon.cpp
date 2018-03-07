@@ -128,13 +128,14 @@ void selectSQL()
 
 
 
-int main()
+int sqlcon()
 {
   
   bool nameUsed = true;
   while (nameUsed == true)
   {
     string name;
+    cout << endl;
     cout << "Enter a username: ";
     cin >> name;
     bool ans = nameCheck(name, nameUsed);
@@ -146,6 +147,7 @@ int main()
           
   }
   
-  printResults();
-  //path();
+    sleep(2);
+    system("clear");
+  
 }
