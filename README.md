@@ -13,9 +13,6 @@ And to run ncurse code write -lncurses in compile code, E.g:
 
 g++ stuff -o stuff -lncurses
 
-also make your g++ 4.9 as a default compiler with this command
-sudo ln -f -s /usr/bin/g++-4.9 /usr/bin/g++ 
-
 
 -------------------
 
