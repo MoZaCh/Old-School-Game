@@ -56,22 +56,42 @@ void printResults()
 bool overWrite(string name)
 {
   string writeAns;
+    
+    choice:
+    
   cout << "Would you like to overwrite? (Y/N)" << endl;
+    cout << endl;
+    
+    
   cin >> writeAns;
   
   if (writeAns == "Y" || writeAns == "y")
   {
+      cout << endl;
     cout << "Overwrite Complete" << endl;
-    sleep(1);
+      cout << endl;
+    sleep(2);
     cout << "Welcome " << name <<  "!!!!" << endl;
+      cout << endl;
+      sleep(2);
     return false;
   }
   
-  else
+  else if (writeAns == "N" || writeAns == "n")
   {
+      cout << endl;
     cout << "Please enter a different username!" << endl;
+      cout << endl;
     return true;
   }
+    else
+    {
+        cout << endl;
+    cout << "Invalid Input! Must be a Y or an N!" << endl;   
+        writeAns.clear();
+        cout << endl;
+        goto choice;
+    }
   
 }
 
@@ -111,16 +131,20 @@ bool nameCheck( string name, bool nameUsed)
   
   if (nameUsed == true)
   {
+      cout << endl;
     cout << "Username already inuse!" << endl;
+      cout << endl;
     ans1 = overWrite(name);
     return ans1;
   }
   else
   {
+      cout << endl;
     cout << "Welcome New User!!!!" << endl;
-    sleep(1);
+      cout << endl;
+    sleep(2);
     cout << "Hi " << name << endl;
-    sleep(1);
+    sleep(2);
     return false;
   }
   return 0;
@@ -177,6 +201,7 @@ int main()
   {
     string name;
     cout <<"Enter Username: " << endl;
+      cout << endl;
     cin >> name;
     bool ans = nameCheck(name, nameUsed);
     if (ans == false)
@@ -187,6 +212,7 @@ int main()
     }
           
   }
+    cout << endl;
   //printResults();
   cout << "Loading game..." << endl;
   for (int i = 0; i <= 100; i+=10)
