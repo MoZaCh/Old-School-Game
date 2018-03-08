@@ -18,6 +18,10 @@ public:
    
 
 	Enemy(int, int, int, string);
+  
+  void abilities(){
+    cout<<"1) Execute  3) Charge  4) Reflect "<<endl;
+  }
 
 	void toEnemyString() {
 		cout << "Health: " << this->getEnemyHealth() 
@@ -37,6 +41,12 @@ Enemy::Enemy(int health, int attack, int defence,
 	this->defence = defence;
 	this->weapon = weapon;
 }
+
+
+
+
+
+
 
 
 
