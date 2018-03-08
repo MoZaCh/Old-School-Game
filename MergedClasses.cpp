@@ -74,6 +74,11 @@ class Mage : public SpellClasses{
 		string greeting = "Class Mage Picked!\n";
 	public:
 		void getGreeting() { cout << greeting << endl; }
+		
+		 void spells() {
+      cout<< "Which spell to use?(\n /1 Frostbolt (250 mana) \n /2 Blink (180 mana) \n /3      DeepFreeze (300 mana)"<<endl;
+			 
+	}
  
 		// Declare the constructor
 		Mage(int, int, int, int, string);
