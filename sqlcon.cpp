@@ -7,42 +7,62 @@ using namespace std;
 
 
 //Insert into Function -- Name
-void insertNameSQL(string name)
+bool insertNameSQL(string name)
 {
-  sqlite::sqlite db("testdb.db");
-  auto cur = db.get_statement();
+  try
+  {
+    sqlite::sqlite db("testdb.db"); //Connecting to Database
+    auto cur = db.get_statement(); //Creates a cursor on this connection
   
-  cur->set_sql("INSERT INTO users (username) "
-               "VALUES (?);"); //sql command
-  cur->prepare();
-  cur->bind(1, name);
-  cur->step();
+    cur->set_sql("INSERT INTO users (username) "
+                 "VALUES (?);"); //sql command
+    cur->prepare(); //Sends to database
+    cur->bind(1, name);
+    cur->step();
+  }
+  
+  catch (sqlite::exception e)
+  {
+    cerr << e.what() << endl;
+    return 1;
+  }
+  return 0;
 }
 
 // SQL delete a username from the databate
-void deleteSQLdata(string name)
+bool deleteSQLdata(string name)
 {
-  sqlite::sqlite db("testdb.db");
-  auto cur = db.get_statement();
+  try
+  {
+    sqlite::sqlite db("testdb.db"); //Connecting to Database
+    auto cur = db.get_statement(); //Creates a cursor on this connection
   
-  cur->set_sql("DELETE "
-               "FROM users "
-               "WHERE username = ?;"); //sql command
-  cur->prepare();
-  cur->bind(1, name);
-  cur->step();
+    cur->set_sql("DELETE "
+                 "FROM users "
+                 "WHERE username = ?;"); //sql command
+    cur->prepare(); //Sends to database
+    cur->bind(1, name);
+    cur->step();
+    
+  }
+  
+  catch (sqlite::exception e)
+  {
+    cerr << e.what() << endl;
+    return 1;
+  }
+  return 0;
 }
 
-
-//Print results in database
+//Print all results from database
 void printResults()
 {
   sqlite::sqlite db( "testdb.db" ); //Opens the connection
   auto cur = db.get_statement(); //Creates a cursor on this connection
   
   cur->set_sql("select *"
-               "from users"); //sql command
-  cur->prepare(); //sends to database
+               "from users"); //SQL command
+  cur->prepare(); //Sends to database
 
   
   while(cur->step())
@@ -96,8 +116,6 @@ bool overWrite(string name)
 }
 
 
-
-
 //Looping through the database
 bool nameCheck( string name, bool nameUsed)
 {
@@ -107,8 +125,8 @@ bool nameCheck( string name, bool nameUsed)
   auto cur = db.get_statement(); //Creates a cursor on this connection
   
   cur->set_sql("select *"
-               "from users"); //sql command
-  cur->prepare(); //sends to database
+               "from users"); //SQL command
+  cur->prepare(); //Sends to database
 
   
   while(cur->step())
@@ -143,14 +161,14 @@ bool nameCheck( string name, bool nameUsed)
     cout << "Welcome New User!!!!" << endl;
       cout << endl;
     sleep(2);
-    cout << "Hi " << name << endl;
+    cout << "Hi " << name << "," << endl;
     sleep(2);
     return false;
   }
   return 0;
 }
 
-
+//Inserts the chosen class information into DB
 char chooseClass()
 {
   char choice;
@@ -178,17 +196,17 @@ char chooseClass()
 }
 
 
-//Select into Function -- Name
-void selectaNameSQL(string name)
+//Updata tuple in DB Function
+void selectaNameSQL(string name, int id)
 {
-  sqlite::sqlite db("testdb.db");
-  auto cur = db.get_statement();
+  sqlite::sqlite db("testdb.db"); //Opens the connection
+  auto cur = db.get_statement(); //Creates a cursor on this connection
   
-  cur->set_sql("INSERT INTO users (class) "
-               "VALUES (?) "
-               "WHERE username = ?;"); //sql command
-  cur->prepare();
+  cur->set_sql("UPDATE users SET username = (?)"
+               "WHERE id = ?;"); //SQL command
+  cur->prepare(); //Sends to database
   cur->bind(1, name);
+  cur->bind(2, id);
   cur->step();
 }
 
