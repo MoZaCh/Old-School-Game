@@ -1,11 +1,25 @@
 /*
-This is an example on how you can search for the users class
+This is an example on how you can Create and search for the users class
 using the text file that the class code creates when the 
 user selects their class whilst the game is being played.
 */
 
 
 
+/*
+Creates the file
+*/
+
+ofstream myfile; //Creates txt doc of class chosen
+  myfile.open ("classChoice.txt"); //Creates a file called ClassChoice.txt
+  myfile << "Priest\n";
+  myfile.close();
+
+
+
+/*
+Searches the File
+*/
 
 ifstream  stream1("classChoice.txt"); //Locates File
     string line ;
