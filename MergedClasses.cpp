@@ -35,7 +35,7 @@ public:
  
  
 	// This method will be called by every class that inherits from SpellClasses
-	void toString(); 
+	void toString();
  
 };
 
