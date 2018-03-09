@@ -231,6 +231,20 @@ ability
 
 *Status Effects?*
 
+
+*Changes Needed to be Made
+__________________________
+
+Stop mana from being able to drop below 0 and stopping spells being used when not enough mana.
+
+Include a ability which takes no mana and does physical damage instead of magic, like bash or swign for mage.
+
+Other abilities and spells for other classes (Will Be changed depending on how the story would be and items they have)
+
+Have it access the inventory so able to use items such as potions and see what weapon the user has (Waiting for harsh)
+
+Maybe have some way that after each round in combat, user regenerates mana and health (Not Important can be done after)
+
 -----------------------------------------------------------------------------------------------
 
 Inventory
