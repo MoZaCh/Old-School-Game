@@ -2,14 +2,16 @@
 #include <unistd.h>
 #include <vector>
 #include <string>
-#include "MergedClasses.cpp""
+#include "MergedClasses.cpp"
 #include <ncurses.h>
+#include "Sqlcon.cpp"
 
 using namespace std;
 
 
 int path()
 {
+    sqlcon();
     
 cout << "You awake in a Cave, covered in gravel and dirt." << endl;
     
@@ -26,7 +28,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     
     userName: //Loop thingy
     
-     cout << "Please enter your name: " << endl; //Asks user for what their name would be
+     cout << "Please enter your Character Name: (NO SPACES)" << endl; //Asks user for what their name would be
         cin >> name; //Input
     
     confirmCheck: //Loop Thingy
@@ -278,7 +280,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
    }
     else if (Cave == "leave" || Cave == "Leave")
     {
-         cout << endl;   //New Line and continues code
+        
     }
     
     else 
@@ -292,12 +294,371 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     }
     
     
+    cout << endl;   //New Line and continues code
+        cout << "You stumble out of the cave to see if you can find some clue on where exactly you would be, each step is a struggle. \nIt feels like gravity is sucking you in." << endl;
+        
+            sleep(2);
+        cout << "You take a look around at the enterance of the cave and are unable to recognise anything of your surroundings but you do seem to find a bag of some sorts." << endl;
+            sleep(3);
+        cout << "You check the contents of the bag." << endl;
+    sleep(2);
+        cout << endl;
+        cout << "You find a Map" << endl;
+    sleep(1);
+        cout << endl;
+        cout << "Some Potions" << endl;
+    sleep(1);
+        cout << endl;
+        sleep(1);
+        ifstream  stream1("classChoice.txt"); //Locates File
+    string line ;
+
+    while( std::getline( stream1, line ) )
+    {
+        if(line.find("Mage") != string::npos) // Will search for Mage in file
+        { 
+            cout << "And a Wand" << endl; //Print Line that is read in file.
+            cout << endl;
+            Bag:
+            sleep(1);
+            cout << "Do you wish to take the bag? (Y/N)" << endl;
+            string bag;
+            cin >> bag;
+            cout << endl;
+            if (bag == "Y" || bag == "y")
+            {
+                    ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Map\n";
+              myfile << "Potions x2\n";
+              myfile << "Wand\n";
+              myfile.close();
+                cout << "Items Taken!" << endl;
+                sleep(1);
+                cout << endl;
+            }
+            else if (bag == "N" || bag == "n")
+            {
+                cout << "You leave the items behind, and are about to leave the area completely unarmed without knowing what could happen." << endl;
+                cout << endl;
+                sleep(3);
+                Bag1:
+                cout << "On second thought you think you might need at least a weapon\nDo you Take the Weapon Only? (Y/N)" << endl;
+                string bag1;
+                sleep(2);
+                cout << endl;
+                cin >> bag1;
+                cout << endl;
+                if (bag1 == "Y" || bag1 == "y")
+                {
+                    ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Wand\n";
+              myfile.close();
+                    cout << "You take the Wand only from the bag." << endl;
+                    sleep(1);
+                }
+                else if (bag1 == "N" | bag1 == "n")
+                {
+                    cout << "You consider that the items in this bag might belong to someone else and leave everything behind." << endl;
+                    sleep(2);
+                }
+                else
+                {
+                    cout << endl;
+                    cout << "Invalid Input! Must be a Y or an N!" << endl;
+                    sleep(1);
+                    cout << endl;
+                    bag1.clear();
+                        goto Bag1;
+                }
+            }
+            else 
+            {
+                cout << "Invalid Input! Must be an Y or an N!" << endl;
+                sleep(1);
+                bag.clear();
+                goto Bag;
+            }
+        }
+        else if (line.find("Priest") != string::npos)// Will search for Priest in file
+        {
+            cout << "And a Teared Talisman" << endl;
+            sleep(1);
+              cout << endl;
+            Bag2:
+            cout << "Do you wish to take the bag? (Y/N)" << endl;
+            string bag;
+            sleep(1);
+            cin >> bag;
+            cout << endl;
+            if (bag == "Y" || bag == "y")
+            {
+                    ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Map\n";
+              myfile << "Potions x2\n";
+              myfile << "Teared Talisman\n";
+              myfile.close();
+                cout << "Items Taken!" << endl;
+                sleep(1);
+            }         
+            else if (bag == "N" || bag == "n")
+            {
+                cout << "You leave the items behind, and are about to leave the area completely unarmed without knowing what could happen." << endl;
+                sleep(3);
+                cout << endl;
+                Bag3:
+                cout << "On second thought you think you might need at least a weapon\nDo you Take the Weapon Only? (Y/N)" << endl;
+                sleep(2);
+                string bag1;
+                cout << endl;
+                cin >> bag1;
+                cout << endl;
+                if (bag1 == "Y" || bag1 == "y")
+                {
+                     ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Teared Talisman\n";
+              myfile.close();
+                    cout << "You take the Teared Talisman only from the bag." << endl;
+                    sleep(2);
+                }
+                else if (bag1 == "N" | bag1 == "n")
+                {
+                    cout << "You consider that the items in this bag might belong to someone else and leave everything behind." << endl;
+                    sleep(3);
+                }
+                else
+                {
+                    cout << endl;
+                    cout << "Invalid Input! Must be a Y or an N!" << endl;
+                    sleep(1);
+                    cout << endl;
+                    bag1.clear();
+                        goto Bag3;
+                }
+            }
+            else 
+            {
+                cout << "Invalid Input! Must be an Y or an N!" << endl;
+                sleep(1);
+                bag.clear();
+                goto Bag2;
+            }
+        }
+        else if (line.find("Necromancer") != string::npos)// Will search for Necromancer in file
+        {
+            cout << "And a Feeble Staff" << endl;  
+            Bag4:
+            sleep(1);
+            cout << endl;
+            cout << "Do you wish to take the bag? (Y/N)" << endl;
+            sleep(1);
+            
+            string bag;
+            cin >> bag;
+            cout << endl;
+            if (bag == "Y" || bag == "y")
+            {
+                cout << endl;
+                    ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Map\n";
+              myfile << "Potions x2\n";
+              myfile << "Feeble Staff\n";
+              myfile.close();
+                cout << "Items Taken!" << endl;
+                sleep(1);
+            }
+             else if (bag == "N" || bag == "n")
+            {
+                cout << "You leave the items behind, and are about to leave the area completely unarmed without knowing what could happen." << endl;
+                 sleep(3);
+                cout << endl;
+                Bag5:
+                cout << "On second thought you think you might need at least a weapon\nDo you Take the Weapon Only? (Y/N)" << endl;
+                 sleep(2);
+                string bag1;
+                cout << endl;
+                cin >> bag1;
+                cout << endl;
+                if (bag1 == "Y" || bag1 == "y")
+                {
+                     ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Feeble Staff\n";
+              myfile.close();
+                    cout << "You take the Feeble Staff only from the bag." << endl;
+                    sleep(2);
+                }
+                else if (bag1 == "N" | bag1 == "n")
+                {
+                    cout << "You consider that the items in this bag might belong to someone else and leave everything behind." << endl;
+                    sleep(2);
+                }
+                else
+                {
+                    cout << endl;
+                    cout << "Invalid Input! Must be a Y or an N!" << endl;
+                    sleep(1);
+                    cout << endl;
+                    bag1.clear();
+                        goto Bag5;
+                }
+            }
+            else 
+            {
+                cout << "Invalid Input! Must be an Y or an N!" << endl;
+                sleep(1);
+                bag.clear();
+                goto Bag4;
+            }
+        }
+        else if (line.find("Warrior") != string::npos)// Will search for Warrior in file
+        {
+            cout << "And a Blunt Axe" << endl;
+            sleep(1);
+            Bag6:
+              cout << endl;
+            cout << "Do you wish to take the bag? (Y/N)" << endl;
+            sleep(1);
+            string bag;
+            cout << endl;
+            cin >> bag;
+            cout << endl;
+            if (bag == "Y" || bag == "y")
+            {
+                    ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Map\n";
+              myfile << "Potions x2\n";
+              myfile << "Blunt Axe\n";
+              myfile.close();
+                cout << endl;
+                cout << "Items Taken!" << endl;
+                sleep(1);
+            }
+             else if (bag == "N" || bag == "n")
+            {
+                cout << "You leave the items behind, and are about to leave the area completely unarmed without knowing what could happen." << endl;
+                cout << endl;
+                 sleep(3);
+                Bag7:
+                cout << "On second thought you think you might need at least a weapon\nDo you Take the Weapon Only? (Y/N)" << endl;
+                string bag1;
+                 sleep(2);
+                cout << endl;
+                cin >> bag1;
+                cout << endl;
+                if (bag1 == "Y" || bag1 == "y")
+                {
+                     ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Blunt Axe\n";
+              myfile.close();
+                    cout << "You take the Blunt Axe only from the bag." << endl;
+                    sleep(2);
+                }
+                else if (bag1 == "N" | bag1 == "n")
+                {
+                    cout << "You consider that the items in this bag might belong to someone else and leave everything behind." << endl;
+                    sleep(2);
+                }
+                else
+                {
+                    cout << endl;
+                    cout << "Invalid Input! Must be a Y or an N!" << endl;
+                    sleep(1);
+                    cout << endl;
+                    bag1.clear();
+                        goto Bag7;
+                }
+            }
+            else 
+            {
+                cout << "Invalid Input! Must be an Y or an N!" << endl;
+                sleep(1);
+                cout << endl;
+                bag.clear();
+                goto Bag6;
+            }
+        }
+        else if (line.find("Hunter") != string::npos)// Will search for Hunter in file
+        {
+            cout << "And a Crusty CrossBow" << endl;
+              cout << endl;
+            Bag8:
+            sleep(1);
+            cout << "Do you wish to take the bag? (Y/N)" << endl;
+            sleep(1);
+            string bag;
+            cout << endl;
+            cin >> bag;
+            cout << endl;
+            if (bag == "Y" || bag == "y")
+            {
+                    ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Map\n";
+              myfile << "Potions x2\n";
+              myfile << "Crust Crossbow\n";
+              myfile.close();
+                cout << endl;
+                cout << "Items Taken!" << endl;
+                sleep(1);
+            }
+            else if (bag == "N" || bag == "n")
+            {
+                cout << "You leave the items behind, and are about to leave the area completely unarmed without knowing what could happen." << endl;
+                sleep(3);
+                cout << endl;
+                Bag9:
+                cout << "On second thought you think you might need at least a weapon\nDo you Take the Weapon Only? (Y/N)" << endl;
+                sleep(2);
+                string bag1;
+                cout << endl;
+                cin >> bag1;
+                cout << endl;
+                if (bag1 == "Y" || bag1 == "y")
+                {
+                     ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Crusty Crossbow\n";
+              myfile.close();
+                    cout << "You take the Crusty Crossbow only from the bag." << endl;
+                    sleep(2);
+                }
+                else if (bag1 == "N" | bag1 == "n")
+                {
+                    cout << "You consider that the items in this bag might belong to someone else and leave everything behind." << endl;
+                        sleep(3);
+                }
+                else
+                {
+                    cout << endl;
+                    cout << "Invalid Input! Must be a Y or an N!" << endl;
+                    sleep(1);
+                    cout << endl;
+                    bag1.clear();
+                        goto Bag9;
+                }
+            }
+            else 
+            {
+                cout << "Invalid Input! Must be an Y or an N!" << endl;
+                sleep(1);
+                bag.clear();
+                goto Bag8;
+            }
+        }
+        
+    }
     
     
     cout << endl;
-    cout << "Test" << endl; // TEST!
+    cout << "TEST" << endl; // TEST!
+    cout << endl;
     
         return 0;
 }
-    
-    
