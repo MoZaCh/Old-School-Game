@@ -15,7 +15,8 @@ int randomNumber(){
     return dis(gen);
 }
 int mageDefeated(){
-          cout<<"You have been defeated by the enemy!"<<endl;
+          game:
+          cout<<"You have been defeated by the enemy!\n"<<endl;
           cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
           string choice2;
           cin>>choice2;
@@ -23,21 +24,57 @@ int mageDefeated(){
             system("clear");
             cout<<"here will be function to jump somewhere in the game"<<endl;
             }
+         else if (choice2 == "n" || choice2 == "N")
+         {
+             cout << "\nThis will close the game." << endl; 
+             cout << "Are you sure that you would want to do this? (Y/N)" << endl;
+             string choice3;
+             cin >> choice3;
+             if (choice3 == "Y" || choice3 == "y")
+             {
+                 system("clear");
+                 cout << "You have exited the game!" << endl;
+                 return 0;
+             }
+             else if (choice3 == "N" || choice3 == "n")
+                 system("clear");
+                 goto game;
+         }
            else{
-            return 0;
+            system("clear");
+               goto game;
           } 
 }
 int enemyDefeated(){
-          cout<<"You have successfully killed your enemy!"<<endl;
+          Game:
+          cout<<"You have successfully killed your enemy!\n"<<endl;
           cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
           string choice2;
           cin>>choice2;
-          if (choice2 == "y" || choice2 == "Y"){
+          if (choice2 == "y" || choice2 == "Y")
+          {
             system("clear");
             cout<<"here will be function to jump somewhere in the game"<<endl;
-            }
+          }
+          else if (choice2 == "n" || choice2 == "N")
+          {
+             cout << "\nThis will close the game." << endl; 
+             cout << "Are you sure that you would want to do this? (Y/N)" << endl;
+             string choice3;
+             cin >> choice3;
+             if (choice3 == "Y" || choice3 == "y")
+             {
+                 system("clear");
+                 cout << "You have exited the game!" << endl;
+                 return 0;
+             }
+             else if (choice3 == "N" || choice3 == "n")
+                 system("clear");
+                 goto Game;
+         }
           else{
-            return 0;
+              system("clear");
+              goto Game;
           } 
 }
 
@@ -100,6 +137,7 @@ int main(){
   char choice;
   randomN = randomNumber();
   cin>>choice;
+    cout << endl;
   
   
     switch (choice){
@@ -110,12 +148,12 @@ int main(){
        deepFreezeCounter=0;
         
        if(enemyDistance<2){
-          cout<<"Enemy's getting closer, you should use blink to get further away from him!"<<endl;
+          cout<<"Enemy's getting closer, you should use blink to get further away from him!\n"<<endl;
         }
         
        else if(enemyDistance>=2){
          cout<<"Enemy is too close to you, he swung his weapon and dealt "<< 
-           (enemyAttack-reduceMageDamage)<< " damage."<<endl;
+           (enemyAttack-reduceMageDamage)<< " damage.\n"<<endl;
          mageHealth -= enemyAttack-reduceMageDamage;
          if (mageHealth<mageExecution){
           mageExecuted();
@@ -125,7 +163,7 @@ int main(){
              
        if (randomN>60 && reflectCounter<=1){
          mageHealth-= FrostboltDmg;
-         cout<<"Enemy reflected your spell. You suffered "<<
+         cout<<"Enemy reflected your spell. \nYou suffered "<<
                              FrostboltDmg<<" damage\n"<<endl;
          reflectCounter++;
        }
@@ -162,12 +200,12 @@ int main(){
           
          }
         else if (randomN>30){
-          cout<< "You blinked away from the enemy and luckily casted an instant frostbolt. Damage dealt to enemy: "<<FrostboltDmg<< " . Nonetheless, act quickly"<< 
-            "'cause he is getting closer"<<endl;
+          cout<< "You blinked away from the enemy and luckily casted an instant frostbolt. \n\nDamage dealt to enemy: "<<FrostboltDmg<< "\n\nNonetheless, act quickly"<< 
+            "'cause he is getting closer!\n"<<endl;
           enemyHealth -= FrostboltDmg;
         }
         else{
-          cout<< "You blinked away from the enemy but the fight's not over yet!"<<endl;
+          cout<< "You blinked away from the enemy but the fight's not over yet!\n"<<endl;
         }
         
          if(enemyHealth<=0){
@@ -190,13 +228,13 @@ int main(){
            deepFreezeCounter++;
            cout<< "--------counter: "<<deepFreezeCounter<<endl;
            cout<< "The enemy is stunned and you instantly casted Frostbolt"<<
-              " which dealt "<< FrostboltDmg<< " damage."<<endl;
+              " which dealt "<< FrostboltDmg<< " damage.\n"<<endl;
           enemyHealth -=FrostboltDmg;
         }
    
          else{
               mageHealth -= enemyAttack-reduceMageDamage;
-              cout<< "You cannot use DeepFreeze this round!"<<endl;
+              cout<< "You cannot use DeepFreeze this round!\n"<<endl;
               cout<<"Enemy immediately charged on to you. You suffered "<<
                    enemyAttack-reduceMageDamage<<" damage\n"<<endl;
               if (mageHealth<mageExecution){
