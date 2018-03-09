@@ -20,14 +20,14 @@ public:
 	Enemy(int, int, int, string);
   
   void abilities(){
-    cout<<"1) Execute  3) Charge  4) Reflect "<<endl;
+    cout<<"- Execute  \n- Charge  \n- Reflect "<<endl;
   }
 
 	void toEnemyString() {
-		cout << "Health: " << this->getEnemyHealth() 
-		 << " Attack: " << this->getEnemyAttack() 
-		 << " Defence: " << this->getEnemyDefence() 
-		 << " Weapon: " << this->getEnemyWeapon() << endl;
+		cout << "Health: " << this->getEnemyHealth() << endl;
+		cout << "Attack: " << this->getEnemyAttack() << endl;
+		cout << "Defence: " << this->getEnemyDefence() << endl;
+		cout << "Weapon: " << this->getEnemyWeapon() << endl;
 
 	}
 };
