@@ -76,7 +76,7 @@ class Mage : public SpellClasses{
 		void getGreeting() { cout << greeting << endl; }
 		
 		 void spells() {
-      cout<< "Which spell to use?(\n /1 Frostbolt (250 mana) \n /2 Blink (180 mana) \n /3DeepFreeze (300 mana)"<<endl;
+      cout<< "Which spell to use?\n\n1 Frostbolt (250 mana) \n2 Blink (180 mana) \n3 DeepFreeze (300 mana)\n"<<endl;
 			 
 	}
  
