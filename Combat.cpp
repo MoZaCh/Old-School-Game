@@ -52,11 +52,13 @@ int main(){
  cout<< "---------------You've entered battle---------------\n"<<endl;
  cout<< "YOUR STATS AND SPELLS: "<<endl;
  mageObj.toString();
- cout<< "1) Frostbolt  2) Blink 3) Deep Freeze"<<endl;
+ cout<< "\n- Frostbolt  \n- Blink \n- Deep Freeze"<<endl;
   
  cout<< "\nENEMY'S STATS AND ABILITIES: "<<endl;
  enemyObj.toEnemyString();
+    cout << endl;
  enemyObj.abilities();
+    cout << endl;
   
   
  //getting values from Mage object
@@ -85,16 +87,16 @@ int main(){
  
   
  cout<< "You are standing in the arena. The distance between you and your \nenemy is just a few meters. "<<endl;
- cout<< "Remember only one of you will walk out of this alive."<<endl;
- cout<<"-------------------LET THE BATTLE BEGIN!!!-------------------"<<endl;
+ cout<< "Remember only one of you will walk out of this alive.\n"<<endl;
+ cout<<"-------------------LET THE BATTLE BEGIN!!!-------------------\n"<<endl;
   
   
   Start:
   int randomN;
   mageObj.spells();
-  cout<< "Your health: "<<mageHealth<< "  Mana: "<< mageMana<<endl;
-  cout<< "Enemy's health: "<<enemyHealth<<endl;
-  cout<<"Choice: ";
+  cout<< "Your health: "<<mageHealth<< "\nMana: "<< mageMana<<endl;
+  cout<< "\nEnemy's health: "<<enemyHealth<<endl;
+  cout<<"\nChoice: ";
   char choice;
   randomN = randomNumber();
   cin>>choice;
