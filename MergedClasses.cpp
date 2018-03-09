@@ -35,7 +35,7 @@ public:
  
  
 	// This method will be called by every class that inherits from SpellClasses
-	void toString();
+	void toString(); 
  
 };
 
@@ -76,7 +76,7 @@ class Mage : public SpellClasses{
 		void getGreeting() { cout << greeting << endl; }
 		
 		 void spells() {
-      cout<< "Which spell to use?\n\n1 Frostbolt (250 mana) \n2 Blink (180 mana) \n3 DeepFreeze (300 mana)\n"<<endl;
+      cout<< "Which spell to use?\n\n1. Frostbolt (250 mana) \n2. Blink (180 mana) \n3. DeepFreeze (300 mana)\n"<<endl;
 			 
 	}
  
