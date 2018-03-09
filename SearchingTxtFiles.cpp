@@ -1,3 +1,12 @@
+/*
+This is an example on how you can search for the users class
+using the text file that the class code creates when the 
+user selects their class whilst the game is being played.
+*/
+
+
+
+
 ifstream  stream1("classChoice.txt"); //Locates File
     string line ;
 
