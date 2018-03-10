@@ -212,7 +212,7 @@ void selectaNameSQL(string name, int id)
 
 
 
-int main()
+int sqlcon()
 {
   bool nameUsed = true;
   while (nameUsed == true)
