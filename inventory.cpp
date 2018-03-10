@@ -10,7 +10,7 @@ int main ()
 	
 	char choice;
 	int index;
-	string  number;
+	int number;
 	int Inventory;
 	
 	cout<<"2. Inventory \n";
@@ -20,10 +20,11 @@ int main ()
 	Begin:
 	if (Inventory == 2)
 	{
-		vector <string> items  ;
-		for (string i : items)
-		{cout<<i<<endl;}
-		vector <string> inventory= {"1. sword", "2. axe","3. bow","4. antidoes"} ;
+		vector <string> items = {"","sword", "axe","bow","antidoes"}  ;
+   
+	   for( string i : items)
+		  cout<<i<<endl;
+		vector <string> inventory ;
 		
 		
 	  while( true)
@@ -39,7 +40,7 @@ int main ()
 			 
 			 cout<<"Enter item number: \n";
 			 cin>>number;
-			 inventory.push_back(number);
+			 inventory.insert(inventory.begin(),items[number]);
 				
 			
 			 break;
@@ -78,7 +79,7 @@ int main ()
 	     }
 		if (inventory.size()>5)
 		{			system("clear");
-		      cout<<"Inventory Full\n";}
+		     cout<<"Inventory Full\n";}
 	   
     }
   }
