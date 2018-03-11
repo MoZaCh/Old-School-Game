@@ -2,8 +2,23 @@
 #include <string>
 #include <fstream>
 
-
+#include "libsqlite.hpp"
 using namespace std;
+
+//Updata class type in DB
+void updateClassSQL(string classType, int userId)
+{
+  sqlite::sqlite db("testdb.db"); //Opens the connection
+  auto cur = db.get_statement(); //Creates a cursor on this connection
+  
+  cur->set_sql("UPDATE users SET class = (?) "
+               "WHERE id = ?;"); //SQL command
+  cur->prepare(); //Sends to database
+  cur->bind(1, classType);
+  cur->bind(2, userId);
+  cur->step();
+}
+
 
 class SpellClasses
 {
@@ -175,7 +190,7 @@ Hunter::Hunter(int health, int attack, int defence, int mana,
     this->greeting=greeting;
   }
  
-int classes()
+int classes(int userId)
 {
     Mage MageObject(200, 800, 150, 500, "Staff"); //Stating Variables
     Priest PriestObject(100, 700, 250, 600, "Talisman");//Stating Variables
@@ -214,7 +229,8 @@ int classes()
          cout << endl;
          if (confirm == "Y" || confirm == "y")
          {
-             
+           string classType = "Mage";
+           updateClassSQL(classType,userId);
          }
          else if (confirm == "N" || confirm == "n")
          {
@@ -260,7 +276,8 @@ int classes()
          cout << endl;
          if (confirm == "Y" || confirm == "y")
          {
-             
+           string classType = "Priest";
+           updateClassSQL(classType,userId);
          }
          else if (confirm == "N" || confirm == "n")
          {
@@ -304,7 +321,8 @@ int classes()
          cout << endl;
          if (confirm == "Y" || confirm == "y")
          {
-             
+           string classType = "Necromancer";
+           updateClassSQL(classType,userId);
          }
          else if (confirm == "N" || confirm == "n")
          {
@@ -347,7 +365,8 @@ int classes()
          cout << endl;
          if (confirm == "Y" || confirm == "y")
          {
-             
+           string classType = "Warrior";
+           updateClassSQL(classType,userId);
          }
          else if (confirm == "N" || confirm == "n")
          {
@@ -390,7 +409,8 @@ int classes()
          cout << endl;
          if (confirm == "Y" || confirm == "y")
          {
-             
+           string classType = "Hunter";
+           updateClassSQL(classType,userId);   
          }
          else if (confirm == "N" || confirm == "n")
          {
@@ -423,6 +443,3 @@ int classes()
   
   return 0;
 }
-
-
-
