@@ -258,15 +258,10 @@ int sqlcon()
     }
     else if (gameMode == 2)
     {
-      cout << "Loading Challenge Mode..." << endl;
-      for (int i = 0; i <= 100; i+=10)
-      {
-        cout << i << "%" << endl;
-        sleep(1);
-      }
-      system("clear");
-      //mainGame();
-      break;
+        cout << endl;
+      cout << "Empty Currently" << endl;
+        cout << endl;
+      
     }
     else
     {
