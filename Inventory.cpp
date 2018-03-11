@@ -37,7 +37,7 @@ int inventory()
 	
   {
 	 
-		 vector <string> Inventory {"Twig"};
+		 vector <string> Inventory { };
         
       ifstream  stream1("Items.txt"); //Locates File
     string line ;
@@ -71,6 +71,10 @@ int inventory()
         else if (line.find("Feeble Staff") != string::npos)// Will search for Priest in file
         {
          Inventory.push_back("Feeble Staff");
+        }
+        else if (line.find("Twig") != string::npos)// Will search for Priest in file
+        {
+         Inventory.push_back("Twig");
         }
         
         
@@ -132,7 +136,7 @@ int inventory()
 		    
 			 		
 	      case '2' :
-			 
+			 system("clear");
 				 return 0;
 			   
 			 					
@@ -153,5 +157,5 @@ int inventory()
 		  }
 	 }  
   }
-	
+	system ("clear");
 }
