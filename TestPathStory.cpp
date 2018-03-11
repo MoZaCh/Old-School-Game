@@ -2,14 +2,21 @@
 #include <unistd.h>
 #include <vector>
 #include <string>
-#include "MergedClasses.cpp"
+#include "MergedClasses2.cpp"
 #include <ncurses.h>
+#include "Inventory.cpp"
 
 using namespace std;
 
 
 int main()
 {
+    ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Twig\n";
+              ;
+              myfile.close();
+               
     
 cout << "You awake in a Cave, covered in gravel and dirt." << endl;
     
@@ -82,7 +89,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     cout << "Stay in the Cave. \nLeave the Cave." << endl;
     cout << endl;
     
-    cout << "- Stay. \n- Leave." << endl;
+    cout << "- Stay. \n- Leave.\n- Open Inventory" << endl;
     cin >> Cave;
         
    if (Cave == "stay" || Cave == "Stay")
@@ -219,6 +226,11 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     else if (Cave == "leave" || Cave == "Leave")
     {
          
+    }
+    else if (Cave == "Inventory" || Cave == "inventory" || Cave == "Open" || Cave == "open")
+    {
+        system("clear");
+        inventory();
     }
     else 
     {
@@ -494,7 +506,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
               myfile.open ("Items.txt");
               myfile << "Map\n";
               myfile << "Potions x2\n";
-              myfile << "Crust Crossbow\n";
+              myfile << "Crusty Crossbow\n";
               myfile.close();
                 cout << endl;
                 cout << "Items Taken!" << endl;
