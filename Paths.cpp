@@ -11,7 +11,7 @@ using namespace std;
 
 int path()
 {
-    sqlcon();
+  int userId = sqlcon();
     
 cout << "You awake in a Cave, covered in gravel and dirt." << endl;
     
@@ -69,7 +69,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     
     sleep(2);
     
-    classes();
+    classes(userId);
     
     
     cout << endl;
