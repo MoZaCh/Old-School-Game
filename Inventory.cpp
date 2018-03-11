@@ -1,6 +1,7 @@
 #include<iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std ;
 
@@ -25,7 +26,9 @@ int main ()
 	int index;
 	int number;
 	int Inventory;
+    cout << "----------------------------------------------------------" << endl;
 	cout<<"1. Inventory \n2. Exit\n";
+    cout << "----------------------------------------------------------" << endl;
 	cin>> Inventory;
 	cout<<endl;
 	 
@@ -33,69 +36,99 @@ int main ()
 	Begin:
 	if (Inventory == 1 )
   {
-	 vector <string> items = {"","sword", "axe","bow","antidoes"}  ;
-	 for( int i =1;i< items.size();i++)
-	  {
-		 cout<<i<<". "<<items[i]<<endl;}
-		 vector <string> inventory {"",} ;
+	 
+		 vector <string> inventory {"Twig"};
+        
+      ifstream  stream1("Items.txt"); //Locates File
+    string line ;
+
+    while( std::getline( stream1, line ) )
+    {
+        if(line.find("Crusty Crossbow") != string::npos) // Will search for item in file
+        { 
+             inventory.push_back("Crusty Crossbow");
+        }
+        else if (line.find("Potions x2") != string::npos)// Will search for Priest in file
+        {
+           inventory.push_back("Potions x2");
+        }
+         else if (line.find("Map") != string::npos)// Will search for Priest in file
+        {
+           inventory.push_back("Map");
+        }
+    }
+        Start:
+         if (inventory.size() == 0)
+		      {		
+		       cout<<"Inventory Empty\n";
+			    }
+        else 
+        {
+         for (string i : inventory)
+             cout<<i<<endl;
+        }
 		
 	   while( true)
 	    {	
-			
-	     cout<< "\n1. Add items \n2. Drop items \n3. Show items \n4. Exit\n" ;
+			cout << endl;
+	     cout<< "\n1. Drop items\n2. Exit\n" ;
+           cout << endl;
 	     cin >> choice;
 		
 	     switch (choice)
 	     {
-		    case '1':					
-						 
-			   cout<<"Enter item number: \n";
-			   cin>>number;
-			   inventory.insert(inventory.begin()+1,items[number]);
-				 cout<<"you picked "<<items[number]<<endl;			
-			   break;
+		    
 			 		 
-        case '2' :
-						  
-				 cout<<"what items do you want to drop ? \n";
+        case '1' :
+						  DropItem:
+                 cout << endl;
+				 cout<<"What Items do you want to Drop ? \n";
+                 cout << endl;
+                 
+                  for( int i =0;i< inventory.size();i++)
+	  {
+		 cout<<i<<". "<<inventory[i]<<endl;}
+                 cout << endl;
 			   cin>>index;
+                 if (inventory.size() < index)
+                 {
+                     cout << endl;
+                     cout << "-------------------------------------" << endl;
+                     cout << "         Item Doesnt Exist!" << endl;
+                     cout << "-------------------------------------" << endl;
+                     cout << endl;
+                     goto DropItem;
+                 }
          inventory.erase(inventory.begin()+ index);
 				 { 
-					vector<string>::iterator it = inventory.begin()+index;  
-          cout <<"you dropped "<< *it<<endl;
+					
+          cout <<"You dropped an Item" <<endl;
+                     cout << endl;
+             
 				 }
-			    break;
+			    goto Start;
 			  				
-		    case '3' :
-					 
-		  	 cout<<endl;
-			   if (inventory.size() == 1)
-		      {		
-		       cout<<"Inventory Empty\n";
-			    }
-	   
-				 for( int i =1;i< inventory.size();i++)
-		      {
-		       	cout<<i<<". "<<inventory[i]<<endl;
-				  }
-			     break;
+		    
 			 		
-	      case '4' :
+	      case '2' :
 			 
-				 return main ();
-			   break;
+				 return 0;
+			   
 			 					
 		    default:
 					 
 				 system("clear");
 				 cout<<"Not a valid option"<<endl;
+                 cout << endl;
 			    goto Begin;
 			 }
 			
 		 if (inventory.size()>10)
 		  {			
 			 system("clear");
-		   cout<<"Inventory Full\n";			
+             cout << endl;
+		   cout<<"Inventory Full\n";		
+             cout << endl;
 		  }
 	 }  
   }
@@ -108,6 +141,8 @@ int main ()
  else
   {
 	  system("clear");
-    cout << "Invalid Entry. Must be 1 or 2" << endl; 	  
+    cout << "Invalid Entry. Must be 1 or 2" << endl; 
+     cout << endl;
+     return main();
   }
 }
