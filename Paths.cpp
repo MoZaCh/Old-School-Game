@@ -5,12 +5,19 @@
 #include "MergedClasses.cpp"
 #include <ncurses.h>
 #include "Sqlcon.cpp"
+#include "Inventory.cpp"
 
 using namespace std;
 
 
 int path()
 {
+    
+    ofstream myfile; //Creates txt doc of class chosen
+              myfile.open ("Items.txt");
+              myfile << "Twig\n";
+              ;
+              myfile.close();
   int userId = sqlcon();
     
 cout << "You awake in a Cave, covered in gravel and dirt." << endl;
@@ -278,6 +285,11 @@ cout << "You seem to not be able to remember much but you do gather your name." 
        }
        
    }
+    else if (Cave == "Inventory" || Cave == "inventory" || Cave == "Open" || Cave == "open")
+    {
+        system("clear");
+        inventory();
+    }
     else if (Cave == "leave" || Cave == "Leave")
     {
         
