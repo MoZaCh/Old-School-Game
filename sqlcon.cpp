@@ -1,6 +1,7 @@
 #include <iostream>
 #include <limits>
 #include <unistd.h>
+//#include "game.cpp"
 using namespace std;
 
 #include "libsqlite.hpp"
@@ -9,15 +10,19 @@ using namespace std;
 //Insert into Function -- Name
 bool insertNameSQL(string name)
 {
+  string unknownClass = "unknown";
+  int noScore = 0;
   try
   {
     sqlite::sqlite db("testdb.db"); //Connecting to Database
     auto cur = db.get_statement(); //Creates a cursor on this connection
   
-    cur->set_sql("INSERT INTO users (username) "
-                 "VALUES (?);"); //sql command
+    cur->set_sql("INSERT INTO users (username, class, score) "
+                 "VALUES (?, ?, ?);"); //sql command
     cur->prepare(); //Sends to database
     cur->bind(1, name);
+    cur->bind(2, unknownClass);
+    cur->bind(3, noScore);
     cur->step();
   }
   
@@ -67,7 +72,7 @@ void printResults()
   
   while(cur->step())
   {
-    cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << endl;
+    cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << " |class: " << cur->get_text(2) << endl;
   }
 }
 
@@ -120,7 +125,7 @@ bool overWrite(string name)
 bool nameCheck( string name, bool nameUsed)
 {
   int userId;
-  bool ans1;
+  bool nCheckans;
   sqlite::sqlite db( "testdb.db" ); //Opens the connection
   auto cur = db.get_statement(); //Creates a cursor on this connection
   
@@ -149,17 +154,17 @@ bool nameCheck( string name, bool nameUsed)
   
   if (nameUsed == true)
   {
-      cout << endl;
+    cout << endl;
     cout << "Username already inuse!" << endl;
-      cout << endl;
-    ans1 = overWrite(name);
-    return ans1;
+    cout << endl;
+    nCheckans = overWrite(name);
+    return nCheckans;
   }
   else
   {
-      cout << endl;
+    cout << endl;
     cout << "Welcome New User!!!!" << endl;
-      cout << endl;
+    cout << endl;
     sleep(2);
     cout << "Hi " << name << "," << endl;
     sleep(2);
@@ -168,30 +173,27 @@ bool nameCheck( string name, bool nameUsed)
   return 0;
 }
 
-//Inserts the chosen class information into DB
-char chooseClass()
+
+int selectID(string name)
 {
-  char choice;
-
-	do{
-
-	cout << "Please choose a class type! \nMage (1) \nOption (2):"<< endl;
-	cin >> choice;
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	}
-  
-  while(choice != '1' && choice != '2' && choice != '3');
+  try
   {
-    if (choice == '1')
-    {
-      cout << "You have chosen the Mage class" << endl;
-      return choice;
-    }
-    else if (choice == '2')
-    {
-      cout << "You have chosen the opt 2 class" << endl;
-      return choice;
-    }
+    sqlite::sqlite db( "testdb.db" ); //Opens the connection
+    auto cur = db.get_statement(); //Creates a cursor on this connection
+  
+    cur->set_sql("SELECT id "
+                 "FROM users "
+                 "WHERE username = ?;"); //SQL command
+    cur->prepare(); //Sends to database
+    cur->bind(1, name);
+    cur->step();
+  
+    return cur->get_int(0);
+  }
+  catch (sqlite::exception e)
+  {
+    cerr << e.what() << endl;
+    return 1;
   }
 }
 
@@ -215,11 +217,13 @@ void selectaNameSQL(string name, int id)
 int sqlcon()
 {
   bool nameUsed = true;
+  int gameMode, id;
+  string name;
   while (nameUsed == true)
   {
-    string name;
+    //string name;
     cout <<"Enter Username: " << endl;
-      cout << endl;
+    cout << endl;
     cin >> name;
     bool ans = nameCheck(name, nameUsed);
     if (ans == false)
@@ -230,14 +234,47 @@ int sqlcon()
     }
           
   }
-    cout << endl;
-  //printResults();
-  cout << "Loading game..." << endl;
-  for (int i = 0; i <= 100; i+=10)
+  
+  id = selectID(name);
+  //cout << id << endl;
+  
+  while(true)
   {
-    cout << i << "%" << endl;
-    sleep(1);
+    cout << "**Please choose a game mode (1/2)**" << endl;
+    cout << endl;
+    cout << "1 - Story Mode" << endl;
+    cout << "2 - Challenge Mode" << endl;
+    cin >> gameMode;
+    
+    if (gameMode == 1)
+    {
+      cout << "Loading Story Mode..." << endl;
+      for (int i = 0; i <= 100; i+=10)
+      {
+        cout << i << "%" << endl;
+        sleep(1);
+      }
+      break;
+    }
+    else if (gameMode == 2)
+    {
+      cout << "Loading Challenge Mode..." << endl;
+      for (int i = 0; i <= 100; i+=10)
+      {
+        cout << i << "%" << endl;
+        sleep(1);
+      }
+      system("clear");
+      //mainGame();
+      break;
+    }
+    else
+    {
+      cout << "Invalid option!" << endl;
+      cout << endl;
+    }
   }
-    system("clear");
-	return 0;
+  //printResults();
+  system("clear");
+  return id;
 }
