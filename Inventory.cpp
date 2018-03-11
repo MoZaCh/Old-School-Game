@@ -5,7 +5,7 @@
 
 using namespace std ;
 
-int main ()
+int inventory()
 {
 	cout << R"(
        ___
@@ -25,19 +25,19 @@ int main ()
 	char choice;
 	int index;
 	int number;
-	int Inventory;
+	
     cout << "----------------------------------------------------------" << endl;
-	cout<<"1. Inventory \n2. Exit\n";
-    cout << "----------------------------------------------------------" << endl;
-	cin>> Inventory;
+	
+    
+	
 	cout<<endl;
 	 
 	
 	Begin:
-	if (Inventory == 1 )
+	
   {
 	 
-		 vector <string> inventory {"Twig"};
+		 vector <string> Inventory {"Twig"};
         
       ifstream  stream1("Items.txt"); //Locates File
     string line ;
@@ -46,27 +46,47 @@ int main ()
     {
         if(line.find("Crusty Crossbow") != string::npos) // Will search for item in file
         { 
-             inventory.push_back("Crusty Crossbow");
+             Inventory.push_back("Crusty Crossbow");
         }
         else if (line.find("Potions x2") != string::npos)// Will search for Priest in file
         {
-           inventory.push_back("Potions x2");
+           Inventory.push_back("Potions x2");
         }
          else if (line.find("Map") != string::npos)// Will search for Priest in file
         {
-           inventory.push_back("Map");
+           Inventory.push_back("Map");
         }
+        else if (line.find("Wand") != string::npos)// Will search for Priest in file
+        {
+           Inventory.push_back("Wand");
+        }
+        else if (line.find("Blunt Axe") != string::npos)// Will search for Priest in file
+        {
+           Inventory.push_back("Blunt Axe");
+        }
+        else if (line.find("Teared Talisman") != string::npos)// Will search for Priest in file
+        {
+           Inventory.push_back("Teared Talisman");
+        }
+        else if (line.find("Feeble Staff") != string::npos)// Will search for Priest in file
+        {
+         Inventory.push_back("Feeble Staff");
+        }
+        
+        
     }
         Start:
-         if (inventory.size() == 0)
+         if (Inventory.size() == 0)
 		      {		
 		       cout<<"Inventory Empty\n";
 			    }
         else 
         {
-         for (string i : inventory)
+         for (string i : Inventory)
              cout<<i<<endl;
         }
+      cout << endl;
+      cout << "----------------------------------------------------------" << endl;
 		
 	   while( true)
 	    {	
@@ -85,13 +105,14 @@ int main ()
 				 cout<<"What Items do you want to Drop ? \n";
                  cout << endl;
                  
-                  for( int i =0;i< inventory.size();i++)
+                  for( int i =0;i< Inventory.size();i++)
 	  {
-		 cout<<i<<". "<<inventory[i]<<endl;}
+		 cout<<i<<". "<<Inventory[i]<<endl;}
                  cout << endl;
 			   cin>>index;
-                 if (inventory.size() < index)
+                 if (Inventory.size() < index)
                  {
+                     system("clear");
                      cout << endl;
                      cout << "-------------------------------------" << endl;
                      cout << "         Item Doesnt Exist!" << endl;
@@ -99,7 +120,7 @@ int main ()
                      cout << endl;
                      goto DropItem;
                  }
-         inventory.erase(inventory.begin()+ index);
+         Inventory.erase(Inventory.begin()+ index);
 				 { 
 					
           cout <<"You dropped an Item" <<endl;
@@ -123,7 +144,7 @@ int main ()
 			    goto Begin;
 			 }
 			
-		 if (inventory.size()>10)
+		 if (Inventory.size()>10)
 		  {			
 			 system("clear");
              cout << endl;
@@ -133,16 +154,4 @@ int main ()
 	 }  
   }
 	
- else if (Inventory == 2 )
-	{
-	 return 0;
-	}
-	
- else
-  {
-	  system("clear");
-    cout << "Invalid Entry. Must be 1 or 2" << endl; 
-     cout << endl;
-     return main();
-  }
 }
