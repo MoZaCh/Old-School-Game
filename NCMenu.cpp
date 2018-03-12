@@ -11,6 +11,7 @@
 #include "Paths.cpp"
 
 
+
 using namespace std;
 
 int main(int argc, char ** argv)
@@ -98,12 +99,13 @@ int main(int argc, char ** argv)
     }
     else if(choice[highlight] == "         Resume Game        ")
     {
-        endwin();
+        
         goto title;
     }
     else if(choice[highlight] == "           Credits          ")
     {
-
+        endwin();
+        refresh();
         credits();
     }
     else if(choice[highlight] == "            Exit           ")
