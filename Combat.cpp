@@ -4,6 +4,7 @@
 #include "EnemyClass.cpp"
 #include "MergedClasses.cpp"
 #include <random>
+#pragma once
 
 
 using namespace std;
@@ -54,7 +55,7 @@ int enemyDefeated(){
           if (choice2 == "y" || choice2 == "Y")
           {
             system("clear");
-            cout<<"here will be function to jump somewhere in the game"<<endl;
+            
           }
           else if (choice2 == "n" || choice2 == "N")
           {
@@ -82,7 +83,7 @@ void mageExecuted(){
           cout<<"Your health was too low, enemy has executed you."<<endl;
 }
   
-int main(){
+int combat(){
  Mage mageObj(1200,500,150,1500,"Staff");
   Enemy enemyObj(2000,400,500,"Axe");
   
@@ -208,7 +209,7 @@ int main(){
   case '2': //Blink
         enemyDistance=0;
         deepFreezeCounter=0;
-        cout<<enemyDistance<<endl;
+        
         mageMana-=180;
          if (randomN>70){
           mageHealth -= enemyAttack-reduceMageDamage;
@@ -250,7 +251,7 @@ int main(){
            mageMana -= 300;
            enemyDistance = 0;
            deepFreezeCounter++;
-           cout<< "--------counter: "<<deepFreezeCounter<<endl;
+           
             sleep(2);
            cout<< "The enemy is stunned and you instantly casted Frostbolt"<<
               " which dealt "<< FrostboltDmg<< " damage.\n"<<endl;
