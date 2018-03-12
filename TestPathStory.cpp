@@ -2,10 +2,12 @@
 #include <unistd.h>
 #include <vector>
 #include <string>
-#include "MergedClasses2.cpp"
+#include "MergedClasses.cpp"
 #include <ncurses.h>
 #include "Inventory.cpp"
 #include <curses.h>
+#include "sqlcon.cpp"
+#include "Combat.cpp"
 
 
 using namespace std;
@@ -18,7 +20,8 @@ int main()
               myfile << "Twig\n";
               ;
               myfile.close();
-               
+    
+    int userId = sqlcon();
     
 cout << "You awake in a Cave, covered in gravel and dirt." << endl;
     
@@ -73,7 +76,8 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     // sleep
     
     cout << "You're able to just about remember small things of your past, your remember that you are a... " << endl;
-    classes();
+    
+    classes(userId);
             
     
     
@@ -154,7 +158,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            cout << endl;
            
            string takeWeapon;
-           cout << "Take the weapon and dive into possible dangers.\nLeave it alone and find the exit." << endl;
+           cout << "-Take the weapon and dive into possible dangers.\n-Leave it alone and find the exit. \n- Open Inventory" << endl;
            cin >> takeWeapon;
            cout << endl;
            if (takeWeapon == "Take" || takeWeapon == "take")
@@ -188,7 +192,8 @@ cout << "You seem to not be able to remember much but you do gather your name." 
                    cout << "GAME OVER" << endl;
                    return 0;//End Code
                }
-               else{
+               else
+               {
                    cout << endl;
                    cout << "*Invalid input! Must answer with Swing or Accept*" << endl;
                    death.clear();
@@ -202,9 +207,14 @@ cout << "You seem to not be able to remember much but you do gather your name." 
           //Might make it so something else gets found instead
                cout << endl;
            }
+           else if (Cave == "Inventory" || Cave == "inventory" || Cave == "Open" || Cave == "open")
+            {
+                system("clear");
+                inventory();
+            }
            else
            {
-               cout << "*Invalid input! Must answer with Take or Leave*" << endl;
+               cout << "*Invalid input! Must answer with Take, Leave or Open*" << endl;
                takeWeapon.clear();//Clear Variable
                goto TakeWeapon;//Loop back
                cout << endl;
@@ -555,6 +565,13 @@ cout << "You seem to not be able to remember much but you do gather your name." 
         
     }
     
+    cout << "You start to explore the forest around the surrounding area, you cant see anything but trees and shurb.\n" << endl;
+    //sleep()
+    cout << "You start to hear a something up ahead, it sounds close to a person!" << endl;
+    //sleep()
+    cout << "Maybe they can tell you where you would be and even if your lucky can tell you how you even got here!" << endl;
+    sleep (1);
+    combat();
     
     
     cout << endl;
