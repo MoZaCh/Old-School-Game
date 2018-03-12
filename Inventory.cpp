@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include<limits>
 
 using namespace std ;
 
@@ -26,7 +27,7 @@ int inventory()
 	int index;
 	int number;
 	
-    cout << "----------------------------------------------------------" << endl;
+    cout << "----------------------------------------------------------------" << endl;
 	
     
 	
@@ -86,11 +87,13 @@ int inventory()
 			    }
         else 
         {
+            cout << "                          Inventory!\n\n" << endl; 
+            
          for (string i : Inventory)
-             cout<<i<<endl;
+             cout<<"- " << i <<endl;
         }
       cout << endl;
-      cout << "----------------------------------------------------------" << endl;
+      cout << "-----------------------------------------------------------------" << endl;
 		
 	   while( true)
 	    {	
@@ -104,18 +107,27 @@ int inventory()
 		    
 			 		 
         case '1' :
+              if (Inventory.size() == 0)
+		      {		
+                   cout<<"Inventory Empty\n";
+                      break;
+			   }
+               else 
+               {
+                 
 						  DropItem:
                  cout << endl;
 				 cout<<"What Items do you want to Drop ? \n";
                  cout << endl;
                  
                   for( int i =0;i< Inventory.size();i++)
-	  {
-		 cout<<i<<". "<<Inventory[i]<<endl;}
+                  {
+                     cout<<i<<". "<<Inventory[i]<<endl;
+                  }
                  cout << endl;
-			   cin>>index;
+			      cin>>index;
                  if (Inventory.size() < index)
-                 {
+                  {
                      system("clear");
                      cout << endl;
                      cout << "-------------------------------------" << endl;
@@ -123,17 +135,30 @@ int inventory()
                      cout << "-------------------------------------" << endl;
                      cout << endl;
                      goto DropItem;
+                  }
+                  else 
+                  {
+                    while(!(cin >> index))
+                    {
+                        system("clear");
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout << "-----------------------------------------------------" << endl;
+                        cout << "              Invalid input!  Try again." << endl;
+                        cout << "-----------------------------------------------------" << endl;
+                        cout << endl;
+                        goto DropItem;
+                           
+                    }
                  }
-         Inventory.erase(Inventory.begin()+ index);
+                 Inventory.erase(Inventory.begin()+ index);
 				 { 
-					
-          cout <<"You dropped an Item" <<endl;
+                     cout <<"You dropped an Item" <<endl;
                      cout << endl;
-             
 				 }
 			    goto Start;
 			  				
-		    
+               }
 			 		
 	      case '2' :
 			 system("clear");
@@ -143,7 +168,10 @@ int inventory()
 		    default:
 					 
 				 system("clear");
-				 cout<<"Not a valid option"<<endl;
+                 cout << endl;
+                 cout << "--------------------------------------------------" << endl;
+				 cout<<"                  Not a valid option"<<endl;
+                 cout << "--------------------------------------------------" << endl;
                  cout << endl;
 			    goto Begin;
 			 }
