@@ -4,7 +4,7 @@
 #include <string>
 #include "MergedClasses.cpp"
 #include <ncurses.h>
-#include "Sqlcon.cpp"
+#include "sqlcon.cpp"
 #include "Inventory.cpp"
 
 using namespace std;
@@ -97,7 +97,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     cout << "Stay in the Cave. \nLeave the Cave." << endl;
     cout << endl;
     
-    cout << "- Stay. \n- Leave." << endl;
+    cout << "- Stay. \n- Leave. \n- Open Inventory" << endl;
     cin >> Cave;
         
    if (Cave == "stay" || Cave == "Stay")
@@ -116,7 +116,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
        cout << "Do you press on?\n\nYes.\nNo." << endl; 
        cin >> caveStay;
        
-       if(caveStay == "Yes" || caveStay == "yes") //confirming answer
+       if(caveStay == "Yes" || caveStay == "yes" || caveStay == "Y" || caveStay == "y") //confirming answer
        {
            cout << endl;
            cout << "You keep going, you keep taking a step further into the darkness.\nAt this point you are completely shrouded in darkness, you aren't able to see a single thing,\nBut you continue to venture onward, you end up hitting a wall.\nYou're able to feel a breeze on the other side and are even able to see a crack of light behind the rocks." << endl;
@@ -228,7 +228,8 @@ cout << "You seem to not be able to remember much but you do gather your name." 
                    cout << "It has ignited the oil, burning you to a crisp." << endl;
                   sleep(2); 
                    cout << "GAME OVER" << endl;
-                   return 0;//End Code
+                   sleep(2);
+                   system("g++ --std=c++11 NCMenu.cpp -o NCMenu -lncurses -lsqlite3 && ./NCMenu");//Returns To Main Menu
                }
                else if (death == "Accept" || death == "accept")
                {
@@ -242,7 +243,8 @@ cout << "You seem to not be able to remember much but you do gather your name." 
                    cout << "You end up getting suffocated by the oil, gasping for air." << endl;
                    sleep(2);
                    cout << "GAME OVER" << endl;
-                   return 0;//End Code
+                   sleep(2);
+                   system("g++ --std=c++11 NCMenu.cpp -o NCMenu -lncurses -lsqlite3 && ./NCMenu");//Returns To Main Menu
                }
                else{
                    cout << endl;
@@ -270,7 +272,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            }
            
        }
-       else if (caveStay == "No" || caveStay == "no")
+       else if (caveStay == "No" || caveStay == "no" || caveStay == "N" || caveStay == "n")
            {
            // continues the rest of the code and exists the if statement
        }
@@ -298,7 +300,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     else 
     {
         cout << endl;
-        cout << "*Invalid Input! Must answer with Stay or Leave*" << endl; //Error
+        cout << "*Invalid Input! Must answer with Stay, Leave or Open*" << endl; //Error
         cout << endl;
         Cave.clear(); //Clearing Variable
         sleep(2);
