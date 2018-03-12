@@ -5,6 +5,8 @@
 #include "MergedClasses2.cpp"
 #include <ncurses.h>
 #include "Inventory.cpp"
+#include <curses.h>
+
 
 using namespace std;
 
@@ -104,7 +106,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
        cout << "Do you press on?\n\nYes.\nNo." << endl; 
        cin >> caveStay;
        
-       if(caveStay == "Yes" || caveStay == "yes") //confirming answer
+       if(caveStay == "Yes" || caveStay == "yes" || caveStay == "Y" || caveStay == "y") //confirming answer
        {
            cout << endl;
            cout << "You keep going, you keep taking a step further into the darkness.\nAt this point you are completely shrouded in darkness, you aren't able to see a single thing,\nBut you continue to venture onward, you end up hitting a wall.\nYou're able to feel a breeze on the other side and are even able to see a crack of light behind the rocks." << endl;
@@ -209,7 +211,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            }
            
        }
-       else if (caveStay == "No" || caveStay == "no")
+       else if (caveStay == "No" || caveStay == "no" || caveStay == "n" || caveStay == "N")
            {
            // continues the rest of the code and exists the if statement
        }
@@ -231,11 +233,12 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     {
         system("clear");
         inventory();
+        goto cave;
     }
     else 
     {
         cout << endl;
-        cout << "*Invalid Input! Must answer with Stay or Leave*" << endl; //Error
+        cout << "*Invalid Input! Must answer with Stay, Leave or Open*" << endl; //Error
         cout << endl;
         Cave.clear(); //Clearing Variable
         goto cave; //Loop
@@ -551,6 +554,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
         }
         
     }
+    
     
     
     cout << endl;
