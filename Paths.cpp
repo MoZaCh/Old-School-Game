@@ -172,7 +172,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
            cout << endl;;
            
            string takeWeapon;
-           cout << "Take the weapon and dive into possible dangers.\nLeave it alone and find the exit." << endl;
+           cout << "- Take the weapon and dive into possible dangers.\n- Leave it alone and find the exit. \n- Open Inventory" << endl;
            cin >> takeWeapon;
            cout << endl;
            if (takeWeapon == "Take" || takeWeapon == "take")
@@ -263,9 +263,15 @@ cout << "You seem to not be able to remember much but you do gather your name." 
                sleep(3);
                cout << endl;
            }
+           else if (Cave == "Inventory" || Cave == "inventory" || Cave == "Open" || Cave == "open")
+            {
+                system("clear");
+                inventory();
+                goto cave;
+            }
            else
            {
-               cout << "*Invalid input! Must answer with Take or Leave*" << endl;
+               cout << "*Invalid input! Must answer with Take, Leave or Open*" << endl;
                takeWeapon.clear();//Clear Variable
                sleep(2);
                goto TakeWeapon;//Loop back     
