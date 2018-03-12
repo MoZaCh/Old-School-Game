@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#pragma once
 #include "libsqlite.hpp"
+
 using namespace std;
 
 //Updata class type in DB
