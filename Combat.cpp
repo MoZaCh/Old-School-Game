@@ -86,16 +86,7 @@ int main(){
  Mage mageObj(1200,500,150,1500,"Staff");
   Enemy enemyObj(2000,400,500,"Axe");
   
- cout<< "---------------You've entered battle---------------\n"<<endl;
- cout<< "YOUR STATS AND SPELLS: "<<endl;
- mageObj.toString();
- cout<< "\n- Frostbolt  \n- Blink \n- Deep Freeze"<<endl;
-  
- cout<< "\nENEMY'S STATS AND ABILITIES: "<<endl;
- enemyObj.toEnemyString();
-    cout << endl;
- enemyObj.abilities();
-    cout << endl;
+ 
   
   
  //getting values from Mage object
@@ -122,9 +113,32 @@ int main(){
  //will be used to prevent using DeepFreeze twice a row
  int deepFreezeCounter = 0;
  
-  
- cout<< "You are standing in the arena. The distance between you and your \nenemy is just a few meters. "<<endl;
+  sleep(2);
+ cout<< "You start to Run towards the source of the sound that you are hearing in some hope for some answers" << endl;
+    sleep(3);
+ cout << "Your near the source of where the sound is coming from, you start to notice that the person you see looks a bit odd." << endl;
+    sleep(3);
+ cout << "They look like they have some presence around them, and an ominous aura coming off of them as well.\n" << endl;
+    sleep(3);
+ cout << "They seem to have noticed you, you try to flee but they may instantly attack the moment you turn your back." << endl;
+    sleep(3);
+ cout << "Your Forced into a fight, with no other choice.\n\n" << endl;
+    sleep(3);
+ cout<< "---------------You've entered battle---------------\n"<<endl;
+ cout<< "YOUR STATS AND SPELLS: "<<endl;
+ mageObj.toString();
+ cout<< "\n- Frostbolt  \n- Blink \n- Deep Freeze"<<endl;
+  sleep(2);
+ cout<< "\nENEMY'S STATS AND ABILITIES: "<<endl;
+ enemyObj.toEnemyString();
+    cout << endl;
+ enemyObj.abilities();
+    cout << endl;
+ sleep(2);
+ cout << "The distance between you and your enemy is just a few meters. "<<endl;
  cout<< "Remember only one of you will walk out of this alive.\n"<<endl;
+    sleep(3);
+    
  cout<<"-------------------LET THE BATTLE BEGIN!!!-------------------\n"<<endl;
   
   
@@ -148,10 +162,13 @@ int main(){
        deepFreezeCounter=0;
         
        if(enemyDistance<2){
+           sleep(2);
           cout<<"Enemy's getting closer, you should use blink to get further away from him!\n"<<endl;
+           sleep(1);
         }
         
        else if(enemyDistance>=2){
+           sleep(2);
          cout<<"Enemy is too close to you, he swung his weapon and dealt "<< 
            (enemyAttack-reduceMageDamage)<< " damage.\n"<<endl;
          mageHealth -= enemyAttack-reduceMageDamage;
@@ -163,21 +180,25 @@ int main(){
              
        if (randomN>60 && reflectCounter<=1){
          mageHealth-= FrostboltDmg;
+           sleep(2);
          cout<<"Enemy reflected your spell. \nYou suffered "<<
                              FrostboltDmg<<" damage\n"<<endl;
          reflectCounter++;
        }
        else{
+           sleep(2);
          cout<< "Frosbolt dealt "<< FrostboltDmg<< " damage.\n"<<endl;
          enemyHealth-=FrostboltDmg;
        }      
         
        if(enemyHealth<=0){
+          sleep(1);
          enemyDefeated();
          break;
         }
         
         else if(mageHealth<=0){
+            sleep(1);
          mageDefeated();
           break;
         }
@@ -191,6 +212,7 @@ int main(){
         mageMana-=180;
          if (randomN>70){
           mageHealth -= enemyAttack-reduceMageDamage;
+             sleep(2);
           cout<<"Enemy immediately charged on to you. You suffered "<<
                              enemyAttack-reduceMageDamage<<" damage\n"<<endl;
            if (mageHealth<mageExecution){
@@ -200,11 +222,13 @@ int main(){
           
          }
         else if (randomN>30){
+            sleep(2);
           cout<< "You blinked away from the enemy and luckily casted an instant frostbolt. \n\nDamage dealt to enemy: "<<FrostboltDmg<< "\n\nNonetheless, act quickly"<< 
             "'cause he is getting closer!\n"<<endl;
           enemyHealth -= FrostboltDmg;
         }
         else{
+            sleep(2);
           cout<< "You blinked away from the enemy but the fight's not over yet!\n"<<endl;
         }
         
@@ -227,6 +251,7 @@ int main(){
            enemyDistance = 0;
            deepFreezeCounter++;
            cout<< "--------counter: "<<deepFreezeCounter<<endl;
+            sleep(2);
            cout<< "The enemy is stunned and you instantly casted Frostbolt"<<
               " which dealt "<< FrostboltDmg<< " damage.\n"<<endl;
           enemyHealth -=FrostboltDmg;
@@ -234,7 +259,9 @@ int main(){
    
          else{
               mageHealth -= enemyAttack-reduceMageDamage;
+             sleep(2);
               cout<< "You cannot use DeepFreeze this round!\n"<<endl;
+             sleep(2);
               cout<<"Enemy immediately charged on to you. You suffered "<<
                    enemyAttack-reduceMageDamage<<" damage\n"<<endl;
               if (mageHealth<mageExecution){
