@@ -248,6 +248,7 @@ int sqlcon()
     
     if (gameMode == 1)
     {
+        system("clear");
       cout << "Loading Story Mode..." << endl;
       for (int i = 0; i <= 100; i+=10)
       {
