@@ -113,15 +113,15 @@ int combat(){
  int FrostboltDmg = mageAttack - reduceEnemyDamage; 
  //will be used to prevent using DeepFreeze twice a row
  int deepFreezeCounter = 0;
- 
-  sleep(2);
+ cout << endl;
+  
  cout<< "You start to Run towards the source of the sound that you are hearing in some hope for some answers" << endl;
     sleep(3);
- cout << "Your near the source of where the sound is coming from, you start to notice that the person you see looks a bit odd." << endl;
+ cout << "Your near the source of where the sound is coming from, you start to notice that the person you see looks a bit odd.\n" << endl;
     sleep(3);
  cout << "They look like they have some presence around them, and an ominous aura coming off of them as well.\n" << endl;
     sleep(3);
- cout << "They seem to have noticed you, you try to flee but they may instantly attack the moment you turn your back." << endl;
+ cout << "They seem to have noticed you, you try to flee but they may instantly attack the moment you turn your back\n" << endl;
     sleep(3);
  cout << "Your Forced into a fight, with no other choice.\n\n" << endl;
     sleep(3);
@@ -147,6 +147,7 @@ int combat(){
   int randomN;
   mageObj.spells();
   cout<< "Your health: "<<mageHealth<< "\nMana: "<< mageMana<<endl;
+    sleep(1);
   cout<< "\nEnemy's health: "<<enemyHealth<<endl;
   cout<<"\nChoice: ";
   char choice;
