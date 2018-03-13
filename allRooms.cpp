@@ -7,27 +7,36 @@ using namespace std;
 //Prints the leaderboard 
 void leaderboardResults()
 {
-  sqlite::sqlite db( "testdb.db" ); //Opens the connection
-  auto cur = db.get_statement(); //Creates a cursor on this connection
-  
-  cur->set_sql("SELECT *"
-               "FROM users "
-               "ORDER BY score ASC;"); //SQL command
-  cur->prepare(); //Sends to database
-  int i =1;
-  
-  while(cur->step())
-  {
-    if (cur->get_int(3) == 0)
+    try
     {
-      continue;
+        sqlite::sqlite db( "testdb.db" ); //Opens the connection
+        auto cur = db.get_statement(); //Creates a cursor on this connection
+        
+        cur->set_sql("SELECT *"
+                     "FROM users "
+                     "ORDER BY score ASC;"); //SQL command
+        cur->prepare(); //Sends to database
+        int i =1;
+  
+        while(cur->step())
+        {
+            if (cur->get_int(3) == 0)
+            {
+                continue;
+            }
+            else
+            {
+                cout << i << " |Username: " <<  cur->get_text(1) << " |Score: " << cur->get_int(3) <<endl;
+                i++;
+            }
+        } 
     }
-    else
+    catch (sqlite::exception e)
     {
-      cout << i << " |Username: " <<  cur->get_text(1) << " |Score: " << cur->get_int(3) <<endl;
-      i++;
+        cerr << e.what() << endl;
+        return;
     }
-  }
+    return;
 }
 
 //Updata score in DB
@@ -61,7 +70,7 @@ void mainRoom()
   cout<<"The room directly ahead of you is the kitchen while the stairs are to your right"<<endl;
   sleep(1);
   cout << endl;
-  cout<<"Please enter your next move..."<<endl;
+  cout<<"Please choose your next move..."<<endl;
 }
 
 void upstairsHallway()
@@ -283,14 +292,14 @@ int diningRoom()
 int bedRoom()
 {
   string bedroomMove;
-  bool leaveRoom = false;
+  bool leaveroom = false;
   cout << "**Bedroom**" << endl;
   cout << "You are now in the bedroom. There is a bed, massive wardrobe and a vintage oak trunk."<<'\n';
   cout << endl;
   cout<<"Please enter your next move..."<<endl;
   
   
-  while (leaveRoom==false)
+  while (leaveroom==false)
   {
      if (getline(cin,bedroomMove))
            {transform(bedroomMove.begin(), bedroomMove.end(), bedroomMove.begin(), ptr_fun<int, int>(toupper));
