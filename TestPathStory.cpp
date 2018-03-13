@@ -8,6 +8,7 @@
 #include <curses.h>
 #include "sqlcon.cpp"
 #include "Combat.cpp"
+#include "Finish.cpp"
 
 
 using namespace std;
@@ -523,6 +524,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
               myfile.close();
                 cout << endl;
                 cout << "Items Taken!" << endl;
+                cout << endl;
             }
             else if (bag == "N" || bag == "n")
             {
@@ -545,6 +547,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
                 else if (bag1 == "N" | bag1 == "n")
                 {
                     cout << "You consider that the items in this bag might belong to someone else and leave everything behind." << endl;
+                    cout << endl;
                 }
                 else
                 {
@@ -564,19 +567,28 @@ cout << "You seem to not be able to remember much but you do gather your name." 
         }
         
     }
+    cout << endl;;
     
     cout << "You start to explore the forest around the surrounding area, you cant see anything but trees and shurb.\n" << endl;
     //sleep()
     cout << "You start to hear a something up ahead, it sounds close to a person!" << endl;
     //sleep()
     cout << "Maybe they can tell you where you would be and even if your lucky can tell you how you even got here!" << endl;
-    sleep (1);
-    combat();
-    
+    sleep (2);
     
     cout << endl;
-    cout << "TEST" << endl; // TEST!
-    cout << endl;
+    
+    
+    
+    cout << "You Manage to Defeat the enemy and see the aura that was shrouding them disappear and fly away in the distance." << endl;
+    //sleep()
+    cout << "You decide to search the persons body for anything \nYou find a not on the body. It seems to be some type of coordinate." << endl;
+    //sleep()
+    cout << "Maybe this can can be some type of clue, but you have nothing else to go on." << endl;
+    //sleep()
+    cout << "You can only hope this location would be the place youll be able to find the answers you need..." << endl;
+    sleep(3);
+    finish();
     
         return 0;
 }
