@@ -18,13 +18,14 @@ int randomNumber(){
 int mageDefeated(){
           game:
           cout<<"You have been defeated by the enemy!\n"<<endl;
-          cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
+          cout<<"Do you wish to go back to the Main Menu? (Y/N): ";
           string choice2;
           cin>>choice2;
-          if (choice2 == "y" || choice2 == "Y"){
+          if (choice2 == "y" || choice2 == "Y")
+          {
             system("clear");
-            cout<<"here will be function to jump somewhere in the game"<<endl;
-            }
+            system("g++ --std=c++14 NCMenu.cpp -o NCMenu -lncurses -lsqlite3 && ./NCMenu");
+          }
          else if (choice2 == "n" || choice2 == "N")
          {
              cout << "\nThis will close the game." << endl; 
