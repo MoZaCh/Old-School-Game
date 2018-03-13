@@ -222,7 +222,7 @@ int sqlcon()
   while (nameUsed == true)
   {
     //string name;
-    cout <<"Enter Username: " << endl;
+    cout <<"Enter Username: (NO SPACES!)" << endl;
     cout << endl;
     cin >> name;
     bool ans = nameCheck(name, nameUsed);
