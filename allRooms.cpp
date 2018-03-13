@@ -61,16 +61,16 @@ void mainRoom()
   cout<<"The room directly ahead of you is the kitchen while the stairs are to your right"<<endl;
   sleep(1);
   cout << endl;
-  cout << "Please enter your next move..." << endl;
+  cout<<"Please choose your next move..."<<endl;
 }
 
 void upstairsHallway()
 {
   cout << "***Upstairs Hallway***" << endl;
-  cout<<"You are now on the first floor. The bedroom is ahead of you or you can go back downstairs." << endl;
+  cout<<"You are now on the first floor. There is only 1 room ahead of you or you can go back downstairs." << endl;
   sleep(1);
   cout << endl;
-  cout << "Please enter your next move..." << endl;
+  cout<<"Please enter your next move..."<<endl;
 }
 
 void keyfound()
@@ -94,7 +94,7 @@ int frontRoom()
     cout<<"You have now entered the front room there is a fireplace, a sofa, an oak table and a small TV on a TV stand" << endl;
     sleep(1);
     cout << endl;
-    cout << "Please enter your next move..." << endl;
+    cout<<"Please enter your next move..."<<endl;
     
         
     while (leaveRoom==false)
@@ -107,11 +107,6 @@ int frontRoom()
         cout<<"The key is not on the sofa"<< endl;
         global ++;
         }
-    else if (frontroomMove.find("UNDER THE SOFA") != string::npos || frontroomMove.find("UNDERNEATH THE SOFA") != string::npos)  
-        {
-        cout << "The key is not under the sofa" << endl;
-        global ++;
-        }  
     else if (frontroomMove.find("BEHIND THE TV") != string::npos || frontroomMove.find("TV") != string::npos)  
         {
         cout<<"The key is not near the TV"<< endl;
@@ -138,8 +133,15 @@ int frontRoom()
         }    
     else 
     {
-        cout<<"Sorry i dont understand what you are saying"<<endl;
+        cout << endl;
+        cout << "Sorry that isn't an option!" << endl;
+        cout << endl;
+        cout << "**Front room options available**" << endl;
+        cout << "-on the sofa \n-behind the TV\n-on the fireplace \n-on the table \n-leave" << endl;
+        cout << endl;
+        cout << "Please enter your next move..." << endl;
     }
+    
     }
     
   return 0;
@@ -153,7 +155,7 @@ int livingRoom()
   cout<< "You have now entered the living room there is a leather sofa, a dusty table and a huge window" << endl;
   sleep(1);
   cout << endl;
-  cout << "Please enter your next move..." << endl;
+  cout<<"Please enter your next move..."<<endl;
   
   while (leaveRoom == false)
   {
@@ -197,7 +199,13 @@ int livingRoom()
     }
     else 
     {
-      cout << "Sorry I don't understand what you are saying" << endl;
+        cout << endl;
+        cout << "Sorry that isn't an option!" << endl;
+        cout << endl;
+        cout << "**Living room options available**" << endl;
+        cout << "-on the sofa \n-under the sofa \n-on the table \n-under the table \n-on the window \n-leave" << endl;
+        cout << endl;
+        cout << "Please enter your next move..." << endl;
     }
   }
 }
@@ -212,7 +220,7 @@ int diningRoom()
     cout<<"There is a dusty bookshelf on the right-hand side along with an old dish washer. "<<endl;
     sleep(1);
     cout << endl;
-    cout << "Please enter your next move..." << endl;
+    cout<<"Please enter your next move..."<<endl;
     
   while (leaveRoom==false)
   {
@@ -222,37 +230,37 @@ int diningRoom()
             
     if (diningMove.find("ON THE TABLE") != string::npos)  
     {
-      cout<<"The key is not on the table"<< endl;
+      cout<<"The key is not on the table"<<'\n';
       global ++;
     }
     else if (diningMove.find("ON THE CHAIRS") != string::npos|| diningMove.find("ON THE CHAIR")!=string::npos)  
     { 
-      cout<<"The key is not on the chair(s)"<< endl;
+      cout<<"The key is not on the chair(s)"<<'\n';
       global ++;
     }
     else if (diningMove.find("UNDER THE TABLE") != string::npos)  
     {
-      cout<<"The key is not under the table."<< endl;
+      cout<<"The key is not under the table."<<'\n';
       global ++;
     }
     else if (diningMove.find("IN THE BOOKSHELF") != string::npos)  
     {
-      cout<<"The key is not in the bookshelf"<< endl;
+      cout<<"The key is not in the bookshelf"<<'\n';
       global ++;
     }
-    else if (diningMove.find("INSIDE THE DISH WASHER") != string::npos)  
+    else if (diningMove.find("ON THE DISH WASHER") != string::npos || diningMove.find("ON THE DISHWASHER") != string::npos)  
     {
-      cout<<"The key is not inside the dish washer"<< endl;
+      cout<<"The key is not inside the dish washer"<<'\n';
       global ++;
     }
-    else if (diningMove.find("ON THE DISH WASHER") != string::npos || diningMove.find("ON TOP OF THE OVEN")!=string::npos)  
+    else if (diningMove.find("INSIDE THE DISHWASHER") != string::npos || diningMove.find("INSIDE THE DISH WASHER")!=string::npos)  
     { 
-      cout<<"The key is not on the dish washer"<< endl;
+      cout<<"The key is not on the dish washer"<<'\n';
       global ++;
     }
     else if (diningMove.find("LEAVE") != string::npos|| diningMove.find("EXIT")!=string::npos)  
     {
-      cout<<"You have now left the dining room"<< endl;
+      cout<<"You have now left the dining room"<<'\n';
       global ++;
       system("clear");
       mainRoom();
@@ -261,7 +269,13 @@ int diningRoom()
     }
     else 
     {
-      cout<<"Sorry I don't understand what you are saying"<<endl;
+        cout << endl;
+        cout << "Sorry that isn't an option!" << endl;
+        cout << endl;
+        cout << "**Dining room options available**" << endl;
+        cout << "-on the table \n-on the chairs \n-under the table \n-under the table \n-in the bookshelf \n-inside the dish washer \n-on the dish washer \n-leave" << endl;
+        cout << endl;
+        cout << "Please enter your next move..." << endl;
     }
   }
 }
@@ -271,9 +285,9 @@ int bedRoom()
   string bedroomMove;
   bool leaveroom = false;
   cout << "**Bedroom**" << endl;
-  cout << "You are now in the bedroom. There is a bed, window, a massive wardrobe and a vintage oak trunk."<<'\n';
+  cout << "You are now in the bedroom. There is a bed, massive wardrobe and a vintage oak trunk."<<'\n';
   cout << endl;
-  cout << "Please enter your next move..." << endl;
+  cout<<"Please enter your next move..."<<endl;
   
   
   while (leaveroom==false)
@@ -292,12 +306,8 @@ int bedRoom()
       cout<<"The key is not under the bed"<<endl;
       global ++;
     }
-    else if(bedroomMove.find("WINDOW")!=string::npos)
-    {
-      cout<<"The key is not near the window"<<endl;
-      global ++;
-    }
-    else if(bedroomMove.find("IN THE TRUNK")!=string::npos || bedroomMove.find("INSIDE THE TRUNK")!=string::npos)
+    
+    else if(bedroomMove.find("IN THE TRUNK")!=string::npos)
     {
       system("clear");
       updateScoreSQL(global);
@@ -305,33 +315,30 @@ int bedRoom()
       return 0;
       break;
     }
-    else if (bedroomMove.find("ON THE TRUNK")!=string::npos)
-    {
-      cout<<"The key is not on the trunk"<<endl;
-      global ++;
-    }
-    else if (bedroomMove.find("ON THE WARDROBE")!=string::npos)
-    {
-      cout << "The key is not on the wardrobe" << endl;
-      global ++;
-    }
-    else if (bedroomMove.find("WARDROBE")!=string::npos)
-    {
-      cout << "The key is not inside the wardrobe" << endl;
-      global ++;
-    }
-    else if (bedroomMove.find("LEAVE")!=string::npos || bedroomMove.find("EXIT")!=string::npos)
-    {
-      cout<<"You have now left the bedroom"<<endl;
-      global ++;
-      system("clear");
-      upstairsHallway();
-      return 0;
-    }
-    else
-    {
-      cout << "Sorry i don't understand what you are saying" << endl;
-    }
+    
+     else if (bedroomMove.find("ON THE TRUNK")!=string::npos)
+     {
+       cout<<"The key is not on the trunk"<<endl;
+       global ++;
+     }
+     else if (bedroomMove.find("LEAVE")!=string::npos || bedroomMove.find("EXIT")!=string::npos)
+     {
+       cout<<"You have now left the first bedroom"<<endl;
+       global ++;
+       system("clear");
+       upstairsHallway();
+       return 0;
+     }
+     else
+     {
+        cout << endl;
+        cout << "Sorry that isn't an option!" << endl;
+        cout << endl;
+        cout << "**Bedroom options available**" << endl;
+        cout << "-on the bed \n-under the bed \n-on the trunk \n-in the trunk \n-leave" << endl;
+        cout << endl;
+        cout << "Please enter your next move..." << endl;
+     }
   }
 }
 
@@ -364,7 +371,13 @@ int upstairs()
     }
     else
     {
-      cout<<"Sorry i don't understand what you are saying"<<endl;
+        cout << endl;
+        cout << "Sorry that isn't an option!" << endl;
+        cout << endl;
+        cout << "**First floor options available**" << endl;
+        cout << "-bedroom \n-leave" << endl;
+        cout << endl;
+        cout << "Please enter your next move..." << endl;
     }
   }
 }
