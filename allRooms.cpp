@@ -61,7 +61,7 @@ void mainRoom()
   cout<<"The room directly ahead of you is the kitchen while the stairs are to your right"<<endl;
   sleep(1);
   cout << endl;
-  cout<<"Please choose your next move..."<<endl;
+  cout<<"Please enter your next move..."<<endl;
 }
 
 void upstairsHallway()
@@ -283,14 +283,14 @@ int diningRoom()
 int bedRoom()
 {
   string bedroomMove;
-  bool leaveroom = false;
+  bool leaveRoom = false;
   cout << "**Bedroom**" << endl;
   cout << "You are now in the bedroom. There is a bed, massive wardrobe and a vintage oak trunk."<<'\n';
   cout << endl;
   cout<<"Please enter your next move..."<<endl;
   
   
-  while (leaveroom==false)
+  while (leaveRoom==false)
   {
      if (getline(cin,bedroomMove))
            {transform(bedroomMove.begin(), bedroomMove.end(), bedroomMove.begin(), ptr_fun<int, int>(toupper));
