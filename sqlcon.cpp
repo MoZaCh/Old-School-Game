@@ -1,7 +1,7 @@
 #include <iostream>
 #include <limits>
 #include <unistd.h>
-//#include "game.cpp"
+#include "challengeGame.cpp"
 using namespace std;
 
 #include "libsqlite.hpp"
@@ -84,7 +84,7 @@ bool overWrite(string name)
     
     choice:
     
-  cout << "Would you like to overwrite? (Y/N)" << endl;
+    cout << "Would you like to overwrite? (Y/N)" << endl;
     cout << endl;
     
     
@@ -222,7 +222,7 @@ int sqlcon()
   while (nameUsed == true)
   {
     //string name;
-    cout <<"Enter Username: (NO SPACES!)" << endl;
+    cout <<"Enter Username: " << endl;
     cout << endl;
     cin >> name;
     bool ans = nameCheck(name, nameUsed);
@@ -236,7 +236,6 @@ int sqlcon()
   }
   
   id = selectID(name);
-  //cout << id << endl;
   
   while(true)
   {
@@ -249,20 +248,26 @@ int sqlcon()
     if (gameMode == 1)
     {
         system("clear");
-      cout << "Loading Story Mode..." << endl;
-      for (int i = 0; i <= 100; i+=10)
-      {
-        cout << i << "%" << endl;
-        sleep(1);
-      }
-      break;
+        cout << "Loading Story Mode..." << endl;
+        for (int i = 0; i <= 100; i+=10)
+        {
+            cout << i << "%" << endl;
+            sleep(1);
+        }
+        break;
     }
     else if (gameMode == 2)
     {
-        cout << endl;
-      cout << "Empty Currently" << endl;
-        cout << endl;
-      
+        system("clear");
+        cout << "Loading Challenge Mode..." << endl;
+        for (int i = 0; i <= 100; i+=10)
+        {
+            cout << i << "%" << endl;
+            sleep(1);
+        }
+        system("clear");
+        mainGame(id);
+        break;
     }
     else
     {
@@ -270,7 +275,6 @@ int sqlcon()
       cout << endl;
     }
   }
-  //printResults();
   system("clear");
   return id;
 }
