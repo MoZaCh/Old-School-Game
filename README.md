@@ -35,6 +35,8 @@ allRooms.cpp
 
 challengeGame.cpp
 
+to run code g++ --std=c++14 NCMenu.cpp -o NCMenu -lsqlite3 -lncurses
+
 -------------------------------------
 
 
