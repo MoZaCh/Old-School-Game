@@ -5,9 +5,14 @@
 #include "MergedClasses.cpp"
 #include <ncurses.h>
 #include "sqlcon.cpp"
+#include <curses.h>
 #include "Inventory.cpp"
+#include "Combat.cpp"
+#include "Finish.cpp"
+
 
 using namespace std;
+
 
 
 int path()
@@ -675,10 +680,27 @@ cout << "You seem to not be able to remember much but you do gather your name." 
         
     }
     
+    cout << "You start to explore the forest around the surrounding area, you cant see anything but trees and shurb.\n" << endl;
+    sleep(3);
+    cout << "You start to hear a something up ahead, it sounds close to a person!" << endl;
+    sleep(3);
+    cout << "Maybe they can tell you where you would be and even if your lucky can tell you how you even got here!" << endl;
+    sleep (2);
     
     cout << endl;
-    cout << "TEST" << endl; // TEST!
-    cout << endl;
+    
+    combat();
+    
+    cout << "You Manage to Defeat the enemy and see the aura that was shrouding them disappear and fly away in the distance." << endl;
+    sleep(2);
+    cout << "You decide to search the persons body for anything \nYou find a not on the body. It seems to be some type of coordinate." << endl;
+    sleep(2);
+    cout << "Maybe this can can be some type of clue, but you have nothing else to go on." << endl;
+    sleep(2);
+    cout << "You can only hope this location would be the place youll be able to find the answers you need..." << endl;
+    sleep(3);
+ 
+    finish();
     
         return 0;
 }
