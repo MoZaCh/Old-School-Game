@@ -21,7 +21,7 @@ void updateClassSQL(string classType, int userId)
 }
 
 
-class SpellClasses
+class SuperClass
 {
 // private variables are only available to methods in the class
 private:
@@ -47,15 +47,15 @@ public:
   	void setEquip(string eq){ equip = eq; }
  
 	// Declare the constructor
-	SpellClasses(int, int, int, int, string);
+	SuperClass(int, int, int, int, string);
  
  
-	// This method will be called by every class that inherits from SpellClasses
+	// This method will be called by every class that inherits from SuperClass
 	void toString(); 
  
 };
 
-void SpellClasses::toString(){
+void SuperClass::toString(){
  
 	// Because the attributes were private in SpellClasses they 
 	// must be retrieved by called the get methods
@@ -70,7 +70,7 @@ void SpellClasses::toString(){
 
  
 // A constructor is called when an object is created
-SpellClasses::SpellClasses(int health, int attack, int defence,
+SuperClass::SuperClass(int health, int attack, int defence,
                            int mana, string equip) {
   
   // This is used to refer to an object created of this class type
@@ -84,7 +84,7 @@ SpellClasses::SpellClasses(int health, int attack, int defence,
 
  
 // We can inherit the variables and methods of other classes
-class Mage : public SpellClasses{
+class Mage : public SuperClass{
  
 	private:
 		string greeting = "Class Mage Picked!\n";
@@ -105,13 +105,13 @@ class Mage : public SpellClasses{
 // Mage constructor passes the right attributes to the superclass constructor
 Mage::Mage(int health, int attack, int defence, int mana, 
          string equip) : 
-SpellClasses(health, attack, defence, mana, equip){
+SuperClass(health, attack, defence, mana, equip){
  
 	this -> greeting = greeting;
  
 }
 
-class Priest : public SpellClasses{
+class Priest : public SuperClass{
   private:
      string greeting = "Class Priest Picked!\n";
   
@@ -126,13 +126,13 @@ class Priest : public SpellClasses{
 // Priest constructor passes the right attributes to the superclass constructor
 Priest::Priest(int health, int attack, int defence, int mana, 
          string equip) : 
-SpellClasses(health, attack, defence, mana, equip){
+SuperClass(health, attack, defence, mana, equip){
  
 	this -> greeting = greeting;
  
 }
 
-class Necromancer : public SpellClasses{
+class Necromancer : public SuperClass{
   private:
      string greeting = "Class Necromancer Picked!\n";
      //DO NOT FORGET TO SWITCH MANA WITH HEALTH-USING LATER
@@ -147,12 +147,12 @@ class Necromancer : public SpellClasses{
 // Necromancer constructor passes the right attributes to the superclass constructor
 Necromancer::Necromancer(int health, int attack, int defence, int mana, 
          string equip) : 
-SpellClasses(health, attack, defence, mana, equip){
+SuperClass(health, attack, defence, mana, equip){
  
 	this -> greeting = greeting;
 }
 
-class Warrior : public SpellClasses{
+class Warrior : public SuperClass{
  
   private:
     string greeting = "Class Warrior Picked!\n";
@@ -167,13 +167,13 @@ class Warrior : public SpellClasses{
 
 Warrior::Warrior(int health, int attack, int defence, int mana, 
          string equip):
-  SpellClasses(health, attack, defence, mana, equip){
+  SuperClass(health, attack, defence, mana, equip){
     
     this-> greeting=greeting;
     
   }
 
-class Hunter : public SpellClasses{
+class Hunter : public SuperClass{
   
   private:
     string greeting= "Class Hunter Picked!\n";
@@ -186,7 +186,7 @@ class Hunter : public SpellClasses{
 
 Hunter::Hunter(int health, int attack, int defence, int mana, 
          string equip):
-  SpellClasses(health, attack, defence, mana, equip){
+  SuperClass(health, attack, defence, mana, equip){
     
     this->greeting=greeting;
   }
