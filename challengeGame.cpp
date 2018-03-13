@@ -45,21 +45,21 @@ int mainGame(int userId)
       {
         transform(firstMove.begin(), firstMove.end(), firstMove.begin(), ptr_fun<int, int>(toupper));   
       }
-        if (firstMove.find("FRONT ROOM") != string::npos)  
+        if (firstMove.find("FRONT ROOM") != string::npos || firstMove.find("FRONTROOM") != string::npos)  
         {
           global ++;
           system("clear");
           frontRoom();
         }
         
-        else if (firstMove.find("LIVING ROOM") != string::npos)//;
+        else if (firstMove.find("LIVING ROOM") != string::npos || firstMove.find("LIVINGROOM") != string::npos)
         {
           global ++;
           system("clear");
           livingRoom();    
         }
         
-        else if (firstMove.find("DINING ROOM")!=string::npos)
+        else if (firstMove.find("DINING ROOM")!=string::npos || firstMove.find("DININGROOM") != string::npos)
         {
            global ++;
            system("clear");
@@ -91,7 +91,13 @@ int mainGame(int userId)
         }
         else 
         {
-            cout << "Sorry i didn't get that!" << endl;         
+            cout << endl;
+            cout << "Sorry that isn't an option!" << endl;
+            cout << endl;
+            cout << "**Options available**" << endl;
+            cout << "-living room \n-front room \n-dining room \n-go to the stairs \n-upstairs" << endl;
+            cout << endl;
+            cout << "Please enter your next move..." << endl;
         }
       
     }
