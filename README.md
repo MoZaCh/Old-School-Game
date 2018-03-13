@@ -29,6 +29,12 @@ NCMenu.cpp
 
 Credits.cpp
 
+common.h
+
+allRooms.cpp
+
+challengeGame.cpp
+
 -------------------------------------
 
 
