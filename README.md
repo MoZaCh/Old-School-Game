@@ -4,6 +4,32 @@
 
 # REMEMBER TO MAKE SURE THE FILES ARE NAMED THE SAME AS IN THE CODE
 
+# Files Needed To Run
+
+Paths.cpp
+
+Finish.cpp
+
+Inventory.cpp
+
+Combat.cpp
+
+MergedClasses.cpp
+
+EnemyClasses.cpp
+
+sqlcon.cpp
+
+libsqlite.hpp
+
+testdb.db
+
+NCMenu.cpp
+
+Credits.cpp
+
+-------------------------------------
+
 
 To Install ncurses: (Needed For Main Menu)
 ------
