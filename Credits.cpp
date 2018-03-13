@@ -83,6 +83,7 @@ int credits()
     }
     else
     {
+        endwin();
         system("clear");
         clear();
         return 0;
