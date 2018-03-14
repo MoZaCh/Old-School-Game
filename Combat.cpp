@@ -193,6 +193,13 @@ auto castLuckyBlink = [=,&enemyHealth, &mageMana]()
   mageMana-=180;
 };
   
+auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
+{
+  cout<< "Frosbolt dealt "<< FrostboltDmg<< " damage.\n"<<endl;
+  enemyHealth-=FrostboltDmg;
+  mageMana-=250;
+};
+  
  cout << endl;
   
  cout<< "You start to Run towards the source of the sound that you are hearing in some hope for some answers" << endl;
@@ -261,9 +268,7 @@ auto castLuckyBlink = [=,&enemyHealth, &mageMana]()
              spellReflection();
          }
          else{
-             mageMana-=250;
-             cout<< "Frosbolt dealt "<< FrostboltDmg<< " damage.\n"<<endl;
-             enemyHealth-=FrostboltDmg;
+             castFrostbolt();
            }      
      }
         
