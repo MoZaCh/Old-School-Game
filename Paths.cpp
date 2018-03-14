@@ -9,14 +9,38 @@
 #include "Inventory.cpp"
 #include "Combat.cpp"
 #include "Finish.cpp"
-
+#include "libsqlite.hpp"
 
 using namespace std;
 
 
 
+  bool insertCharNameSQL(string name)
+{
+  try
+  {
+    sqlite::sqlite db("testdb.db"); //Connecting to Database
+    auto cur = db.get_statement(); //Creates a cursor on this connection
+  
+    cur->set_sql("INSERT INTO Paths (CharacterName) "
+                 "VALUES (?);"); //sql command
+    cur->prepare(); //Sends to database
+    cur->bind(1, name);
+    cur->step();
+  }
+  
+  catch (sqlite::exception e)
+  {
+    cerr << e.what() << endl;
+    return 1;
+  }
+  return 0;
+}
+
 int path()
 {
+	
+
     
     ofstream myfile; //Creates txt doc of class chosen
               myfile.open ("Items.txt");
@@ -42,6 +66,13 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     
      cout << "Please enter your Character Name: (NO SPACES)" << endl; //Asks user for what their name would be
         cin >> name; //Input
+    
+    
+    
+    insertCharNameSQL(name);//Adds to DataBase
+    
+    
+    
     
     confirmCheck: //Loop Thingy
     cout << endl;
@@ -689,7 +720,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     
     cout << endl;
     
-    combat();
+    combat(); // Runs Combat
     
     cout << "You Manage to Defeat the enemy and see the aura that was shrouding them disappear and fly away in the distance." << endl;
     sleep(2);
@@ -700,7 +731,7 @@ cout << "You seem to not be able to remember much but you do gather your name." 
     cout << "You can only hope this location would be the place youll be able to find the answers you need..." << endl;
     sleep(3);
  
-    finish();
+    finish(); //Runs End Game Screen
     
         return 0;
 }
