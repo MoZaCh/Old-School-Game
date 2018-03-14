@@ -1,27 +1,26 @@
 #include <iostream>
 #include <limits>
 #include <unistd.h>
-
-///Makesure to include the line below in your .cpp file////
+#include "Combat.cpp"
 #include "libsqlite.hpp"
 
 using namespace std;
 
-////FOR INSERTING DATA INTO THE DATABASE
+////INSERTING DATA INTO DATABASE
 bool insertNameSQLAlex()
 {
   string name = "test1";
-  int storyScore = 0;
+  if(storyScore <= 0) storyScore = 0;
   try
   {
-    sqlite::sqlite db("testdb.db"); //Connecting to Database
-    auto cur = db.get_statement(); //Creates a cursor on this connection
+    sqlite::sqlite db("testdb.db"); //connecting to the database
+    auto cur = db.get_statement(); //creating a cursor
   
     cur->set_sql("INSERT INTO StoryScore (name, storyScore) "
-                 "VALUES (?, ?);"); //sql command
-    cur->prepare(); //Sends to database
-    cur->bind(1, name);
-    cur->bind(2, storyScore);
+                 "VALUES (?, ?);"); //creates a table and adds values
+    cur->prepare(); //Sends the data to the database
+    cur->bind(1, name);//binding placeholder nr1 to the name variable
+    cur->bind(2, storyScore);//binding placeholder nr2 to the score variable
     cur->step();
   }
   
@@ -33,15 +32,15 @@ bool insertNameSQLAlex()
   return 0;
 }
 
-//PRINTING ALL RESULTS FROM THE DATABASE
+////DATABASE TABLE PRINT FUNCTION
 void printResults()
 {
-  sqlite::sqlite db( "testdb.db" ); //Opens the connection
-  auto cur = db.get_statement(); //Creates a cursor on this connection
+  sqlite::sqlite db( "testdb.db" );
+  auto cur = db.get_statement(); 
   
   cur->set_sql("select *"
-               "from StoryScore"); //SQL command
-  cur->prepare(); //Sends to database
+               "from StoryScore"); //selects the table in order to print out the results
+  cur->prepare(); 
 
   
   while(cur->step())
