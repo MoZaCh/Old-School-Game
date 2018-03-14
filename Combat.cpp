@@ -36,7 +36,7 @@ int mageDefeated(){
              {
                  system("clear");
                  cout << "You have exited the game!" << endl;
-                 return 0;
+                 return (0);
              }
              else if (choice3 == "N" || choice3 == "n")
                  system("clear");
@@ -68,7 +68,7 @@ int enemyDefeated(){
              {
                  system("clear");
                  cout << "You have exited the game!" << endl;
-                 return 0;
+                 return (0);
              }
              else if (choice3 == "N" || choice3 == "n")
                  system("clear");
@@ -84,7 +84,8 @@ void mageExecuted(){
           cout<<"Your health was too low, enemy has executed you."<<endl;
 }
   
-int main(){
+int main()
+{
  Mage mageObj(1200,500,150,1500,"Staff");
   Enemy enemyObj(2000,400,500,"Axe");
   
