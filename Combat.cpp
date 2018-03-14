@@ -15,70 +15,6 @@ int randomNumber(){
     uniform_int_distribution<> dis(1,100); // random numbers between 1-100
     return dis(gen);
 }
-int mageDefeated(){
-          game:
-          cout<<"You have been defeated by the enemy!\n"<<endl;
-          cout<<"Do you wish to go back to the Main Menu? (Y/N): ";
-          string choice2;
-          cin>>choice2;
-          if (choice2 == "y" || choice2 == "Y")
-          {
-            system("clear");
-            system("g++ --std=c++14 NCMenu.cpp -o NCMenu -lncurses -lsqlite3 && ./NCMenu");
-          }
-         else if (choice2 == "n" || choice2 == "N")
-         {
-             cout << "\nThis will close the game." << endl; 
-             cout << "Are you sure that you would want to do this? (Y/N)" << endl;
-             string choice3;
-             cin >> choice3;
-             if (choice3 == "Y" || choice3 == "y")
-             {
-                 system("clear");
-                 cout << "You have exited the game!" << endl;
-                 return (0);
-             }
-             else if (choice3 == "N" || choice3 == "n")
-                 system("clear");
-                 goto game;
-         }
-           else{
-            system("clear");
-               goto game;
-          } 
-}
-int enemyDefeated(){
-          Game:
-          cout<<"You have successfully killed your enemy!\n"<<endl;
-          cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
-          string choice2;
-          cin>>choice2;
-          if (choice2 == "y" || choice2 == "Y")
-          {
-            system("clear");
-            
-          }
-          else if (choice2 == "n" || choice2 == "N")
-          {
-             cout << "\nThis will close the game." << endl; 
-             cout << "Are you sure that you would want to do this? (Y/N)" << endl;
-             string choice3;
-             cin >> choice3;
-             if (choice3 == "Y" || choice3 == "y")
-             {
-                 system("clear");
-                 cout << "You have exited the game!" << endl;
-                 return (0);
-             }
-             else if (choice3 == "N" || choice3 == "n")
-                 system("clear");
-                 goto Game;
-         }
-          else{
-              system("clear");
-              goto Game;
-          } 
-}
 
 void mageExecuted(){
           cout<<"Your health was too low, enemy has executed you."<<endl;
@@ -115,6 +51,78 @@ int combat(){
  int FrostboltDmg = mageAttack - reduceEnemyDamage; 
  //will be used to prevent using DeepFreeze twice a row
  int deepFreezeCounter = 2;
+    
+ auto enemyDefeated = [=](){
+          Game:
+          SQL(mageHealth, mageMana, enemyHealth);
+          cout<<"You have successfully killed your enemy!\n"<<endl;
+          cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
+          string choice2;
+          cin>>choice2;
+          if (choice2 == "y" || choice2 == "Y")
+          {
+            system("clear");
+            cout<<"here will be function to jump somewhere in the game"<<endl;
+          }
+          else if (choice2 == "n" || choice2 == "N")
+          {
+             cout << "\nThis will close the game." << endl; 
+             cout << "Are you sure that you would want to do this? (Y/N)" <<
+                     endl;
+             string choice3;
+             cin >> choice3;
+             if (choice3 == "Y" || choice3 == "y")
+             {
+                 system("clear");
+                 cout << "You have exited the game!" << endl;
+                 return 0;
+             }
+             else if (choice3 == "N" || choice3 == "n")
+                 system("clear");
+                 goto Game;
+         }
+          else{
+              system("clear");
+              goto Game;
+          } 
+};
+
+  
+ auto mageDefeated = [=](){
+          game:
+          SQL(mageHealth, mageMana, enemyHealth);
+        //  SQL();
+          cout<<"You have been defeated by the enemy!\n"<<endl;
+          cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
+          string choice2;
+          cin>>choice2;
+          if (choice2 == "y" || choice2 == "Y"){
+            system("clear");
+            cout<<"here will be function to jump somewhere in the game"<<endl;
+            }
+         else if (choice2 == "n" || choice2 == "N")
+         {
+             cout << "\nThis will close the game." << endl; 
+             cout << "Are you sure that you would want to do this? (Y/N)" <<
+                     endl;
+             string choice3;
+             cin >> choice3;
+             if (choice3 == "Y" || choice3 == "y")
+             {
+                 system("clear");
+                 cout << "You have exited the game!" << endl;
+                 return 0;
+             }
+             else if (choice3 == "N" || choice3 == "n")
+                 system("clear");
+                 goto game;
+         }
+           else{
+            system("clear");
+               goto game;
+          } 
+};
+
   
  auto spellReflection = [&]()
  {
