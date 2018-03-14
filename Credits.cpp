@@ -78,6 +78,7 @@ int credits()
     
     if(choice[highlight] == "{Yes}")
     {
+        endwin();
         clear();
         system("g++ --std=c++11 NCMenu.cpp -o NCMenu -lncurses -lsqlite3 && ./NCMenu");
     }
