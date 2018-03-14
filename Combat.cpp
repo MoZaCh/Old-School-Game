@@ -36,7 +36,7 @@ int mageDefeated(){
              {
                  system("clear");
                  cout << "You have exited the game!" << endl;
-                 return 0;
+                 return (0);
              }
              else if (choice3 == "N" || choice3 == "n")
                  system("clear");
@@ -68,7 +68,7 @@ int enemyDefeated(){
              {
                  system("clear");
                  cout << "You have exited the game!" << endl;
-                 return 0;
+                 return (0);
              }
              else if (choice3 == "N" || choice3 == "n")
                  system("clear");
