@@ -36,7 +36,7 @@ int mageDefeated(){
              {
                  system("clear");
                  cout << "You have exited the game!" << endl;
-                 return (0);
+                 return 0;
              }
              else if (choice3 == "N" || choice3 == "n")
                  system("clear");
@@ -68,7 +68,7 @@ int enemyDefeated(){
              {
                  system("clear");
                  cout << "You have exited the game!" << endl;
-                 return (0);
+                 return 0;
              }
              else if (choice3 == "N" || choice3 == "n")
                  system("clear");
@@ -84,8 +84,7 @@ void mageExecuted(){
           cout<<"Your health was too low, enemy has executed you."<<endl;
 }
   
-int combat()
-{
+int combat(){
  Mage mageObj(1200,500,150,1500,"Staff");
   Enemy enemyObj(2000,400,500,"Axe");
   
@@ -117,6 +116,15 @@ int combat()
  //will be used to prevent using DeepFreeze twice a row
  int deepFreezeCounter = 2;
   
+ auto spellReflection = [&]()
+ {
+   cout<<"Enemy reflected your spell. \nYou suffered "<<
+          FrostboltDmg<<" damage\n"<<endl;
+   mageHealth-= FrostboltDmg;
+   mageMana-=250;
+   reflectCounter++;
+ };
+  
  auto outOfMana = [&]()
  {
    cout<<"You have not enough mana for this spell."<<endl;
@@ -139,7 +147,7 @@ int combat()
  };
   
   
-auto enemyRange = [&]()
+auto enemyRange = [=,&mageHealth]()
 {
   cout<<"Enemy is too close to you, he swung his weapon and dealt "<< 
         (enemyAttack-reduceMageDamage)<< " damage."<<endl;
@@ -150,9 +158,39 @@ auto enemyRange = [&]()
 auto enemyCharge = [&]()
 {
   cout<<"Enemy immediately charged on to you. You suffered "<<
-     enemyAttack -reduceMageDamage<<" damage\n"<<endl;
+      enemyAttack-reduceMageDamage<<" damage\n"<<endl;
   mageHealth -= enemyAttack-reduceMageDamage;
   enemyDistance++;
+  deepFreezeCounter++;
+};
+  
+auto mageExecuted = [&mageHealth]()
+{
+       cout<<"Your health was too low, enemy has executed you."<<endl;
+       mageHealth=0;
+};
+  
+auto castDeepFreeze = [&]()
+{
+           cout<< "The enemy is stunned and you instantly casted Frostbolt"<<
+              " which dealt "<< FrostboltDmg<< " damage.\n"<<endl;
+           deepFreezeCounter++;
+           enemyHealth -=FrostboltDmg;
+           enemyDistance =0;
+           mageMana -= 300;
+};
+  
+auto castBlink = [&mageMana]()
+{
+   cout<< "You blinked away from the enemy but the fight's not over yet!\n"<<endl;
+   mageMana-=180;
+};
+  
+auto castLuckyBlink = [=,&enemyHealth, &mageMana]()
+{
+  cout<< "You blinked away from the enemy and luckily casted an instant frostbolt. \n\nDamage dealt to enemy: "<<FrostboltDmg<< "\n\nNonetheless, act quickly"<<"'cause he is getting closer!\n"<<endl;
+  enemyHealth -= FrostboltDmg;
+  mageMana-=180;
 };
   
  cout << endl;
@@ -185,7 +223,7 @@ auto enemyCharge = [&]()
  cout<<"-------------------LET THE BATTLE BEGIN!!!-------------------\n"<<endl;
   
   
-  Start: // start of each combat round
+   Start: // start of each combat round
   mageObj.spells();
   
   cout<< "\nYour health: "<<mageHealth<< "\nMana: "<< mageMana<<endl;
@@ -194,48 +232,39 @@ auto enemyCharge = [&]()
   int choice;
   randomN = randomNumber();
   cin>>choice;
-    cout << endl;
+  cout << endl;
   
   
     switch (choice){
     
-  case 1:  //Frostbolt  
-       
+  case 1:  //Frostbolt     
        enemyDistance++;
        deepFreezeCounter=2;
         
-       if (mageMana<250)
+     if (mageMana<250)
        {
          outOfMana();
        }
      else{
-      
-      
-         
-       if(enemyDistance<2){
-          cout<<"Enemy's getting closer, you should use blink to get further away from him!\n"<<endl;
-        }
-       else if(enemyDistance>=2){
-              enemyRange(); 
-         if (mageHealth<mageExecution){
-             mageExecuted();
-             mageHealth=0;
-        }
-       }
-        
+               
+         if(enemyDistance<2){
+            cout<<"Enemy's getting closer, you should use blink to get further away from him!\n"<<endl;
+          }
+         else if(enemyDistance>=2){
+                enemyRange(); 
+             if (mageHealth<mageExecution){
+                 mageExecuted();           
+              }
+         }
              
-       if (randomN>60 && reflectCounter<=1 ){
-           mageMana-=250;
-           mageHealth-= FrostboltDmg;
-           cout<<"Enemy reflected your spell. \nYou suffered "<<
-                             FrostboltDmg<<" damage\n"<<endl;
-           reflectCounter++;
-       }
-       else{
-         mageMana-=250;
-         cout<< "Frosbolt dealt "<< FrostboltDmg<< " damage.\n"<<endl;
-         enemyHealth-=FrostboltDmg;
-       }      
+         if (randomN>60 && reflectCounter<=1 ){   
+             spellReflection();
+         }
+         else{
+             mageMana-=250;
+             cout<< "Frosbolt dealt "<< FrostboltDmg<< " damage.\n"<<endl;
+             enemyHealth-=FrostboltDmg;
+           }      
      }
         
        if(enemyHealth<=0){
@@ -249,8 +278,7 @@ auto enemyCharge = [&]()
       
          goto Start;       
   
-  case 2: //Blink
-        
+  case 2: //Blink 
         enemyDistance=0;
         deepFreezeCounter=2;
          
@@ -260,38 +288,31 @@ auto enemyCharge = [&]()
        }
         
         else{
-         if (randomN>70){
-            enemyCharge();
-            mageMana-=180;
-            
-           
-             if (mageHealth<mageExecution){
-                mageExecuted();
-                mageHealth=0;          
-        }    
-         }
+           if (randomN>70){
+              enemyCharge();
+              mageMana-=180;
+               if (mageHealth<mageExecution){
+                  mageExecuted();         
+                  }    
+               }
         
-        else if (randomN>30){
-          cout<< "You blinked away from the enemy and luckily casted an instant frostbolt. \n\nDamage dealt to enemy: "<<FrostboltDmg<< "\n\nNonetheless, act quickly"<< 
-            "'cause he is getting closer!\n"<<endl;
-          enemyHealth -= FrostboltDmg;
-          mageMana-=180;
-        }
-        else{
-          cout<< "You blinked away from the enemy but the fight's not over yet!\n"<<endl;
-          mageMana-=180;
-        }
+            else if (randomN>30){
+              castLuckyBlink();
+            }
+            else{
+              castBlink();
+            }
         }
         
         
-         if(enemyHealth<=0){
-         enemyDefeated();
-         break;
+       if(enemyHealth<=0){
+           enemyDefeated();
+           break;
         }
         
         else if(mageHealth<=0){
-         mageDefeated();
-          break;
+           mageDefeated();
+           break;
         }
        goto Start;
         
@@ -307,37 +328,26 @@ auto enemyCharge = [&]()
        }
         
         else{
-        if (deepFreezeCounter%2 == 0){
-           mageMana -= 300;
-           enemyDistance =0;
-           cout<< "The enemy is stunned and you instantly casted Frostbolt"<<
-              " which dealt "<< FrostboltDmg<< " damage.\n"<<endl;
-           deepFreezeCounter++;
-           enemyHealth -=FrostboltDmg;
-          
-        }
-       
-        
-         else{
-              mageHealth -= enemyAttack-reduceMageDamage;
-              cout<< "You cannot use DeepFreeze this round!\n"<<endl;
-              enemyCharge();
-              deepFreezeCounter++;
+            if (deepFreezeCounter%2 == 0){          
+                castDeepFreeze();
+              }
+ 
+            else{
+                cout<< "You cannot use DeepFreeze this round!\n"<<endl;
+                enemyCharge();
               if (mageHealth<mageExecution){
-                mageExecuted();
-                mageHealth=0;
-                
-            }
+                  mageExecuted();       
+                  }
+              }
           }
-        }
          
         
-         if(enemyHealth<=0){
+       if(enemyHealth<=0){
           enemyDefeated();  
-           break;
+          break;
         }
         
-        else if(mageHealth<=0){
+       else if(mageHealth<=0){
           mageDefeated();
           break;
         }            
