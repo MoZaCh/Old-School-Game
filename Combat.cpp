@@ -244,7 +244,7 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
   cout<< "\nYour health: "<<mageHealth<< "\nMana: "<< mageMana<<endl;
   cout<< "Enemy's health: "<<enemyHealth<<endl;
   cout<<"\nChoice: ";
-  int choice;
+  char choice;
   randomN = randomNumber();
   cin>>choice;
   cout << endl;
@@ -252,7 +252,7 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
   
     switch (choice){
     
-  case 1:  //Frostbolt     
+  case '1':  //Frostbolt     
        enemyDistance++;
        deepFreezeCounter=2;
         
@@ -291,7 +291,7 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
       
          goto Start;       
   
-  case 2: //Blink 
+  case '2': //Blink 
         enemyDistance=0;
         deepFreezeCounter=2;
          
@@ -330,7 +330,7 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
        goto Start;
         
   
-  case 3://DeepFreeze
+  case '3'://DeepFreeze
         
         
          
