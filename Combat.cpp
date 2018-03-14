@@ -84,7 +84,7 @@ void mageExecuted(){
           cout<<"Your health was too low, enemy has executed you."<<endl;
 }
   
-int main()
+int combat()
 {
  Mage mageObj(1200,500,150,1500,"Staff");
   Enemy enemyObj(2000,400,500,"Axe");
