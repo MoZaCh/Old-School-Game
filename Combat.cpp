@@ -3,12 +3,13 @@
 #include <unistd.h>
 #include "EnemyClass.cpp"
 #include "MergedClasses.cpp"
+#include "SQLCombat.cpp"
 #include <random>
 //#pragma once
 
 
 using namespace std;
-
+int storyScore = 0;
 int randomNumber(){                       
     random_device rd;  //Will be used to obtain a seed for the random number engine
     mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
@@ -24,7 +25,7 @@ int combat(){
  Mage mageObj(1200,500,150,1500,"Staff");
   Enemy enemyObj(2000,400,500,"Axe");
   
- 
+  
   
   int randomN;
   
@@ -55,6 +56,7 @@ int combat(){
  auto enemyDefeated = [=](){
           Game:
           SQL(mageHealth, mageMana, enemyHealth);
+          storyScore +=20;
           cout<<"You have successfully killed your enemy!\n"<<endl;
           cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
           string choice2;
@@ -92,6 +94,7 @@ int combat(){
           game:
           SQL(mageHealth, mageMana, enemyHealth);
         //  SQL();
+          storyScore -= 15;
           cout<<"You have been defeated by the enemy!\n"<<endl;
           cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
           string choice2;
@@ -176,6 +179,7 @@ auto mageExecuted = [&mageHealth]()
 {
        cout<<"Your health was too low, enemy has executed you."<<endl;
        mageHealth=0;
+       storyScore -=15;
 };
   
 auto castDeepFreeze = [&]()
