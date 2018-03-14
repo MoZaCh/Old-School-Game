@@ -2,6 +2,7 @@
 #include <limits>
 #include <unistd.h>
 
+///Makesure to include the line below in your .cpp file////
 #include "libsqlite.hpp"
 
 using namespace std;
