@@ -27,7 +27,7 @@ bool insertNameSQL(string name)
     cur->step();
   }
   
-  catch (sqlite::exception e) //Catching the sqlerror to avoid the program to crash
+  catch (sqlite::exception e) //Catching the sql error to avoid program from crashing
   {
     cerr << e.what() << endl;
     return 1;
@@ -52,7 +52,7 @@ bool deleteSQLdata(string name)
     
   }
   
-  catch (sqlite::exception e) //Catching the sqlerror to avoid the program to crash
+  catch (sqlite::exception e) //Catching the sql error to avoid program from crashing
   {
     cerr << e.what() << endl;
     return 1;
@@ -191,7 +191,7 @@ int selectID(string name)
   
     return cur->get_int(0);
   }
-  catch (sqlite::exception e) //Catching the sqlerror to avoid the program to crash
+  catch (sqlite::exception e) //Catching the sql error to avoid program from crashing
   {
     cerr << e.what() << endl;
     return 1;
@@ -208,8 +208,8 @@ void updateNameSQL(string name, int id)
   cur->set_sql("UPDATE users SET username = (?)"
                "WHERE id = ?;"); //SQL command
   cur->prepare(); //Sends to database
-  cur->bind(1, name); //Binds the varialbe to the first question mark
-  cur->bind(2, id); //Binds the variable to the second question mark
+  cur->bind(1, name);
+  cur->bind(2, id);
   cur->step();
 }
 
@@ -220,7 +220,7 @@ int sqlcon()
   bool nameUsed = true;
   int gameMode, id;
   string name;
-  while (nameUsed == true) //Loops till a certain condition is met
+  while (nameUsed == true)
   {
     //string name;
     cout <<"Enter Username: (NO SPACES!)" << endl;
@@ -229,8 +229,8 @@ int sqlcon()
     bool ans = nameCheck(name, nameUsed);
     if (ans == false)
     {
-      deleteSQLdata(name); //Calls the deletefunction
-      insertNameSQL(name); //Calls the insert name function
+      deleteSQLdata(name);
+      insertNameSQL(name);
       break;
     }
           
@@ -238,7 +238,7 @@ int sqlcon()
   
   id = selectID(name);
   
-  while(true) //While loop till break is used
+  while(true)
   {
     cout << "**Please choose a game mode (1/2)**" << endl;
     cout << endl;
