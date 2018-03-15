@@ -45,7 +45,6 @@ int path()
     ofstream myfile; //Creates txt doc of class chosen
               myfile.open ("Items.txt");
               myfile << "Twig\n";
-              ;
               myfile.close();
   int userId = sqlcon();
     
