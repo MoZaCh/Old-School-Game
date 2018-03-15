@@ -6,19 +6,30 @@
 
 using namespace std;
 
+/*Function below coded by Mohammed Zahed Choudhury*/
 //Updata class type in DB
 void updateClassSQL(string classType, int userId)
 {
-  sqlite::sqlite db("testdb.db"); //Opens the connection
-  auto cur = db.get_statement(); //Creates a cursor on this connection
+  try 
+  {
+    sqlite::sqlite db("testdb.db"); //Opens the connection
+    auto cur = db.get_statement(); //Creates a cursor on this connection
   
-  cur->set_sql("UPDATE users SET class = (?) "
-               "WHERE id = ?;"); //SQL command
-  cur->prepare(); //Sends to database
-  cur->bind(1, classType);
-  cur->bind(2, userId);
-  cur->step();
+    cur->set_sql("UPDATE users SET class = (?) "
+                 "WHERE id = ?;"); //SQL command
+    cur->prepare(); //Sends to database
+    cur->bind(1, classType);
+    cur->bind(2, userId);
+    cur->step();
+  }
+  catch (sqlite::exception e) //Catching the sql error to avoid program from crashing
+  {
+    cerr << e.what() << endl;
+    return 1;
+  }
+  return 0;
 }
+/*End of code by Mohammed Zahed Choudhury*/
 
 
 class SuperClass
