@@ -1,2 +1,2 @@
-int global = 0;
-int userID;
+int global = 0; //Counting the moves(score)
+int userID; // userID 
