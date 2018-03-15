@@ -25,9 +25,9 @@ void updateClassSQL(string classType, int userId)
   catch (sqlite::exception e) //Catching the sql error to avoid program from crashing
   {
     cerr << e.what() << endl;
-    return 1;
+    return;
   }
-  return 0;
+  return;
 }
 /*End of code by Mohammed Zahed Choudhury*/
 
