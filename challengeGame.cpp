@@ -6,16 +6,16 @@
 #include "allRooms.cpp"
 using namespace std;
 
-bool ifKeyFound = false;
+bool ifKeyFound = false; //Key is not found 'false'
 
-bool key;
+//bool key;
 
 
 int mainGame(int userId)
 {  
     userID = userId; //importing username id from the database -sqlcon page
-    string firstMove;
-    bool ifKeyFound = false;
+    string firstMove;//first move string variable declared
+    //bool ifKeyFound = false;
     int begin = 1;
     
     cout << "***Instructions***" << endl;
@@ -39,9 +39,9 @@ int mainGame(int userId)
     cout << endl;
     
   
-    while (ifKeyFound == false)
+    while (ifKeyFound == false)  //While loop - keeps looping till a certain condition is met
     {
-      if (getline (cin, firstMove))
+      if (getline (cin, firstMove)) //stores the input into the variable 
       {
         transform(firstMove.begin(), firstMove.end(), firstMove.begin(), ptr_fun<int, int>(toupper));   
       }
@@ -95,7 +95,7 @@ int mainGame(int userId)
             cout << "Sorry that isn't an option!" << endl;
             cout << endl;
             cout << "**Options available**" << endl;
-            cout << "-living room \n-front room \n-dining room \n-go to the stairs \n-upstairs" << endl;
+            cout << "-living room \n-front room \n-dining room \n-go to the stairs \n-upstairs \n-end game" << endl;
             cout << endl;
             cout << "Please enter your next move..." << endl;
         }
