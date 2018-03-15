@@ -6,16 +6,15 @@
 #include "allRooms.cpp"
 using namespace std;
 
-bool ifKeyFound = false; //Key is not found 'false'
+/*Coded by Mohammed Zahed Choudhury START*/
 
-//bool key;
+bool ifKeyFound = false; //Key is not found 'false'
 
 
 int mainGame(int userId)
 {  
     userID = userId; //importing username id from the database -sqlcon page
     string firstMove;//first move string variable declared
-    //bool ifKeyFound = false;
     int begin = 1;
     
     cout << "***Instructions***" << endl;
@@ -29,11 +28,11 @@ int mainGame(int userId)
     cout << "***Objective***" << endl;
     cout << endl;
     cout<<"You are locked inside an ancient house and in order to escape you need to find the missing key."<<endl;
-    sleep(2);
+    sleep(2); //slowly prints the following message after 2 seconds
     cout<<"You are required to hunt through the rooms for the key..."<<endl;
-    sleep(3);
+    sleep(3); //slowly prints the following message after 3 seconds
     cout<<"You are standing in the centre, to the right is the living room and to the left is the front room."<<endl;
-    sleep(3);
+    sleep(3); //slowly prints the following message after 2 seconds
     cout<<"The stairs is slightly ahead of you and the room opposite you is the dining room."<<endl;
     sleep(1);
     cout << endl;
@@ -45,44 +44,44 @@ int mainGame(int userId)
       {
         transform(firstMove.begin(), firstMove.end(), firstMove.begin(), ptr_fun<int, int>(toupper));   
       }
-        if (firstMove.find("FRONT ROOM") != string::npos || firstMove.find("FRONTROOM") != string::npos)  
+        if (firstMove.find("FRONT ROOM") != string::npos || firstMove.find("FRONTROOM") != string::npos)  //Checks for keywords in the string variable  
         {
-          global ++;
-          system("clear");
+          global ++; //Adds 1 to the move counter
+          system("clear"); //Clears the terminal before calling the next function
           frontRoom();
         }
         
-        else if (firstMove.find("LIVING ROOM") != string::npos || firstMove.find("LIVINGROOM") != string::npos)
+        else if (firstMove.find("LIVING ROOM") != string::npos || firstMove.find("LIVINGROOM") != string::npos) //Checks for keywords in the string variable 
         {
-          global ++;
-          system("clear");
+          global ++; //Adds 1 to the move counter
+          system("clear"); //Clears the terminal before calling the next function
           livingRoom();    
         }
         
-        else if (firstMove.find("DINING ROOM")!=string::npos || firstMove.find("DININGROOM") != string::npos)
+        else if (firstMove.find("DINING ROOM")!=string::npos || firstMove.find("DININGROOM") != string::npos) //Checks for keywords in the string variable 
         {
-           global ++;
-           system("clear");
+           global ++; //Adds 1 to the move counter
+           system("clear"); //Clears the terminal before calling the next function
            diningRoom();
         }
         
-        else if( firstMove.find("GO TO THE STAIRS")!=string::npos)
+        else if( firstMove.find("GO TO THE STAIRS")!=string::npos) //Checks for keywords in the string variable 
         {
-           global ++;
-           system("clear");
+           global ++; //Adds 1 to the move counter
+           system("clear"); //Clears the terminal before calling the next function
            cout<<"You are now bottom of the stairs facing up"<<endl;
         }
         
-        else if (firstMove.find("UPSTAIRS")!=string::npos)
+        else if (firstMove.find("UPSTAIRS")!=string::npos) //Checks for keywords in the string variable 
         {
-            global ++;
-            system("clear");
+            global ++; //Adds 1 to the move counter
+            system("clear"); //Clears the terminal before calling the next function
             upstairs();
         }
-        else if (firstMove.find("END GAME")!=string::npos)
+        else if (firstMove.find("END GAME")!=string::npos) //Checks for keywords in the string variable 
         {
-            system("clear");
-            exit(0);
+            system("clear"); //Clears the terminal before exiting the game
+            exit(0); //Exits the game 
         }
         else if (begin == 1)
         {
@@ -104,3 +103,5 @@ int mainGame(int userId)
     
     return 0;
 }
+
+/*Coded by Mohammed Zahed Choudhury END*/
