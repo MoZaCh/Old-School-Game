@@ -6,6 +6,7 @@ using namespace std;
 
 #include "libsqlite.hpp"
 
+/*Coded by Mohammed Zahed Choudhury START*/
 
 //Insert into Function -- Name
 bool insertNameSQL(string name)
@@ -189,7 +190,7 @@ int selectID(string name)
     cur->bind(1, name); //Binds the name variable to the question mark
     cur->step();
   
-    return cur->get_int(0);
+    return cur->get_int(0); //Returns id number for the given username
   }
   catch (sqlite::exception e) //Catching the sql error to avoid program from crashing
   {
@@ -208,8 +209,8 @@ void updateNameSQL(string name, int id)
   cur->set_sql("UPDATE users SET username = (?)"
                "WHERE id = ?;"); //SQL command
   cur->prepare(); //Sends to database
-  cur->bind(1, name);
-  cur->bind(2, id);
+  cur->bind(1, name); //Binds the 'name variable to the first question mark above
+  cur->bind(2, id); //Binds the 'id' variable to the question mark above
   cur->step();
 }
 
@@ -220,7 +221,7 @@ int sqlcon()
   bool nameUsed = true;
   int gameMode, id;
   string name;
-  while (nameUsed == true)
+  while (nameUsed == true) //Loops until a specific condition is met
   {
     //string name;
     cout <<"Enter Username: (NO SPACES!)" << endl;
@@ -236,9 +237,9 @@ int sqlcon()
           
   }
   
-  id = selectID(name);
+  id = selectID(name); //Stores user id from database in id variable
   
-  while(true)
+  while(true) //Loops until a specific condition is met or the break keyword is used
   {
     cout << "**Please choose a game mode (1/2)**" << endl;
     cout << endl;
@@ -246,9 +247,9 @@ int sqlcon()
     cout << "2 - Challenge Mode" << endl;
     cin >> gameMode;
     
-    if (gameMode == 1)
+    if (gameMode == 1) //if statement if variable equals 1 then run this if statement 
     {
-        system("clear");
+        system("clear"); //Clears the terminal before calling the next function
         cout << "Loading Story Mode..." << endl;
         for (int i = 0; i <= 100; i+=10)
         {
@@ -257,16 +258,16 @@ int sqlcon()
         }
         break;
     }
-    else if (gameMode == 2)
+    else if (gameMode == 2) //if statement if variable equals 2 then run this else if statement 
     {
-        system("clear");
+        system("clear"); //Clears the terminal before calling the next function
         cout << "Loading Challenge Mode..." << endl;
         for (int i = 0; i <= 100; i+=10)
         {
             cout << i << "%" << endl;
             sleep(1);
         }
-        system("clear");
+        system("clear"); //Clears the terminal before calling the next function
         mainGame(id);
         break;
     }
@@ -276,6 +277,7 @@ int sqlcon()
       cout << endl;
     }
   }
-  system("clear");
-  return id;
+  system("clear"); //Clears the terminal before calling the next function
+  return id; //reuturns user id to paths.cpp 
 }
+/*Coded by Mohammed Zahed Choudhury END*/
