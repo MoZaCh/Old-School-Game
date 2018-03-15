@@ -12,7 +12,8 @@ bool insertNameSQL(string name)
 {
   string unknownClass = "unknown";
   int noScore = 0;
-  try
+  
+  try //try statement do this unless error occurs 
   {
     sqlite::sqlite db("testdb.db"); //Connecting to Database
     auto cur = db.get_statement(); //Creates a cursor on this connection
@@ -20,13 +21,13 @@ bool insertNameSQL(string name)
     cur->set_sql("INSERT INTO users (username, class, score) "
                  "VALUES (?, ?, ?);"); //sql command
     cur->prepare(); //Sends to database
-    cur->bind(1, name);
-    cur->bind(2, unknownClass);
-    cur->bind(3, noScore);
+    cur->bind(1, name); //Binds the 'name' varialbe to the first question mark
+    cur->bind(2, unknownClass); //Binds the 'unknownClass' variable to the second question mark 
+    cur->bind(3, noScore); //Binds the 'noScore' variable to the third question mark
     cur->step();
   }
   
-  catch (sqlite::exception e)
+  catch (sqlite::exception e) //Catching the sqlerror to avoid the program to crash
   {
     cerr << e.what() << endl;
     return 1;
@@ -37,7 +38,7 @@ bool insertNameSQL(string name)
 // SQL delete a username from the databate
 bool deleteSQLdata(string name)
 {
-  try
+  try //try statement do this unless error occurs 
   {
     sqlite::sqlite db("testdb.db"); //Connecting to Database
     auto cur = db.get_statement(); //Creates a cursor on this connection
@@ -51,7 +52,7 @@ bool deleteSQLdata(string name)
     
   }
   
-  catch (sqlite::exception e)
+  catch (sqlite::exception e) //Catching the sqlerror to avoid the program to crash
   {
     cerr << e.what() << endl;
     return 1;
@@ -70,7 +71,7 @@ void printResults()
   cur->prepare(); //Sends to database
 
   
-  while(cur->step())
+  while(cur->step()) //While loop printing out all the ids, usernames and class types that are already in the database
   {
     cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << " |class: " << cur->get_text(2) << endl;
   }
@@ -88,35 +89,35 @@ bool overWrite(string name)
     cout << endl;
     
     
-  cin >> writeAns;
+  cin >> writeAns; //Store input into variable
   
-  if (writeAns == "Y" || writeAns == "y")
+  if (writeAns == "Y" || writeAns == "y") //if conditions meet then run the code inside the if statement 
   {
-      cout << endl;
+    cout << endl;
     cout << "Overwrite Complete" << endl;
-      cout << endl;
+    cout << endl;
     sleep(2);
     cout << "Welcome " << name <<  "!!!!" << endl;
-      cout << endl;
-      sleep(2);
+    cout << endl;
+    sleep(2);
     return false;
   }
   
-  else if (writeAns == "N" || writeAns == "n")
+  else if (writeAns == "N" || writeAns == "n") //if conditions meet then run the code inside the else if statement 
   {
-      cout << endl;
+    cout << endl;
     cout << "Please enter a different username!" << endl;
-      cout << endl;
+    cout << endl;
     return true;
   }
-    else
-    {
-        cout << endl;
+  else
+  {
+    cout << endl;
     cout << "Invalid Input! Must be a Y or an N!" << endl;   
-        writeAns.clear();
-        cout << endl;
-        goto choice;
-    }
+    writeAns.clear(); //Clears the chosen variable
+    cout << endl;
+    goto choice; //Goes back to 'choice:'
+  }
   
 }
 
@@ -138,7 +139,7 @@ bool nameCheck( string name, bool nameUsed)
   {
     //cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << endl;
   
-    if (cur->get_text(1) == name)
+    if (cur->get_text(1) == name) //Checks a specific condition 
     {
       userId =  cur->get_int(0);
       nameUsed = true;
@@ -176,7 +177,7 @@ bool nameCheck( string name, bool nameUsed)
 
 int selectID(string name)
 {
-  try
+  try //try statement do this unless error occurs 
   {
     sqlite::sqlite db( "testdb.db" ); //Opens the connection
     auto cur = db.get_statement(); //Creates a cursor on this connection
@@ -185,12 +186,12 @@ int selectID(string name)
                  "FROM users "
                  "WHERE username = ?;"); //SQL command
     cur->prepare(); //Sends to database
-    cur->bind(1, name);
+    cur->bind(1, name); //Binds the name variable to the question mark
     cur->step();
   
     return cur->get_int(0);
   }
-  catch (sqlite::exception e)
+  catch (sqlite::exception e) //Catching the sqlerror to avoid the program to crash
   {
     cerr << e.what() << endl;
     return 1;
@@ -199,7 +200,7 @@ int selectID(string name)
 
 
 //Updata tuple in DB Function
-void selectaNameSQL(string name, int id)
+void updateNameSQL(string name, int id)
 {
   sqlite::sqlite db("testdb.db"); //Opens the connection
   auto cur = db.get_statement(); //Creates a cursor on this connection
@@ -207,19 +208,19 @@ void selectaNameSQL(string name, int id)
   cur->set_sql("UPDATE users SET username = (?)"
                "WHERE id = ?;"); //SQL command
   cur->prepare(); //Sends to database
-  cur->bind(1, name);
-  cur->bind(2, id);
+  cur->bind(1, name); //Binds the varialbe to the first question mark
+  cur->bind(2, id); //Binds the variable to the second question mark
   cur->step();
 }
 
 
-
+//Enter username - start game function
 int sqlcon()
 {
   bool nameUsed = true;
   int gameMode, id;
   string name;
-  while (nameUsed == true)
+  while (nameUsed == true) //Loops till a certain condition is met
   {
     //string name;
     cout <<"Enter Username: (NO SPACES!)" << endl;
@@ -228,8 +229,8 @@ int sqlcon()
     bool ans = nameCheck(name, nameUsed);
     if (ans == false)
     {
-      deleteSQLdata(name);
-      insertNameSQL(name);
+      deleteSQLdata(name); //Calls the deletefunction
+      insertNameSQL(name); //Calls the insert name function
       break;
     }
           
@@ -237,7 +238,7 @@ int sqlcon()
   
   id = selectID(name);
   
-  while(true)
+  while(true) //While loop till break is used
   {
     cout << "**Please choose a game mode (1/2)**" << endl;
     cout << endl;
