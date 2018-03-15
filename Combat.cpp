@@ -4,12 +4,13 @@
 #include "EnemyClass.cpp"
 #include "MergedClasses.cpp"
 #include "SQLCombat.cpp"
+#include "CombatEnding.cpp"
+#include "Finish.cpp"
 #include <random>
-//#pragma once
-
 
 using namespace std;
 int storyScore = 0;
+
 int randomNumber(){                       
     random_device rd;  //Will be used to obtain a seed for the random number engine
     mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
@@ -17,30 +18,94 @@ int randomNumber(){
     return dis(gen);
 }
 
-void mageExecuted(){
-          cout<<"Your health was too low, enemy has executed you."<<endl;
+int enemyDefeated(){
+          storyScore +=20;
+          cout<<"You have successfully killed your enemy!\n"<<endl;
+          Game:
+          cout<<"Do you wish to see the ending of the game? (Y/N): ";
+          string choice2;
+          cin>>choice2;
+          if (choice2 == "y" || choice2 == "Y")
+          {
+            system("clear");
+            combatEnding();
+          }
+          else if (choice2 == "n" || choice2 == "N")
+          {
+             cout << "\nThis will close the game." << endl; 
+             cout << "Are you sure that you would want to do this? (Y/N)" <<endl;
+             string choice3;
+             cin >> choice3;
+             if (choice3 == "Y" || choice3 == "y")
+             {
+                 system("clear");
+                 cout << "You have exited the game!" << endl;
+                 exit(0);
+             }
+             else if (choice3 == "N" || choice3 == "n")
+                 system("clear");
+                 goto Game;
+         }
+          else{
+              system("clear");
+              goto Game;
+          } 
+};
+ int mageDefeated(){
+          storyScore -= 15;
+          cout<<"You have been defeated by the enemy!\n"<<endl;
+          game:
+          cout<<"Do you wish to see the ending of the game? (Y/N): ";
+          string choice2;
+          cin>>choice2;
+          if (choice2 == "y" || choice2 == "Y"){
+            system("clear");
+            combatEnding();
+            }
+         else if (choice2 == "n" || choice2 == "N")
+         {
+             cout << "\nThis will close the game." << endl; 
+             cout << "Are you sure that you would want to do this? (Y/N)" <<endl;
+             string choice3;
+             cin >> choice3;
+             if (choice3 == "Y" || choice3 == "y")
+             {
+                 system("clear");
+                 cout << "You have exited the game!" << endl;
+                 exit(0);
+             }
+             else if (choice3 == "N" || choice3 == "n")
+             {
+                 system("clear");
+                 goto game;
+             }
+             else{
+                system("clear");
+                goto game;
+             }
+          } 
 }
   
-int combat(){
+int main(){
  Mage mageObj(1200,500,150,1500,"Staff");
-  Enemy enemyObj(2000,400,500,"Axe");
-  
-  
-  
-  int randomN;
+ Enemy enemyObj(2000,400,500,"Axe"); 
+ int randomN; // for randomNumber function
   
  //getting values from Mage object
  int mageHealth = mageObj.getHealth();
  int mageMana = mageObj.getMana();
  int mageAttack = mageObj.getAttack();
  int mageDeffence = mageObj.getDefence();
+ string mageEquip = mageObj.getEquip();
  //getting values from Enemy object
  int enemyHealth = enemyObj.getEnemyHealth();
  int enemyAttack = enemyObj.getEnemyAttack();
  int enemyDefence = enemyObj.getEnemyDefence();
+ string enemyEquip = enemyObj.getEnemyWeapon();
  
  int reduceMageDamage = mageDeffence*0.15;
  int reduceEnemyDamage=enemyDefence*0.4;
+ int staffDamage = mageAttack*0.15;
   
  //will be used to prevent using reflect more than twice by the enemy
  int reflectCounter = 0; 
@@ -52,80 +117,6 @@ int combat(){
  int FrostboltDmg = mageAttack - reduceEnemyDamage; 
  //will be used to prevent using DeepFreeze twice a row
  int deepFreezeCounter = 2;
-    
- auto enemyDefeated = [=](){
-          Game:
-          SQL(mageHealth, mageMana, enemyHealth);
-          storyScore +=20;
-          cout<<"You have successfully killed your enemy!\n"<<endl;
-          cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
-          string choice2;
-          cin>>choice2;
-          if (choice2 == "y" || choice2 == "Y")
-          {
-            system("clear");
-            cout<<"here will be function to jump somewhere in the game"<<endl;
-          }
-          else if (choice2 == "n" || choice2 == "N")
-          {
-             cout << "\nThis will close the game." << endl; 
-             cout << "Are you sure that you would want to do this? (Y/N)" <<
-                     endl;
-             string choice3;
-             cin >> choice3;
-             if (choice3 == "Y" || choice3 == "y")
-             {
-                 system("clear");
-                 cout << "You have exited the game!" << endl;
-                 return 0;
-             }
-             else if (choice3 == "N" || choice3 == "n")
-                 system("clear");
-                 goto Game;
-         }
-          else{
-              system("clear");
-              goto Game;
-          } 
-};
-
-  
- auto mageDefeated = [=](){
-          game:
-          SQL(mageHealth, mageMana, enemyHealth);
-        //  SQL();
-          storyScore -= 15;
-          cout<<"You have been defeated by the enemy!\n"<<endl;
-          cout<<"Do you wish to go back to (some stage of the game)? (Y/N): ";
-          string choice2;
-          cin>>choice2;
-          if (choice2 == "y" || choice2 == "Y"){
-            system("clear");
-            cout<<"here will be function to jump somewhere in the game"<<endl;
-            }
-         else if (choice2 == "n" || choice2 == "N")
-         {
-             cout << "\nThis will close the game." << endl; 
-             cout << "Are you sure that you would want to do this? (Y/N)" <<
-                     endl;
-             string choice3;
-             cin >> choice3;
-             if (choice3 == "Y" || choice3 == "y")
-             {
-                 system("clear");
-                 cout << "You have exited the game!" << endl;
-                 return 0;
-             }
-             else if (choice3 == "N" || choice3 == "n")
-                 system("clear");
-                 goto game;
-         }
-           else{
-            system("clear");
-               goto game;
-          } 
-};
-
   
  auto spellReflection = [&]()
  {
@@ -239,10 +230,9 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
  cout<< "Remember only one of you will walk out of this alive.\n"<<endl;
     sleep(3);
     
+  
  cout<<"-------------------LET THE BATTLE BEGIN!!!-------------------\n"<<endl;
-  
-  
-   Start: // start of each combat round
+  Start: // start of each combat round
   mageObj.spells();
   
   cout<< "\nYour health: "<<mageHealth<< "\nMana: "<< mageMana<<endl;
@@ -254,8 +244,7 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
   cout << endl;
   
   
-    switch (choice){
-    
+switch (choice){
   case '1':  //Frostbolt     
        enemyDistance++;
        deepFreezeCounter=2;
@@ -281,17 +270,20 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
          }
          else{
              castFrostbolt();
-           }      
+         }      
      }
         
-       if(enemyHealth<=0){
+      if(enemyHealth<=0){
+           enemyHealth = 0;
+           insertToCombat(mageHealth, mageMana, enemyHealth);
            enemyDefeated();
-           break;
-        } 
-        else if(mageHealth<=0){
+         
+       } 
+       else if(mageHealth<=0){
+          mageHealth = 0;
+          insertToCombat(mageHealth, mageMana, enemyHealth);
            mageDefeated();
-            break;
-        }
+       }
       
          goto Start;       
   
@@ -310,8 +302,8 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
               mageMana-=180;
                if (mageHealth<mageExecution){
                   mageExecuted();         
-                  }    
-               }
+               }    
+         }
         
             else if (randomN>30){
               castLuckyBlink();
@@ -322,22 +314,21 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
         }
         
         
-       if(enemyHealth<=0){
+      if(enemyHealth<=0){
+           enemyHealth = 0;
+           insertToCombat(mageHealth, mageMana, enemyHealth);
            enemyDefeated();
-           break;
-        }
-        
-        else if(mageHealth<=0){
+         
+        } 
+       else if(mageHealth<=0){
+          mageHealth = 0;
+          insertToCombat(mageHealth, mageMana, enemyHealth);
            mageDefeated();
-           break;
         }
        goto Start;
         
   
   case '3'://DeepFreeze
-        
-        
-         
         if (mageMana<300)
        {
          outOfMana();
@@ -347,34 +338,36 @@ auto castFrostbolt = [FrostboltDmg, &enemyHealth, &mageMana]()
         else{
             if (deepFreezeCounter%2 == 0){          
                 castDeepFreeze();
-              }
+             }
  
             else{
                 cout<< "You cannot use DeepFreeze this round!\n"<<endl;
                 enemyCharge();
               if (mageHealth<mageExecution){
                   mageExecuted();       
-                  }
-              }
-          }
+               }
+            }
+         }
          
         
-       if(enemyHealth<=0){
-          enemyDefeated();  
-          break;
-        }
-        
-       else if(mageHealth<=0){
-          mageDefeated();
-          break;
-        }            
+        if(enemyHealth<=0){
+           enemyHealth = 0;
+           insertToCombat(mageHealth, mageMana, enemyHealth);
+           enemyDefeated();
+         
+        } 
+        else if(mageHealth<=0){
+          mageHealth = 0;
+          insertToCombat(mageHealth, mageMana, enemyHealth);
+           mageDefeated();
+        }      
   goto Start;
    
         
   default:
            system("clear");
            goto Start;
-    }
+ }
     
   return 0;
 }
