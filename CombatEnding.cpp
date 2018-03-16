@@ -21,8 +21,8 @@ int combatEnding(){
  cout<< "Would you like to see the credits for this game(Y/N)?: ";
  cin>>choice;
   
- if (choice == "y" || choice == "Y"){
-   finish(); //Runs End Game Screen  
+ if (choice == "y" || choice == "Y"){ 
+     finish();
  }
   else{
     exit(0);
