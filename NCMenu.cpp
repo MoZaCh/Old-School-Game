@@ -7,7 +7,6 @@
 #include <panel.h>
 #include <functional>
 #include <string>
-#include "Credits.cpp"
 #include "Paths.cpp"
 
 
@@ -100,7 +99,7 @@ int main(int argc, char ** argv)
     else if(choice[highlight] == "         Resume Game        ")
     {
         
-        goto title;
+        goto title;//Kai's line
     }
     else if(choice[highlight] == "           Credits          ")
     {
