@@ -9,7 +9,7 @@ using namespace std;
 ////INSERTING DATA INTO DATABASE
 bool insertNameSQLAlex()
 {
-  string name = "test1";
+  string name = "NameTest";
   if(storyScore <= 0) storyScore = 0;
   try
   {
@@ -45,7 +45,7 @@ void printResults()
   
   while(cur->step())
   {
-    cout << "ID: " << cur->get_int(0)<< " |Storyname: " <<  cur->get_text(1) << " |Score: " << cur->get_int(2) << endl;
+    cout << "ID: " << cur->get_int(0)<< " |Name: " <<  cur->get_text(1) << " |Score: " << cur->get_int(2) << endl;
   }
 }
 
