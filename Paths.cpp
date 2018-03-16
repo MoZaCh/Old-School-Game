@@ -8,7 +8,6 @@
 #include <curses.h>
 #include "Inventory.cpp"
 #include "Combat.cpp"
-#include "Finish.cpp"
 #include "libsqlite.hpp"
 
 using namespace std;
