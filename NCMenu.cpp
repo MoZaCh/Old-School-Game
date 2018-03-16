@@ -8,6 +8,7 @@
 #include <functional>
 #include <string>
 #include "Paths.cpp"
+#include "Credits.cpp"
 
 
 
