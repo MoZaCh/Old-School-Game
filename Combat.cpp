@@ -5,7 +5,6 @@
 #include "MergedClasses.cpp"
 #include "SQLCombat.cpp"
 #include "CombatEnding.cpp"
-#include "Finish.cpp"
 #include <random>
 
 using namespace std;
@@ -86,7 +85,7 @@ int enemyDefeated(){
           } 
 }
   
-int main(){
+int combat(){
  Mage mageObj(1200,500,150,1500,"Staff");
  Enemy enemyObj(2000,400,500,"Axe"); 
  int randomN; // for randomNumber function
