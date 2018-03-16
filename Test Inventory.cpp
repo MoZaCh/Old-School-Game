@@ -5,6 +5,7 @@
 using namespace std ;
 
 #include "libsqlite.hpp"
+
 //Insert into Function -- Name
 bool insertNameSQL(string InventoryItems)
 {
@@ -96,7 +97,7 @@ cout << R"(
 						 {
 								 // Function displays items present in inventory
 								
-							 case '1' :
+						  case '1' :
                 
 							 cout<<endl;
 								 
@@ -109,7 +110,7 @@ cout << R"(
 								 cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< endl;
 								 cout<<"             Inventory Empty\n";
 								 cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< endl;
-								cout << endl;
+								 cout << endl;
 
 								}
 								 // Display items present in inventory
@@ -123,15 +124,15 @@ cout << R"(
 									cout<<i<<". "<<inventory[i]<<endl;
 									insertNameSQL(inventory[i]);
 								 }
-								 cout<<endl;
-								 cout<<"``````````````````````````````````````````````````````````````"<<endl;
-								 cout<<endl;
-								 break;
+								cout<<endl;
+								cout<<"``````````````````````````````````````````````````````````````"<<endl;
+								cout<<endl;
+								break;
 
 							case '2':
 								 
 										 // Function to add items in the inventory
-									 AddItem:
+									   AddItem:
 
 										 //Display all items present in the game
 
@@ -144,15 +145,15 @@ cout << R"(
 										 {
 											cout<<i<<". "<<items[i]<<endl;
 										 }	
-											 cout<<endl;
-											 cout<<"``````````````````````````````````````````````````````````````"<<endl;
-											 cout<<endl;
-											 cout<<"Enter Item number that you want to add in inventory: \n";
-											 cin>>number;
+											cout<<endl;
+											cout<<"``````````````````````````````````````````````````````````````"<<endl;
+											cout<<endl;
+											cout<<"Enter Item number that you want to add in inventory: \n";
+											cin>>number;
 
 									 // Checks input whether it is string instead of number
 
-										 while(cin.fail())
+									 while(cin.fail())
 											{  
 												 // Clears the terminal
 
@@ -187,14 +188,14 @@ cout << R"(
 												cout << "*************************************" << endl;
 												cout << endl;
 
-											 //Recalls the function
+											  //Recalls the function
 												goto AddItem;
 											}
 
 											 // Checks input whether it is greater than 14 
 											 // As there are only 13 items in the game
-											else if( number > 13)
-												{
+										else if( number > 13)
+											{
                          // Display error message
 										  	 cout << endl;
 												 cout << "*************************************" << endl;
@@ -219,7 +220,7 @@ cout << R"(
 												}
 												 break;
 
-                  case '3' :
+              case '3' :
 								 
 								     // Function to delete items in the inventory
 								 
@@ -303,15 +304,15 @@ cout << R"(
 
 
 
-										case '4' :
+			  			case '4' :
 								      // Exit from the inventory	
 										 system("clear");
 								     //Starts from the begining
 										 return main ();
 										 break;
 
-										default:
-                      //Enters anything else rather chosing any function       
+							default:
+                     //Enters anything else rather chosing any function       
 										 system("clear");
 								     //Display message
 										 cout << endl;
@@ -331,7 +332,7 @@ cout << R"(
 										 cout<<"           Inventory Full\n";
 										 cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< endl;
 										 cout << endl;
-											// Takes exit as it tries to add more items in the inventory 
+										// Takes exit as it tries to add more items in the inventory 
 										 return 0 ;
 										}
 				   }  
@@ -345,7 +346,8 @@ cout << R"(
 			}
 
 		 else
-			 {//Enters anything else rather than selecting choices
+			 {
+			 //Enters anything else rather than selecting choices
 				system("clear");
 				cout << endl;
 				cout << "¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬" << endl;
@@ -355,4 +357,3 @@ cout << R"(
 		   }
    }
 }
-	
