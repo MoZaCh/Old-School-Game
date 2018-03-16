@@ -86,7 +86,7 @@ int mainGame(int userId)
         else if (begin == 1)
         {
             cout << "Please enter your first move..." << endl;
-            begin ++;
+            begin ++; //adds to begin so that this above line only gets printed the first time the user opens the game
         }
         else 
         {
