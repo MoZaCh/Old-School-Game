@@ -20,12 +20,12 @@ bool insertNameSQL(string name)
     auto cur = db.get_statement(); //Creates a cursor on this connection
   
     cur->set_sql("INSERT INTO users (username, class, score) "
-                 "VALUES (?, ?, ?);"); //sql command
+                 "VALUES (?, ?, ?);"); //sql command //Placeholders
     cur->prepare(); //Sends to database
     cur->bind(1, name); //Binds the 'name' varialbe to the first question mark
     cur->bind(2, unknownClass); //Binds the 'unknownClass' variable to the second question mark 
     cur->bind(3, noScore); //Binds the 'noScore' variable to the third question mark
-    cur->step();
+    cur->step(); //Getting results
   }
   
   catch (sqlite::exception e) //Catching the sql error to avoid program from crashing
@@ -46,10 +46,10 @@ bool deleteSQLdata(string name)
   
     cur->set_sql("DELETE "
                  "FROM users "
-                 "WHERE username = ?;"); //sql command
+                 "WHERE username = ?;"); //sql command //Placeholder
     cur->prepare(); //Sends to database
-    cur->bind(1, name);
-    cur->step();
+    cur->bind(1, name); //Binds the name variable to the question mark (placeholder)
+    cur->step(); //Getting results
     
   }
   
@@ -68,11 +68,11 @@ void printResults()
   auto cur = db.get_statement(); //Creates a cursor on this connection
   
   cur->set_sql("select *"
-               "from users"); //SQL command
+               "from users"); //SQL command 
   cur->prepare(); //Sends to database
 
   
-  while(cur->step()) //While loop printing out all the ids, usernames and class types that are already in the database
+  while(cur->step()) //While loop printing out all the ids, usernames and class types that are already in the database //Getting results
   {
     cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << " |class: " << cur->get_text(2) << endl;
   }
@@ -136,7 +136,7 @@ bool nameCheck( string name, bool nameUsed)
   cur->prepare(); //Sends to database
 
   
-  while(cur->step())
+  while(cur->step()) //Getting results
   {
     //cout << "ID: " << cur->get_int(0)<< " |Username: " <<  cur->get_text(1) << endl;
   
@@ -169,6 +169,7 @@ bool nameCheck( string name, bool nameUsed)
     cout << endl;
     sleep(2);
     cout << "Hi " << name << "," << endl;
+    cout << endl;
     sleep(2);
     return false;
   }
@@ -185,10 +186,10 @@ int selectID(string name)
   
     cur->set_sql("SELECT id "
                  "FROM users "
-                 "WHERE username = ?;"); //SQL command
+                 "WHERE username = ?;"); //SQL command //Placeholder
     cur->prepare(); //Sends to database
     cur->bind(1, name); //Binds the name variable to the question mark
-    cur->step();
+    cur->step(); //Getting results
   
     return cur->get_int(0); //Returns id number for the given username
   }
@@ -207,11 +208,11 @@ void updateNameSQL(string name, int id)
   auto cur = db.get_statement(); //Creates a cursor on this connection
   
   cur->set_sql("UPDATE users SET username = (?)"
-               "WHERE id = ?;"); //SQL command
+               "WHERE id = ?;"); //SQL command //Placeholder
   cur->prepare(); //Sends to database
   cur->bind(1, name); //Binds the 'name variable to the first question mark above
   cur->bind(2, id); //Binds the 'id' variable to the question mark above
-  cur->step();
+  cur->step(); //Getting results
 }
 
 
