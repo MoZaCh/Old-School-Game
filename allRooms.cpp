@@ -54,7 +54,7 @@ int updateScoreSQL(int global)
     cur->prepare(); //Sends to database
     cur->bind(1, global); //binding the global variable to the first '?'
     cur->bind(2, userID); //binding the userID variable to the secind '?'
-    cur->step();
+    cur->step(); //Getting results
   }
   catch (sqlite::exception e) //Catching SQL exception 
   {
