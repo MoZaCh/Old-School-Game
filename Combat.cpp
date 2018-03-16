@@ -5,6 +5,7 @@
 #include "MergedClasses.cpp"
 #include "SQLCombat.cpp"
 #include "CombatEnding.cpp"
+#include "Finish.cpp"
 #include <random>
 
 using namespace std;
@@ -17,43 +18,8 @@ int randomNumber(){
     return dis(gen);
 }
 
-int enemyDefeated(){
-          storyScore +=20;
-          cout<<"You have successfully killed your enemy!\n"<<endl;
-          Game:
-          cout<<"Do you wish to see the ending of the game? (Y/N): ";
-          string choice2;
-          cin>>choice2;
-          if (choice2 == "y" || choice2 == "Y")
-          {
-            system("clear");
-            combatEnding();
-          }
-          else if (choice2 == "n" || choice2 == "N")
-          {
-             cout << "\nThis will close the game." << endl; 
-             cout << "Are you sure that you would want to do this? (Y/N)" <<endl;
-             string choice3;
-             cin >> choice3;
-             if (choice3 == "Y" || choice3 == "y")
-             {
-                 system("clear");
-                 cout << "You have exited the game!" << endl;
-                 exit(0);
-             }
-             else if (choice3 == "N" || choice3 == "n")
-                 system("clear");
-                 goto Game;
-         }
-          else{
-              system("clear");
-              goto Game;
-          } 
-};
- int mageDefeated(){
-          storyScore -= 15;
-          cout<<"You have been defeated by the enemy!\n"<<endl;
-          game:
+int oneManStanding(){
+  game:
           cout<<"Do you wish to see the ending of the game? (Y/N): ";
           string choice2;
           cin>>choice2;
@@ -64,7 +30,7 @@ int enemyDefeated(){
          else if (choice2 == "n" || choice2 == "N")
          {
              cout << "\nThis will close the game." << endl; 
-             cout << "Are you sure that you would want to do this? (Y/N)" <<endl;
+             cout << "Are you sure that you would want to do this? (Y/N)?: ";
              string choice3;
              cin >> choice3;
              if (choice3 == "Y" || choice3 == "y")
@@ -272,17 +238,24 @@ switch (choice){
          }      
      }
         
-      if(enemyHealth<=0){
-           enemyHealth = 0;
-           insertToCombat(mageHealth, mageMana, enemyHealth);
-           enemyDefeated();
-         
-       } 
-       else if(mageHealth<=0){
-          mageHealth = 0;
+      if(enemyHealth<=0 || mageHealth<= 0){
+        if(enemyHealth<=0){
           insertToCombat(mageHealth, mageMana, enemyHealth);
-           mageDefeated();
-       }
+          cout<<"You have succesfully killed your enemy!"<<endl;
+          oneManStanding();
+          enemyHealth = 0;
+          storyScore +=20;
+          
+        }
+        else{
+          cout<<"You have been defeated by the Enemy!"<<endl;
+          insertToCombat(mageHealth, mageMana, enemyHealth);
+          oneManStanding();
+          mageHealth = 0;
+          storyScore -= 15;
+        }     
+       } 
+       
       
          goto Start;       
   
@@ -313,18 +286,23 @@ switch (choice){
         }
         
         
-      if(enemyHealth<=0){
-           enemyHealth = 0;
-           insertToCombat(mageHealth, mageMana, enemyHealth);
-           enemyDefeated();
-         
-        } 
-       else if(mageHealth<=0){
-          mageHealth = 0;
+      if(enemyHealth<=0 || mageHealth<= 0){
+        if(enemyHealth<=0){
           insertToCombat(mageHealth, mageMana, enemyHealth);
-           mageDefeated();
+          cout<<"You have succesfully killed your enemy!"<<endl;
+          oneManStanding();
+          enemyHealth = 0;
+          storyScore +=20;
+          
         }
-       goto Start;
+        else{
+          cout<<"You have been defeated by the Enemy!"<<endl;
+          insertToCombat(mageHealth, mageMana, enemyHealth);
+          oneManStanding();
+          mageHealth = 0;
+          storyScore -= 15;
+        }     
+       } 
         
   
   case '3'://DeepFreeze
@@ -349,17 +327,23 @@ switch (choice){
          }
          
         
+        if(enemyHealth<=0 || mageHealth<= 0){
         if(enemyHealth<=0){
-           enemyHealth = 0;
-           insertToCombat(mageHealth, mageMana, enemyHealth);
-           enemyDefeated();
-         
-        } 
-        else if(mageHealth<=0){
-          mageHealth = 0;
           insertToCombat(mageHealth, mageMana, enemyHealth);
-           mageDefeated();
-        }      
+          cout<<"You have succesfully killed your enemy!"<<endl;
+          oneManStanding();
+          enemyHealth = 0;
+          storyScore +=20;
+          
+        }
+        else{
+          cout<<"You have been defeated by the Enemy!"<<endl;
+          insertToCombat(mageHealth, mageMana, enemyHealth);
+          oneManStanding();
+          mageHealth = 0;
+          storyScore -= 15;
+        }     
+       } 
   goto Start;
    
         
