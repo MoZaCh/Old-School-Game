@@ -88,7 +88,7 @@ cout << R"(
 						 
 						 cout<<endl;
 						 cout<<"-------------------------------------------------------------"<<endl;
-						 cout<< "1. Show items \n2. Add items \n3. Drop items \n4. Exit\n" ;
+						 cout<< "1. Show Items \n2. Add Items \n3. Drop Items \n4. Exit\n" ;
 						 cout<<"-------------------------------------------------------------"<<endl;
 						 cin >> Inventory;
 
@@ -183,7 +183,7 @@ cout << R"(
 												// Display error message
 												cout << endl;
 												cout << "*************************************" << endl;
-												cout << "         Item Doesnt Exist!" << endl;
+												cout << "         Item Doesn`t Exist!" << endl;
 												cout << "*************************************" << endl;
 												cout << endl;
 
@@ -198,7 +198,7 @@ cout << R"(
                          // Display error message
 										  	 cout << endl;
 												 cout << "*************************************" << endl;
-												 cout << "         Item Doesnt Exist!" << endl;
+												 cout << "         Item Doesn`t Exist!" << endl;
 												 cout << "*************************************" << endl;
 												 cout << endl;
 											
@@ -274,7 +274,7 @@ cout << R"(
                              // Display error message
 														cout << endl;
 														cout << "*************************************" << endl;
-														cout << "         Item Doesnt Exist!" << endl;
+														cout << "         Item Doesn`t Exist!" << endl;
 														cout << "*************************************" << endl;
 														cout << endl;
                             //Recalls the function
@@ -286,7 +286,7 @@ cout << R"(
 
 															 cout << endl;
 															 cout << "*************************************" << endl;
-															 cout << "         Item Doesnt Exist!" << endl;
+															 cout << "         Item Doesn`t Exist!" << endl;
 															 cout << "*************************************" << endl;
 															 cout << endl;
 															 goto DropItem;
