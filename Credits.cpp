@@ -22,7 +22,7 @@ int credits()
 
     
     initscr();
-    WINDOW * cred = newwin(height, width, start_y, start_x);
+    WINDOW * cred = newwin(height, width, start_y, start_x);//CREATING NEW WINDOW FOR NCURSES
     
     mvwprintw(cred, 1, 1, "Credits:");
     mvwprintw(cred, 3, 1, "*KHAN Qais* ");
@@ -33,10 +33,10 @@ int credits()
     mvwprintw(cred, 8, 1, "*PATEL Harshkumar Chandrakant* ");
     mvwprintw(cred, 9, 1, " ");
     mvwprintw(cred, 13, 1, "Would you like to go back?: ");
-    box(cred, 0, 0);
+    box(cred, 0, 0);//CREATING BORDER AROUND THE WINDOW
     refresh();
     wrefresh(cred);
-    keypad(cred, true);
+    keypad(cred, true);//ENABLES THE ARROW KEYS TO BE USED
     
     
     
@@ -44,7 +44,7 @@ int credits()
      
      
      wrefresh(cred);
-    
+    //HIGHLITS THE CHOICE OF THE USER//
     while(true)
     {
         for(int i = 0; i < 2; i++)
@@ -56,6 +56,7 @@ int credits()
         }
         pick = wgetch(cred);
         
+        //ARROW KEY COMMANDS//
         switch(pick)
         {
             case KEY_UP:
