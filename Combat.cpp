@@ -5,7 +5,6 @@
 #include "MergedClasses.cpp"
 #include "SQLCombat.cpp"
 #include "CombatEnding.cpp"
-#include "Finish.cpp"
 #include <random>
 
 using namespace std;
